@@ -1,0 +1,1962 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="description" content="Portfólio de Bia — Product Designer" />
+    <title>Bia Franzoi · Product Designer</title>
+    <link rel="icon" type="image/png" href="src/img/biafranzoi-logo.png" />
+    <link rel="apple-touch-icon" href="src/img/biafranzoi-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+    <script>
+      // aplica o tema salvo antes da primeira pintura, pra não piscar o
+      // tema errado por uma fração de segundo enquanto o main.js carrega
+      (function () {
+        try {
+          var saved = localStorage.getItem("biafranzoi-theme");
+          if (saved === "light" || saved === "high-contrast") {
+            document.documentElement.setAttribute("data-theme", saved);
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="topbar">
+      <time class="topbar__clock" id="brazil-clock" tabindex="0"
+        ><span class="sr-only">Horário oficial de Brasília: </span
+        ><span class="topbar__clock-time">--:--:--</span
+        ><span class="topbar__clock-country" data-i18n="topbar.country">Brasil</span
+        ><span class="topbar__clock-tooltip" role="tooltip"></span
+      ></time>
+
+      <div class="theme-switcher">
+        <button
+          type="button"
+          class="topbar__icon-btn theme-switcher__trigger"
+          id="theme-menu-toggle"
+          aria-haspopup="true"
+          aria-expanded="false"
+          aria-controls="theme-menu"
+          aria-label="Configurações"
+          data-i18n-aria-label="settings.trigger"
+        >
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915"/><circle cx="12" cy="12" r="3"/></svg>
+          <span class="topbar__tooltip" data-i18n="settings.trigger" aria-hidden="true">Configurações</span>
+        </button>
+        <div class="theme-menu" id="theme-menu" hidden>
+          <p class="theme-menu__label" data-i18n="settings.theme.label">Tema</p>
+          <div class="theme-menu__group" role="radiogroup" aria-label="Tema do site" data-i18n-aria-label="settings.theme.groupLabel">
+            <button
+              type="button"
+              class="theme-menu__option"
+              role="radio"
+              aria-checked="true"
+              data-theme-value="dark"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>
+              <span data-i18n="settings.theme.dark">Escuro</span>
+            </button>
+            <button
+              type="button"
+              class="theme-menu__option"
+              role="radio"
+              aria-checked="false"
+              data-theme-value="light"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+              <span data-i18n="settings.theme.light">Claro</span>
+            </button>
+            <button
+              type="button"
+              class="theme-menu__option"
+              role="radio"
+              aria-checked="false"
+              data-theme-value="high-contrast"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 18a6 6 0 0 0 0-12v12z"/></svg>
+              <span data-i18n="settings.theme.highContrast">Alto contraste</span>
+            </button>
+          </div>
+          <div class="theme-menu__divider" role="separator"></div>
+          <p class="theme-menu__label" data-i18n="settings.lang.label">Idioma</p>
+          <div class="theme-menu__group" role="radiogroup" aria-label="Idioma do site" data-i18n-aria-label="settings.lang.groupLabel">
+            <button
+              type="button"
+              class="theme-menu__option"
+              role="radio"
+              aria-checked="true"
+              data-lang-value="pt"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              Português
+            </button>
+            <button
+              type="button"
+              class="theme-menu__option"
+              role="radio"
+              aria-checked="false"
+              data-lang-value="en"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+              English
+            </button>
+          </div>
+        </div>
+      </div>
+      <button
+        type="button"
+        class="topbar__icon-btn global-pause"
+        id="global-pause-toggle"
+        aria-pressed="false"
+        aria-label="Pausar animações"
+      >
+        <svg class="anim-toggle__pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg>
+        <svg class="anim-toggle__play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden><path d="M8 5v14l11-7z"/></svg>
+        <span class="topbar__tooltip" aria-hidden="true">Pausar animações</span>
+      </button>
+    </div>
+
+    <main>
+      <section id="inicio" class="hero container" aria-labelledby="inicio-heading">
+        <div class="hero__content">
+          <p class="hero__kicker reveal">Senior Product Designer</p>
+          <h1 id="inicio-heading" class="hero__title reveal" data-i18n="hero.title">
+            Olá, eu sou a <span class="accent">Bia Franzoi</span>.<br />
+            Desenho <span class="accent">produtos</span> que resolvem
+            <span class="accent">problemas reais</span>.
+          </h1>
+          <p class="hero__subtitle reveal" data-i18n="hero.subtitle">
+            Mais de <strong>12 anos de vivência</strong> no ecossistema de
+            tecnologia e design. <strong>Pós-graduada em UX Design</strong> pela
+            PUCRS. Domínio completo de ponta a ponta — do design ao handoff e
+            front-end, em sintonia com metodologias ágeis.
+          </p>
+          <div class="hero__actions reveal">
+            <a href="#projetos" class="button button--primary" data-i18n="hero.ctaPrimary">Ver projetos</a>
+            <a href="#contato" class="button button--ghost" data-i18n="hero.ctaSecondary">Fale comigo</a>
+          </div>
+        </div>
+        <div class="hero__fan reveal">
+          <div class="fan">
+            <button type="button" class="fan__card" aria-label="Trazer Meu Crediário para frente" data-case="crediario">
+              <img src="src/img/biafranzoi-crediario-1.jpg" alt="" />
+              <span class="project-card__overlay">
+                <span class="project-card__name">Meu Crediário</span>
+                <span class="project-card__tags">
+                  <span class="tag">WebApp</span>
+                  <span class="tag" data-i18n="tag.8years">+8 anos</span>
+                </span>
+              </span>
+            </button>
+            <button type="button" class="fan__card" aria-label="Trazer DestinoIdeal para frente" data-case="destinoideal">
+              <img src="src/img/biafranzoi-destinoideal-1.png" alt="" />
+              <span class="project-card__overlay">
+                <span class="project-card__name">DestinoIdeal</span>
+                <span class="project-card__tags">
+                  <span class="tag">Website</span>
+                </span>
+              </span>
+            </button>
+            <button type="button" class="fan__card" aria-label="Trazer Nebula para frente" data-case="nebula">
+              <img src="src/img/biafranzoi-nebula-1.png" alt="" />
+              <span class="project-card__overlay">
+                <span class="project-card__name">Nebula</span>
+                <span class="project-card__tags">
+                  <span class="tag">WebApp</span>
+                </span>
+              </span>
+            </button>
+            <button type="button" class="fan__card" aria-label="Trazer DigiDoc para frente" data-case="digidoc">
+              <img src="src/img/biafranzoi-digidoc-1.png" alt="" />
+              <span class="project-card__overlay">
+                <span class="project-card__name">DigiDoc</span>
+                <span class="project-card__tags">
+                  <span class="tag">App</span>
+                </span>
+              </span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="marquee"
+        aria-label="Ferramentas e tecnologias que utilizo"
+        data-i18n-aria-label="marquee.ariaLabel"
+      >
+        <div class="marquee__track">
+          <ul class="marquee__list">
+            <li>Figma</li>
+            <li>Behance</li>
+            <li>ClickUp</li>
+            <li>Adobe XD</li>
+            <li>Hotjar</li>
+            <li>WordPress</li>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>Design Systems</li>
+            <li data-i18n="marquee.leadership">Liderança</li>
+            <li data-i18n="marquee.prototyping">Prototipação</li>
+            <li>UX/UI</li>
+          </ul>
+          <ul class="marquee__list" aria-hidden="true">
+            <li>Figma</li>
+            <li>Behance</li>
+            <li>ClickUp</li>
+            <li>Adobe XD</li>
+            <li>Hotjar</li>
+            <li>WordPress</li>
+            <li>HTML5</li>
+            <li>CSS3</li>
+            <li>Design Systems</li>
+            <li data-i18n="marquee.leadership">Liderança</li>
+            <li data-i18n="marquee.prototyping">Prototipação</li>
+            <li>UX/UI</li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        id="projetos"
+        class="section container"
+        aria-labelledby="projetos-heading"
+      >
+        <h2 id="projetos-heading" class="section__title reveal" data-i18n="projects.title">
+          Projetos em <span class="accent">destaque</span>
+        </h2>
+        <!-- 2 cards por linha, alternando maior/menor em diagonal: linha 1
+             grande-à-esquerda, linha 2 grande-à-direita -->
+        <div class="projects">
+          <button type="button" class="project-card project-card--lg reveal" data-case="crediario">
+            <span class="project-card__inner">
+              <span class="project-card__media" aria-hidden="true"
+                ><img src="src/img/biafranzoi-crediario-1.jpg" alt=""
+              /></span>
+              <span class="project-card__overlay">
+                <span class="project-card__name">Meu Crediário</span>
+                <span class="project-card__tags">
+                  <span class="tag">WebApp</span>
+                  <span class="tag" data-i18n="tag.8years">+8 anos</span>
+                </span>
+                <span class="project-card__desc" data-i18n="project.crediario.descLong"
+                  >Atuação em todo o ciclo de UX, do redesign da plataforma à
+                  evolução do Design System, em colaboração multifuncional
+                  contínua desde 2018.</span
+                >
+                <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="project-card reveal" data-case="digidoc">
+            <span class="project-card__inner">
+              <span class="project-card__media" aria-hidden="true"
+                ><img src="src/img/biafranzoi-digidoc-1.png" alt=""
+              /></span>
+              <span class="project-card__overlay">
+                <span class="project-card__name">DigiDoc</span>
+                <span class="project-card__tags">
+                  <span class="tag">App</span>
+                </span>
+                <span class="project-card__desc" data-i18n="project.digidoc.desc"
+                  >Carteira de documentos pessoais com códigos QR para
+                  compartilhamento fácil e seguro.</span
+                >
+                <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="project-card reveal" data-case="compraki">
+            <span class="project-card__inner">
+              <span class="project-card__media" aria-hidden="true"
+                ><img src="src/img/biafranzoi-compraki-1.png" alt=""
+              /></span>
+              <span class="project-card__overlay">
+                <span class="project-card__name">Compraki</span>
+                <span class="project-card__tags">
+                  <span class="tag">App</span>
+                </span>
+                <span class="project-card__desc" data-i18n="project.compraki.descShort"
+                  >Gestor de listas inteligente que utiliza crowdsourcing via
+                  NFC-e para comparar o custo total do carrinho entre
+                  mercados.</span
+                >
+                <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="project-card project-card--lg reveal" data-case="destinoideal">
+            <span class="project-card__inner">
+              <span class="project-card__media" aria-hidden="true"
+                ><img src="src/img/biafranzoi-destinoideal-1.png" alt=""
+              /></span>
+              <span class="project-card__overlay">
+                <span class="project-card__name">DestinoIdeal</span>
+                <span class="project-card__tags">
+                  <span class="tag">Website</span>
+                </span>
+                <span class="project-card__desc" data-i18n="project.destinoideal.desc"
+                  >Planejador de viagens que recomenda destinos sob medida a
+                  partir do perfil do viajante.</span
+                >
+                <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="project-card project-card--lg reveal" data-case="nebula">
+            <span class="project-card__inner">
+              <span class="project-card__media" aria-hidden="true"
+                ><img src="src/img/biafranzoi-nebula-1.png" alt=""
+              /></span>
+              <span class="project-card__overlay">
+                <span class="project-card__name">Nebula</span>
+                <span class="project-card__tags">
+                  <span class="tag">WebApp</span>
+                </span>
+                <span class="project-card__desc" data-i18n="project.nebula.desc"
+                  >SaaS de armazenamento focado em reduzir a fricção entre
+                  upload e colaboração em arquivos.</span
+                >
+                <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </section>
+
+      <section
+        class="focus"
+        aria-label="Foco em experiência, usabilidade e qualidade"
+        data-i18n-aria-label="focus.ariaLabel"
+      >
+        <div class="focus__inner container">
+          <span class="focus__label" data-i18n="focus.label">Foco em</span>
+          <span class="focus__words" aria-hidden="true">
+            <span class="focus__stack">
+              <span data-i18n="focus.word1">experiência</span>
+              <span data-i18n="focus.word2">usabilidade</span>
+              <span data-i18n="focus.word3">qualidade</span>
+              <!-- cópia da primeira palavra: faz o loop emendar sem salto -->
+              <span data-i18n="focus.word1">experiência</span>
+            </span>
+          </span>
+        </div>
+      </section>
+
+      <section
+        id="sobre"
+        class="section container"
+        aria-labelledby="sobre-heading"
+      >
+        <h2 id="sobre-heading" class="section__title reveal" data-i18n="about.title">
+          Sobre <span class="accent">mim</span>
+        </h2>
+        <div class="about">
+          <div class="about__visual reveal">
+            <div class="orbit">
+              <div
+                class="orbit__avatar"
+                role="img"
+                aria-label="Foto de Bia"
+                data-i18n-aria-label="about.visualAlt"
+              >
+                <img src="src/img/profile-bia-franzoi.jpg" alt="" />
+              </div>
+              <ul class="orbit__ring" aria-hidden="true">
+                <!-- 14 ferramentas espaçadas em 360°/14 ≈ 25.71°. Marcas oficiais via
+                     Simple Icons (viewBox 0 0 24 24 em todas, escala sem distorcer),
+                     exceto as três da Adobe. -->
+                <li class="orbit__icon" style="--a: 0deg">
+                  <span class="orbit__chip" title="Figma">
+                    <!-- Figma -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 25.71deg">
+                  <span class="orbit__chip" title="Hotjar">
+                    <!-- Hotjar -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10.119 9.814C12.899 8.27 16.704 6.155 16.704 0h-4.609c0 3.444-1.676 4.375-4.214 5.786C5.1 7.33 1.295 9.444 1.295 15.6h4.61c0-3.444 1.676-4.376 4.214-5.786zM18.096 8.4c0 3.444-1.677 4.376-4.215 5.785-2.778 1.544-6.585 3.66-6.585 9.815h4.609c0-3.444 1.676-4.376 4.214-5.786 2.78-1.544 6.586-3.658 6.586-9.814h-4.609z"/></svg>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 51.43deg">
+                  <span class="orbit__chip" title="Claude">
+                    <!-- Claude -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m4.7144 15.9555 4.7174-2.6471.079-.2307-.079-.1275h-.2307l-.7893-.0486-2.6956-.0729-2.3375-.0971-2.2646-.1214-.5707-.1215-.5343-.7042.0546-.3522.4797-.3218.686.0608 1.5179.1032 2.2767.1578 1.6514.0972 2.4468.255h.3886l.0546-.1579-.1336-.0971-.1032-.0972L6.973 9.8356l-2.55-1.6879-1.3356-.9714-.7225-.4918-.3643-.4614-.1578-1.0078.6557-.7225.8803.0607.2246.0607.8925.686 1.9064 1.4754 2.4893 1.8336.3643.3035.1457-.1032.0182-.0728-.164-.2733-1.3539-2.4467-1.445-2.4893-.6435-1.032-.17-.6194c-.0607-.255-.1032-.4674-.1032-.7285L6.287.1335 6.6997 0l.9957.1336.419.3642.6192 1.4147 1.0018 2.2282 1.5543 3.0296.4553.8985.2429.8318.091.255h.1579v-.1457l.1275-1.706.2368-2.0947.2307-2.6957.0789-.7589.3764-.9107.7468-.4918.5828.2793.4797.686-.0668.4433-.2853 1.8517-.5586 2.9021-.3643 1.9429h.2125l.2429-.2429.9835-1.3053 1.6514-2.0643.7286-.8196.85-.9046.5464-.4311h1.0321l.759 1.1293-.34 1.1657-1.0625 1.3478-.8804 1.1414-1.2628 1.7-.7893 1.36.0729.1093.1882-.0183 2.8535-.607 1.5421-.2794 1.8396-.3157.8318.3886.091.3946-.3278.8075-1.967.4857-2.3072.4614-3.4364.8136-.0425.0304.0486.0607 1.5482.1457.6618.0364h1.621l3.0175.2247.7892.522.4736.6376-.079.4857-1.2142.6193-1.6393-.3886-3.825-.9107-1.3113-.3279h-.1822v.1093l1.0929 1.0686 2.0035 1.8092 2.5075 2.3314.1275.5768-.3218.4554-.34-.0486-2.2039-1.6575-.85-.7468-1.9246-1.621h-.1275v.17l.4432.6496 2.3436 3.5214.1214 1.0807-.17.3521-.6071.2125-.6679-.1214-1.3721-1.9246L14.38 17.959l-1.1414-1.9428-.1397.079-.674 7.2552-.3156.3703-.7286.2793-.6071-.4614-.3218-.7468.3218-1.4753.3886-1.9246.3157-1.53.2853-1.9004.17-.6314-.0121-.0425-.1397.0182-1.4328 1.9672-2.1796 2.9446-1.7243 1.8456-.4128.164-.7164-.3704.0667-.6618.4008-.5889 2.386-3.0357 1.4389-1.882.929-1.0868-.0062-.1579h-.0546l-6.3385 4.1164-1.1293.1457-.4857-.4554.0608-.7467.2307-.2429 1.9064-1.3114Z"/></svg>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 77.14deg">
+                  <span class="orbit__chip" title="Maze">
+                    <!-- Maze: símbolo da marca nova (o "M" do wordmark atual do
+                         maze.co). O Simple Icons ainda serve a marca antiga, então
+                         este veio do próprio site. O glifo é 26x24 na origem — o
+                         transform o centraliza no viewBox 24x24 dos demais. -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><g transform="translate(-0.684 0.925) scale(0.923077)"><path d="M26.306 11.998h-5.96a1.04 1.04 0 0 1-1.033-1.046V.438a.44.44 0 0 0-.435-.44h-2.845a.44.44 0 0 0-.435.44v10.514a1.04 1.04 0 0 1-1.033 1.046h-1.648a1.04 1.04 0 0 1-1.033-1.046V.438a.44.44 0 0 0-.435-.44H8.605a.44.44 0 0 0-.435.44v10.514a1.04 1.04 0 0 1-1.033 1.046h-5.96a.44.44 0 0 0-.436.44v11.12c0 .243.195.44.435.44h6.559c.24 0 .435-.197.435-.44V13.044a1.04 1.04 0 0 1 1.033-1.046h1.648c.57 0 1.033.468 1.033 1.046v10.514c0 .243.195.44.435.44h2.845c.24 0 .434-.197.434-.44V13.044a1.04 1.04 0 0 1 1.033-1.046h1.649c.57 0 1.033.468 1.033 1.046v10.514c0 .243.194.44.434.44h6.56c.24 0 .434-.197.434-.44v-11.12a.44.44 0 0 0-.435-.44"/></g></svg>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 102.86deg">
+                  <span class="orbit__chip" title="ClickUp">
+                    <!-- ClickUp -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2 18.439l3.69-2.828c1.961 2.56 4.044 3.739 6.363 3.739 2.307 0 4.33-1.166 6.203-3.704L22 18.405C19.298 22.065 15.941 24 12.053 24 8.178 24 4.788 22.078 2 18.439zM12.04 6.15l-6.568 5.66-3.036-3.52L12.055 0l9.543 8.296-3.05 3.509z"/></svg>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 128.57deg">
+                  <span class="orbit__chip" title="Linear">
+                    <!-- Linear -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M2.886 4.18A11.982 11.982 0 0 1 11.99 0C18.624 0 24 5.376 24 12.009c0 3.64-1.62 6.903-4.18 9.105L2.887 4.18ZM1.817 5.626l16.556 16.556c-.524.33-1.075.62-1.65.866L.951 7.277c.247-.575.537-1.126.866-1.65ZM.322 9.163l14.515 14.515c-.71.172-1.443.282-2.195.322L0 11.358a12 12 0 0 1 .322-2.195Zm-.17 4.862 9.823 9.824a12.02 12.02 0 0 1-9.824-9.824Z"/></svg>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 154.29deg">
+                  <span class="orbit__chip" title="Google Analytics">
+                    <!-- Google Analytics -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22.84 2.9982v17.9987c.0086 1.6473-1.3197 2.9897-2.967 2.9984a2.9808 2.9808 0 01-.3677-.0208c-1.528-.226-2.6477-1.5558-2.6105-3.1V3.1204c-.0369-1.5458 1.0856-2.8762 2.6157-3.1 1.6361-.1915 3.1178.9796 3.3093 2.6158.014.1201.0208.241.0202.3619zM4.1326 18.0548c-1.6417 0-2.9726 1.331-2.9726 2.9726C1.16 22.6691 2.4909 24 4.1326 24s2.9726-1.3309 2.9726-2.9726-1.331-2.9726-2.9726-2.9726zm7.8728-9.0098c-.0171 0-.0342 0-.0513.0003-1.6495.0904-2.9293 1.474-2.891 3.1256v7.9846c0 2.167.9535 3.4825 2.3505 3.763 1.6118.3266 3.1832-.7152 3.5098-2.327.04-.1974.06-.3983.0593-.5998v-8.9585c.003-1.6474-1.33-2.9852-2.9773-2.9882z"/></svg>
+                  </span>
+                </li>
+                <!-- Produtos Adobe: a Adobe não licencia os ícones dos produtos para
+                     terceiros, e por isso o Simple Icons removeu todos eles na v14
+                     (adobephotoshop/adobeillustrator/adobexd hoje dão 404). O que a
+                     política dela permite é citar o produto pelo nome — então colocamos o monograma de cada um em texto, na fonte do próprio site,
+                     e não a reprodução do losango colorido da marca. -->
+                <li class="orbit__icon" style="--a: 180deg">
+                  <span class="orbit__chip" title="Adobe Photoshop">
+                    <span class="orbit__mono" aria-hidden="true">Ps</span>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 205.71deg">
+                  <span class="orbit__chip" title="Adobe Illustrator">
+                    <span class="orbit__mono" aria-hidden="true">Ai</span>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 231.43deg">
+                  <span class="orbit__chip" title="Adobe XD">
+                    <span class="orbit__mono" aria-hidden="true">Xd</span>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 257.14deg">
+                  <span class="orbit__chip" title="Metabase">
+                    <!-- Metabase -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.385 6.136c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.654 1.438 1.461zm-1.438 2.63c-.794 0-1.438.654-1.438 1.461s.644 1.461 1.438 1.461 1.438-.654 1.438-1.461-.644-1.461-1.438-1.461zm5.465-2.63c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.654 1.438 1.461zm-.35 0c0-.613-.488-1.111-1.088-1.111s-1.088.499-1.088 1.111.488 1.111 1.088 1.111 1.088-.498 1.088-1.111zm-1.088 5.592c.794 0 1.438-.654 1.438-1.461s-.644-1.461-1.438-1.461-1.438.654-1.438 1.461.643 1.461 1.438 1.461zm5.464-5.592c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.654 1.438 1.461zm-.35 0c0-.613-.488-1.111-1.088-1.111s-1.088.498-1.088 1.111S11.4 7.247 12 7.247s1.088-.498 1.088-1.111zm.35-4.675c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461S11.206 0 12 0s1.438.654 1.438 1.461zm-.35 0C13.088.848 12.6.35 12 .35s-1.088.498-1.088 1.111S11.4 2.572 12 2.572s1.088-.498 1.088-1.111zm.35 8.806c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.654 1.438 1.461zm-.35 0c0-.613-.488-1.111-1.088-1.111s-1.088.498-1.088 1.111.488 1.111 1.088 1.111 1.088-.499 1.088-1.111zm4.376-4.131c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.654 1.438 1.461zm-.35 0c0-.613-.488-1.111-1.088-1.111s-1.088.498-1.088 1.111.488 1.111 1.088 1.111 1.088-.498 1.088-1.111zm2.939 1.461c.794 0 1.438-.654 1.438-1.461s-.644-1.461-1.438-1.461-1.438.654-1.438 1.461.644 1.461 1.438 1.461zm-4.027 1.209c-.794 0-1.438.654-1.438 1.461s.644 1.461 1.438 1.461 1.438-.654 1.438-1.461-.643-1.461-1.438-1.461zm4.027 0c-.794 0-1.438.654-1.438 1.461s.644 1.461 1.438 1.461 1.438-.654 1.438-1.461-.644-1.461-1.438-1.461zM3.947 12.857a1.45 1.45 0 0 0-1.438 1.461c0 .807.644 1.461 1.438 1.461s1.438-.654 1.438-1.461a1.45 1.45 0 0 0-1.438-1.461zm5.465 1.5c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.655 1.438 1.461zm-.35 0c0-.613-.488-1.111-1.088-1.111s-1.088.498-1.088 1.111.488 1.111 1.088 1.111 1.088-.498 1.088-1.111zM12 12.896c-.794 0-1.438.654-1.438 1.461s.644 1.461 1.438 1.461 1.438-.654 1.438-1.461-.644-1.461-1.438-1.461zm5.464 1.461c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.655 1.438 1.461zm-.35 0c0-.613-.488-1.111-1.088-1.111s-1.088.498-1.088 1.111.488 1.111 1.088 1.111 1.088-.498 1.088-1.111zm2.939-1.461c-.794 0-1.438.654-1.438 1.461s.644 1.461 1.438 1.461 1.438-.654 1.438-1.461-.644-1.461-1.438-1.461zM3.947 16.948c-.794 0-1.438.654-1.438 1.461s.644 1.461 1.438 1.461 1.438-.654 1.438-1.461-.644-1.461-1.438-1.461zm5.465 1.5c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.654 1.438 1.461zm-.35 0c0-.613-.488-1.111-1.088-1.111s-1.088.498-1.088 1.111.488 1.111 1.088 1.111 1.088-.498 1.088-1.111zm4.376 0c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.654 1.438 1.461zm-.35 0c0-.613-.488-1.111-1.088-1.111s-1.088.498-1.088 1.111.488 1.111 1.088 1.111 1.088-.498 1.088-1.111zm.35 4.091c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.654 1.438 1.461zm-.35 0c0-.613-.488-1.111-1.088-1.111s-1.088.498-1.088 1.111S11.4 23.65 12 23.65s1.088-.498 1.088-1.111zm4.376-4.091c0 .807-.644 1.461-1.438 1.461s-1.438-.654-1.438-1.461.644-1.461 1.438-1.461 1.438.654 1.438 1.461zm-.35 0c0-.613-.488-1.111-1.088-1.111s-1.088.498-1.088 1.111.488 1.111 1.088 1.111 1.088-.498 1.088-1.111zm2.939-1.461c-.794 0-1.438.654-1.438 1.461s.644 1.461 1.438 1.461 1.438-.654 1.438-1.461-.644-1.461-1.438-1.461z"/></svg>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 282.86deg">
+                  <span class="orbit__chip" title="HTML5">
+                    <!-- HTML5 -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 308.57deg">
+                  <span class="orbit__chip" title="CSS3">
+                    <!-- CSS3 -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M0 0v20.16A3.84 3.84 0 0 0 3.84 24h16.32A3.84 3.84 0 0 0 24 20.16V3.84A3.84 3.84 0 0 0 20.16 0Zm14.256 13.08c1.56 0 2.28 1.08 2.304 2.64h-1.608c.024-.288-.048-.6-.144-.84-.096-.192-.288-.264-.552-.264-.456 0-.696.264-.696.84-.024.576.288.888.768 1.08.72.288 1.608.744 1.92 1.296q.432.648.432 1.656c0 1.608-.912 2.592-2.496 2.592-1.656 0-2.4-1.032-2.424-2.688h1.68c0 .792.264 1.176.792 1.176.264 0 .456-.072.552-.24.192-.312.24-1.176-.048-1.512-.312-.408-.912-.6-1.32-.816q-.828-.396-1.224-.936c-.24-.36-.36-.888-.36-1.536 0-1.44.936-2.472 2.424-2.448m5.4 0c1.584 0 2.304 1.08 2.328 2.64h-1.608c0-.288-.048-.6-.168-.84-.096-.192-.264-.264-.528-.264-.48 0-.72.264-.72.84s.288.888.792 1.08c.696.288 1.608.744 1.92 1.296.264.432.408.984.408 1.656.024 1.608-.888 2.592-2.472 2.592-1.68 0-2.424-1.056-2.448-2.688h1.68c0 .744.264 1.176.792 1.176.264 0 .456-.072.552-.24.216-.312.264-1.176-.048-1.512-.288-.408-.888-.6-1.32-.816-.552-.264-.96-.576-1.2-.936s-.36-.888-.36-1.536c-.024-1.44.912-2.472 2.4-2.448m-11.031.018c.711-.006 1.419.198 1.839.63.432.432.672 1.128.648 1.992H9.336c.024-.456-.096-.792-.432-.96-.312-.144-.768-.048-.888.24-.12.264-.192.576-.168.864v3.504c0 .744.264 1.128.768 1.128a.65.65 0 0 0 .552-.264c.168-.24.192-.552.168-.84h1.776c.096 1.632-.984 2.712-2.568 2.688-1.536 0-2.496-.864-2.472-2.472v-4.032c0-.816.24-1.44.696-1.848.432-.408 1.146-.624 1.857-.63"/></svg>
+                  </span>
+                </li>
+                <li class="orbit__icon" style="--a: 334.29deg">
+                  <span class="orbit__chip" title="PostgreSQL">
+                    <!-- PostgreSQL -->
+                    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5594 14.7228a.5269.5269 0 0 0-.0563-.1191c-.139-.2632-.4768-.3418-1.0074-.2321-1.6533.3411-2.2935.1312-2.5256-.0191 1.342-2.0482 2.445-4.522 3.0411-6.8297.2714-1.0507.7982-3.5237.1222-4.7316a1.5641 1.5641 0 0 0-.1509-.235C21.6931.9086 19.8007.0248 17.5099.0005c-1.4947-.0158-2.7705.3461-3.1161.4794a9.449 9.449 0 0 0-.5159-.0816 8.044 8.044 0 0 0-1.3114-.1278c-1.1822-.0184-2.2038.2642-3.0498.8406-.8573-.3211-4.7888-1.645-7.2219.0788C.9359 2.1526.3086 3.8733.4302 6.3043c.0409.818.5069 3.334 1.2423 5.7436.4598 1.5065.9387 2.7019 1.4334 3.582.553.9942 1.1259 1.5933 1.7143 1.7895.4474.1491 1.1327.1441 1.8581-.7279.8012-.9635 1.5903-1.8258 1.9446-2.2069.4351.2355.9064.3625 1.39.3772a.0569.0569 0 0 0 .0004.0041 11.0312 11.0312 0 0 0-.2472.3054c-.3389.4302-.4094.5197-1.5002.7443-.3102.064-1.1344.2339-1.1464.8115-.0025.1224.0329.2309.0919.3268.2269.4231.9216.6097 1.015.6331 1.3345.3335 2.5044.092 3.3714-.6787-.017 2.231.0775 4.4174.3454 5.0874.2212.5529.7618 1.9045 2.4692 1.9043.2505 0 .5263-.0291.8296-.0941 1.7819-.3821 2.5557-1.1696 2.855-2.9059.1503-.8707.4016-2.8753.5388-4.1012.0169-.0703.0357-.1207.057-.1362.0007-.0005.0697-.0471.4272.0307a.3673.3673 0 0 0 .0443.0068l.2539.0223.0149.001c.8468.0384 1.9114-.1426 2.5312-.4308.6438-.2988 1.8057-1.0323 1.5951-1.6698zM2.371 11.8765c-.7435-2.4358-1.1779-4.8851-1.2123-5.5719-.1086-2.1714.4171-3.6829 1.5623-4.4927 1.8367-1.2986 4.8398-.5408 6.108-.13-.0032.0032-.0066.0061-.0098.0094-2.0238 2.044-1.9758 5.536-1.9708 5.7495-.0002.0823.0066.1989.0162.3593.0348.5873.0996 1.6804-.0735 2.9184-.1609 1.1504.1937 2.2764.9728 3.0892.0806.0841.1648.1631.2518.2374-.3468.3714-1.1004 1.1926-1.9025 2.1576-.5677.6825-.9597.5517-1.0886.5087-.3919-.1307-.813-.5871-1.2381-1.3223-.4796-.839-.9635-2.0317-1.4155-3.5126zm6.0072 5.0871c-.1711-.0428-.3271-.1132-.4322-.1772.0889-.0394.2374-.0902.4833-.1409 1.2833-.2641 1.4815-.4506 1.9143-1.0002.0992-.126.2116-.2687.3673-.4426a.3549.3549 0 0 0 .0737-.1298c.1708-.1513.2724-.1099.4369-.0417.156.0646.3078.26.3695.4752.0291.1016.0619.2945-.0452.4444-.9043 1.2658-2.2216 1.2494-3.1676 1.0128zm2.094-3.988-.0525.141c-.133.3566-.2567.6881-.3334 1.003-.6674-.0021-1.3168-.2872-1.8105-.8024-.6279-.6551-.9131-1.5664-.7825-2.5004.1828-1.3079.1153-2.4468.079-3.0586-.005-.0857-.0095-.1607-.0122-.2199.2957-.2621 1.6659-.9962 2.6429-.7724.4459.1022.7176.4057.8305.928.5846 2.7038.0774 3.8307-.3302 4.7363-.084.1866-.1633.3629-.2311.5454zm7.3637 4.5725c-.0169.1768-.0358.376-.0618.5959l-.146.4383a.3547.3547 0 0 0-.0182.1077c-.0059.4747-.054.6489-.115.8693-.0634.2292-.1353.4891-.1794 1.0575-.11 1.4143-.8782 2.2267-2.4172 2.5565-1.5155.3251-1.7843-.4968-2.0212-1.2217a6.5824 6.5824 0 0 0-.0769-.2266c-.2154-.5858-.1911-1.4119-.1574-2.5551.0165-.5612-.0249-1.9013-.3302-2.6462.0044-.2932.0106-.5909.019-.8918a.3529.3529 0 0 0-.0153-.1126 1.4927 1.4927 0 0 0-.0439-.208c-.1226-.4283-.4213-.7866-.7797-.9351-.1424-.059-.4038-.1672-.7178-.0869.067-.276.1831-.5875.309-.9249l.0529-.142c.0595-.16.134-.3257.213-.5012.4265-.9476 1.0106-2.2453.3766-5.1772-.2374-1.0981-1.0304-1.6343-2.2324-1.5098-.7207.0746-1.3799.3654-1.7088.5321a5.6716 5.6716 0 0 0-.1958.1041c.0918-1.1064.4386-3.1741 1.7357-4.4823a4.0306 4.0306 0 0 1 .3033-.276.3532.3532 0 0 0 .1447-.0644c.7524-.5706 1.6945-.8506 2.802-.8325.4091.0067.8017.0339 1.1742.081 1.939.3544 3.2439 1.4468 4.0359 2.3827.8143.9623 1.2552 1.9315 1.4312 2.4543-1.3232-.1346-2.2234.1268-2.6797.779-.9926 1.4189.543 4.1729 1.2811 5.4964.1353.2426.2522.4522.2889.5413.2403.5825.5515.9713.7787 1.2552.0696.087.1372.1714.1885.245-.4008.1155-1.1208.3825-1.0552 1.717-.0123.1563-.0423.4469-.0834.8148-.0461.2077-.0702.4603-.0994.7662zm.8905-1.6211c-.0405-.8316.2691-.9185.5967-1.0105a2.8566 2.8566 0 0 0 .135-.0406 1.202 1.202 0 0 0 .1342.103c.5703.3765 1.5823.4213 3.0068.1344-.2016.1769-.5189.3994-.9533.6011-.4098.1903-1.0957.333-1.7473.3636-.7197.0336-1.0859-.0807-1.1721-.151zm.5695-9.2712c-.0059.3508-.0542.6692-.1054 1.0017-.055.3576-.112.7274-.1264 1.1762-.0142.4368.0404.8909.0932 1.3301.1066.887.216 1.8003-.2075 2.7014a3.5272 3.5272 0 0 1-.1876-.3856c-.0527-.1276-.1669-.3326-.3251-.6162-.6156-1.1041-2.0574-3.6896-1.3193-4.7446.3795-.5427 1.3408-.5661 2.1781-.463zm.2284 7.0137a12.3762 12.3762 0 0 0-.0853-.1074l-.0355-.0444c.7262-1.1995.5842-2.3862.4578-3.4385-.0519-.4318-.1009-.8396-.0885-1.2226.0129-.4061.0666-.7543.1185-1.0911.0639-.415.1288-.8443.1109-1.3505.0134-.0531.0188-.1158.0118-.1902-.0457-.4855-.5999-1.938-1.7294-3.253-.6076-.7073-1.4896-1.4972-2.6889-2.0395.5251-.1066 1.2328-.2035 2.0244-.1859 2.0515.0456 3.6746.8135 4.8242 2.2824a.908.908 0 0 1 .0667.1002c.7231 1.3556-.2762 6.2751-2.9867 10.5405zm-8.8166-6.1162c-.025.1794-.3089.4225-.6211.4225a.5821.5821 0 0 1-.0809-.0056c-.1873-.026-.3765-.144-.5059-.3156-.0458-.0605-.1203-.178-.1055-.2844.0055-.0401.0261-.0985.0925-.1488.1182-.0894.3518-.1226.6096-.0867.3163.0441.6426.1938.6113.4186zm7.9305-.4114c.0111.0792-.049.201-.1531.3102-.0683.0717-.212.1961-.4079.2232a.5456.5456 0 0 1-.075.0052c-.2935 0-.5414-.2344-.5607-.3717-.024-.1765.2641-.3106.5611-.352.297-.0414.6111.0088.6356.1851z"/></svg>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="about__text reveal">
+            <p data-i18n="about.p1">
+              Sou designer de produto, apaixonada por transformar
+              problemas complexos em <span class="accent">soluções
+              simples e agradáveis</span> de usar. Acredito que bom design nasce da
+              combinação entre pesquisa e
+              iteração constante.
+            </p>
+            <p data-i18n="about.p2">
+              Trabalho com descoberta de <span class="accent">produto, prototipação, design systems e
+              testes de usabilidade</span> — sempre próxima do time de
+              desenvolvimento.
+            </p>
+            <div class="about__actions">
+              <a
+                href="https://drive.google.com/uc?export=download&id=13fOyRemcc30J6I9xJce9sXgZ-_Nk7qns"
+                class="button button--primary"
+                download
+                data-i18n="about.downloadCv"
+                data-i18n-href="about.downloadCvHref"
+                >Baixar currículo</a
+              >
+              <div class="about__socials" role="group" aria-label="Redes sociais" data-i18n-aria-label="about.socialsGroupLabel">
+                <a
+                  href="https://www.linkedin.com/in/biafranzoi/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-btn"
+                  aria-label="LinkedIn (abre em nova guia)"
+                  data-i18n-aria-label="social.linkedin"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+                <a
+                  href="https://www.behance.net/biafranzoi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-btn"
+                  aria-label="Behance (abre em nova guia)"
+                  data-i18n-aria-label="social.behance"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+                </a>
+                <a
+                  href="https://github.com/biafranzoi"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="social-btn"
+                  aria-label="GitHub (abre em nova guia)"
+                  data-i18n-aria-label="social.github"
+                >
+                  <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="lab"
+        class="section container"
+        aria-labelledby="lab-heading"
+      >
+        <h2 id="lab-heading" class="section__title reveal">Lab</h2>
+        <div class="playground__grid">
+          <a
+            href="https://www.figma.com/proto/NjH2P6eMiS9oiyRbJDmjb8/Resutoran-Ye%CC%84ga%CC%84--2024-?node-id=88-24&amp;viewport=339%2C62%2C0.11&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=88%3A24&amp;page-id=1%3A2&amp;hide-ui=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Yēgā</span>
+              <span class="playground-card__desc" data-i18n="playground.yega.desc">Protótipo de site para um restaurante japonês fictício.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.figma.com/community/file/1139359843803728746/design-quotes-posters?q_id=9b7f3af1-e2b6-43c2-8946-69eef50088cc"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Pôsteres de Citações de Design</span>
+              <span class="playground-card__desc" data-i18n="playground.designQuotes.desc">Pôsteres com citações sobre Design.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.figma.com/community/file/1147700693688534881/newspaper-template?q_id=0bde82b6-8fc6-465d-a1c1-2b8e8838d630"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Template de Jornal Digital</span>
+              <span class="playground-card__desc" data-i18n="playground.newspaper.desc">Template de jornal para Figma.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <div class="playground-card playground-card--linked reveal">
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <a
+                class="playground-card__title playground-card__link"
+                href="https://www.figma.com/community/file/1174471510579245595/2022-cup-sticker-template?q_id=9b7f3af1-e2b6-43c2-8946-69eef50088cc"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Template Figurinha da Copa do Mundo 2022<span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span></a
+              >
+              <span class="playground-card__desc" data-i18n="playground.worldCup.desc"
+                >Criado para um projeto de gerador de figurinha de
+                <a href="https://github.com/julietedias/2022-cup-sticker" target="_blank" rel="noopener noreferrer"
+                  >Juliete Dias<span class="sr-only"> (abre em nova guia)</span></a
+                >.</span
+              >
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+          </div>
+          <div class="playground-card playground-card--linked reveal">
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <a
+                class="playground-card__title playground-card__link"
+                href="https://www.behance.net/gallery/208899199/General-App"
+                target="_blank"
+                rel="noopener noreferrer"
+                >UI para App de jogo General<span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span></a
+              >
+              <span class="playground-card__desc" data-i18n="playground.generalApp.desc"
+                >Interface para um app de jogo de
+                <a href="https://github.com/gabrielkgg/marcador-general" target="_blank" rel="noopener noreferrer"
+                  >Gabriel Alves<span class="sr-only"> (abre em nova guia)</span></a
+                >.</span
+              >
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+          </div>
+          <a
+            href="https://www.behance.net/gallery/156817307/Coisa-Fina-Brecho"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Logotipo Coisa Fina Brechó</span>
+              <span class="playground-card__desc" data-i18n="playground.coisaFina.desc">Identidade visual para brechó da cidade de Rio do Sul/SC.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.behance.net/gallery/156895689/Saiti"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Logotipo Saiti</span>
+              <span class="playground-card__desc" data-i18n="playground.saiti.desc">Identidade visual da Saiti, empresa de Rio do Sul/SC.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.behance.net/gallery/63317047/E-commerce-Banners-Design-for-Carro-de-Mola-2014-2018"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Banners para E-commerce de Decoração</span>
+              <span class="playground-card__desc" data-i18n="playground.decorBanners.desc">Banners para a Carro de Mola, de Rio do Sul/SC.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.behance.net/gallery/63319783/E-commerce-E-mail-Design-for-Carro-de-Mola-2014-2018"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">E-mail Marketing para E-commerce de Decoração</span>
+              <span class="playground-card__desc" data-i18n="playground.decorEmail.desc">E-mails para a Carro de Mola, de Rio do Sul/SC.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+        </div>
+      </section>
+
+      <section
+        id="depoimentos"
+        class="section container"
+        aria-labelledby="depoimentos-heading"
+      >
+        <h2 id="depoimentos-heading" class="section__title reveal" data-i18n="testimonials.title">
+          O que dizem <span class="accent">sobre mim</span>
+        </h2>
+        <div class="carousel reveal">
+          <ul class="carousel__viewport">
+            <li class="carousel__slide">
+              <figure class="testimonial">
+                <blockquote data-i18n="testimonial1.quote">
+                  A pessoa mais profissional e organizada que já conheci. Seu
+                  trabalho é impecável, sempre muito coeso e pensando no
+                  usuário final.
+                </blockquote>
+                <figcaption>
+                  <a
+                    href="https://www.linkedin.com/in/julietedias/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="testimonial__name"
+                    >Juliete Dias<span class="sr-only" data-i18n="testimonial.linkedinSuffix"
+                      > — perfil no LinkedIn (abre em nova guia)</span
+                    ></a
+                  >
+                  <span class="testimonial__role" data-i18n="testimonial1.role">Desenvolvedora Full-Stack</span>
+                </figcaption>
+              </figure>
+            </li>
+            <li class="carousel__slide">
+              <figure class="testimonial">
+                <blockquote data-i18n="testimonial2.quote">
+                  Uma profissional excelente, trabalhar com ela me
+                  proporcionou muito aprendizado e evolução.
+                </blockquote>
+                <figcaption>
+                  <a
+                    href="https://br.linkedin.com/in/maiaraparma"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="testimonial__name"
+                    >Maiara Parma<span class="sr-only" data-i18n="testimonial.linkedinSuffix"
+                      > — perfil no LinkedIn (abre em nova guia)</span
+                    ></a
+                  >
+                  <span class="testimonial__role" data-i18n="testimonial2.role">Coordenadora de CS</span>
+                </figcaption>
+              </figure>
+            </li>
+          </ul>
+        </div>
+        <div class="carousel__nav reveal">
+          <button
+            type="button"
+            class="carousel__btn carousel__btn--prev"
+            aria-label="Depoimento anterior"
+            data-i18n-aria-label="carousel.prev"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m15 6-6 6 6 6" />
+            </svg>
+          </button>
+          <div
+            class="carousel__dots"
+            role="group"
+            aria-label="Navegar entre depoimentos"
+            data-i18n-aria-label="carousel.dotsGroupLabel"
+          ></div>
+          <button
+            type="button"
+            class="carousel__btn carousel__btn--next"
+            aria-label="Próximo depoimento"
+            data-i18n-aria-label="carousel.next"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              aria-hidden="true"
+            >
+              <path d="m9 6 6 6-6 6" />
+            </svg>
+          </button>
+        </div>
+      </section>
+
+      <section
+        id="contato"
+        class="section section--center container"
+        aria-labelledby="contato-heading"
+      >
+        <h2 id="contato-heading" class="sr-only" data-i18n="contact.heading">Contato</h2>
+        <a
+          href="mailto:bia.franzoi@gmail.com"
+          class="contact__email reveal accent"
+          >bia.franzoi@gmail.com</a
+        >
+        <div class="contact__links reveal">
+          <a
+            href="https://www.linkedin.com/in/biafranzoi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button--ghost button--icon"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            LinkedIn<span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.behance.net/biafranzoi"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button--ghost button--icon"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            Behance<span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://github.com/biafranzoi"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="button button--ghost button--icon"
+          >
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+            GitHub<span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <dialog
+      class="project-modal"
+      id="project-modal"
+      aria-labelledby="project-modal-title"
+    >
+      <button type="button" class="project-modal__close" aria-label="Fechar" data-i18n-aria-label="modal.close">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+          aria-hidden="true"
+        >
+          <line x1="5" y1="5" x2="19" y2="19" />
+          <line x1="19" y1="5" x2="5" y2="19" />
+        </svg>
+      </button>
+      <div class="project-modal__content container">
+        <p class="project-modal__kicker accent" data-i18n="modal.kicker">Projeto pessoal</p>
+        <h2 id="project-modal-title" class="project-modal__title" data-i18n="modal.titlePlaceholder">Projeto</h2>
+        <div class="project-modal__body">
+          <p class="project-modal__text" data-i18n="modal.textPlaceholder">
+            Projeto em andamento...
+          </p>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- Conteúdo completo dos estudos de caso: <template> fica fora da árvore
+         renderizada/de acessibilidade até ser clonado pelo JS dentro de
+         .project-modal__body (ver openProject em main.js). Cada projeto que
+         ganhar um case completo entra aqui como um novo <template id="case-*">,
+         associado ao card via data-case="*" — os que não têm case aqui caem
+         no texto curto padrão (.project-card__desc) como placeholder. -->
+    <template id="case-compraki">
+      <p class="project-modal__text" data-i18n="project.compraki.descLong"
+        >Gestor de listas inteligente que utiliza crowdsourcing via NFC-e
+        para comparar o custo total do carrinho entre mercados, otimizando a
+        tomada de decisão através de inteligência de dados, geolocalização e
+        economia real.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.compraki.heading1">Contexto e desafio</h3>
+      <p class="project-modal__text" data-i18n="case.compraki.body1"
+        >Em Rio do Sul (SC), a inflação alimentar chega a consumir até 55% do
+        salário mínimo, e a disparidade de preços em itens básicos de
+        supermercado pode passar de 33% entre um mercado e outro. A maioria
+        dos consumidores percebe essa variação, mas poucos pesquisam antes de
+        sair às compras — o desafio era criar uma plataforma colaborativa de
+        comparação de preços capaz de reduzir esse impacto no orçamento
+        familiar.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.compraki.heading2">A hipótese inicial</h3>
+      <p class="project-modal__text" data-i18n="case.compraki.body2"
+        >Minha premissa era que os usuários enfrentavam dificuldade de compra
+        por falta de informação sobre preços e promoções, além de
+        deslocamento desnecessário entre mercados. Imaginei uma lista de
+        compras integrada aos sistemas dos próprios mercados da região,
+        mostrando o preço de cada item — e da lista completa — antes da ida
+        às compras.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.compraki.heading3">Pesquisa e descobertas</h3>
+      <p class="project-modal__text" data-i18n="case.compraki.body3"
+        >Com desk research e entrevistas qualitativas com 12 potenciais
+        usuários da região, cheguei a alguns achados:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.compraki.findings">
+        <li>A maioria dos entrevistados já usa algum tipo de lista de compras — no papel, no WhatsApp ou em um aplicativo.</li>
+        <li>91% percebem a variação de preços entre mercados, mas 75% não fazem nenhuma pesquisa prévia antes de comprar.</li>
+        <li>58% dividem a compra entre mais de um mercado para aproveitar promoções.</li>
+        <li>O maior atrito não é a falta de dados, e sim o tempo para processá-los: 53,8% apontam “perder tempo” como a maior dor.</li>
+        <li>O consumidor não quer só o preço de um produto — quer saber onde a lista inteira (ex.: 20 itens) sai mais barata.</li>
+        <li>Pesquisas de mercado confirmaram que não existem APIs abertas das grandes redes, o que inviabilizava a integração direta pensada na hipótese inicial.</li>
+      </ul>
+      <p class="project-modal__text" data-i18n="case.compraki.body4"
+        >Uma pesquisa de preços de cesta básica em três mercados da região
+        reforçou a disparidade:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.compraki.prices">
+        <li>Mercado 1 — R$ 163,36 (referência)</li>
+        <li>Mercado 2 — R$ 218,55 (+33,78%)</li>
+        <li>Mercado 3 — R$ 180,02 (+10,19%)</li>
+      </ul>
+
+      <h3 class="project-modal__heading" data-i18n="case.compraki.heading4">A pivotagem necessária</h3>
+      <p class="project-modal__text" data-i18n="case.compraki.body5"
+        >Com a integração direta às redes inviável, pivotei o escopo do
+        projeto:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.compraki.pivot">
+        <li><strong>De:</strong> gestão de lista de compras com os preços atuais dos supermercados.</li>
+        <li><strong>Para:</strong> gestão de lista de compras com preços aproximados via crowdsourcing.</li>
+      </ul>
+      <p class="project-modal__text" data-i18n="case.compraki.body6"
+        >A obtenção de preços em tempo real foi substituída pela leitura do
+        QR Code da nota fiscal eletrônica (NFC-e): ao escanear a nota, o
+        próprio usuário alimenta e mantém a base de preços atualizada, sem
+        esforço manual extra — a mesma técnica usada por apps como o
+        Méliuz.</p
+      >
+
+      <figure class="project-modal__image">
+        <img
+          src="src/img/biafranzoi-compraki-2.png"
+          alt="Telas do protótipo do Compraki: busca de produtos, montagem da lista, comparação de preços por melhor preço total e melhor distância entre mercados, e telas de assinatura premium."
+          data-i18n-alt="case.compraki.imageAlt"
+        />
+      </figure>
+
+      <h3 class="project-modal__heading" data-i18n="case.compraki.heading5">Escopo atualizado (MVP)</h3>
+      <p class="project-modal__text" data-i18n="case.compraki.body7"
+        >A solução passou a focar em duas frentes:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.compraki.scope">
+        <li><strong>Comparador de cesta:</strong> cálculo automático de onde a lista completa sai mais barata, considerando também o deslocamento até o mercado (geolocalização).</li>
+        <li><strong>Atualização por crowdsourcing:</strong> leitura do QR Code da nota fiscal para manter os preços do banco de dados sempre atualizados.</li>
+      </ul>
+      <p class="project-modal__text" data-i18n="case.compraki.body8"
+        >Uma futura frente de previsibilidade de conveniência — indicadores
+        de fluxo da loja para evitar horários de pico — ficou mapeada para
+        uma próxima versão.</p
+      >
+
+      <p class="project-modal__note" data-i18n="case.compraki.note">Projeto em andamento.</p>
+    </template>
+
+    <template id="case-destinoideal">
+      <p class="project-modal__text" data-i18n="case.destinoideal.lead"
+        >Uma plataforma de recomendação que utiliza um motor de filtros
+        contextuais para converter preferências subjetivas em destinos
+        viáveis.</p
+      >
+
+      <div class="project-modal__embed project-modal__embed--wide">
+        <iframe
+          src="https://embed.figma.com/proto/lLPIEEky88wErZZ9PHNVKG/DestinoIdeal--2024-?page-id=1%3A2&amp;node-id=1-148&amp;scaling=scale-down&amp;content-scaling=responsive&amp;starting-point-node-id=1%3A148&amp;hide-ui=1&amp;embed-host=share"
+          aria-label="Protótipo interativo do DestinoIdeal no Figma"
+          data-i18n-aria-label="case.destinoideal.protoLabel"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="project-modal__actions">
+        <a
+          class="button button--ghost button--icon"
+          href="https://www.figma.com/proto/lLPIEEky88wErZZ9PHNVKG/DestinoIdeal--2024-?node-id=1-148&amp;viewport=217%2C-36%2C0.18&amp;scaling=scale-down&amp;content-scaling=responsive&amp;starting-point-node-id=1%3A148&amp;show-proto-sidebar=1&amp;page-id=1%3A2&amp;hide-ui=1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span data-i18n="case.destinoideal.ctaProto">Ver protótipo</span>
+          <span aria-hidden="true">↗</span>
+          <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+        </a>
+      </div>
+
+      <h3 class="project-modal__heading" data-i18n="case.destinoideal.heading1">O problema</h3>
+      <p class="project-modal__text" data-i18n="case.destinoideal.body1"
+        >O mercado de turismo é focado em transação, não em descoberta — a
+        maioria das ferramentas de reserva assume que o viajante já sabe
+        onde quer ir. Isso cria um paradoxo da escolha: excesso de opções e
+        informação, mas pouca relevância pessoal quanto a orçamento,
+        preferências de quem viaja junto e logística.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.destinoideal.heading2">A solução</h3>
+      <p class="project-modal__text" data-i18n="case.destinoideal.body2"
+        >O DestinoIdeal é uma plataforma de curadoria que transforma
+        preferências subjetivas em destinos viáveis através de um motor de
+        filtros contextuais, endereçando a paralisia de escolha logo no
+        topo do funil. Um modelo freemium conecta os usuários a
+        estabelecimentos locais parceiros.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.destinoideal.heading3">Hipótese de negócio (monetização)</h3>
+      <p class="project-modal__text" data-i18n="case.destinoideal.body3"
+        >A estrutura de receita segue um modelo freemium em três frentes:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.destinoideal.freemium">
+        <li><strong>Core loop:</strong> descoberta gratuita de destinos, para gerar volume de usuários e dados de comportamento.</li>
+        <li><strong>Premium (R$ 49,90):</strong> conveniência e menos risco na viagem, com estabelecimentos verificados e ferramentas de planejamento colaborativo.</li>
+        <li><strong>B2B:</strong> marketplace para estabelecimentos locais aumentarem a visibilidade entre viajantes de alta intenção de compra.</li>
+      </ul>
+      <p class="project-modal__text" data-i18n="case.destinoideal.body4"
+        >Assinantes premium ganham acesso a preferências de viagem
+        avançadas, destinos verificados, avaliações de outros assinantes,
+        viagens em grupo e álbuns de viagem compartilháveis, entre outros
+        benefícios — enquanto cidades e estabelecimentos pagam para ter
+        destaque nos resultados de busca.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.destinoideal.heading4">Design de interface e estratégia visual</h3>
+      <p class="project-modal__text" data-i18n="case.destinoideal.body5"
+        >O objetivo da interface era reduzir a carga cognitiva durante um
+        processo que costuma ser estressante:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.destinoideal.design">
+        <li><strong>Arquitetura de componentes:</strong> Atomic Design garante escalabilidade, e variáveis do Figma permitem iteração rápida com consistência sistêmica.</li>
+        <li><strong>Affordance e semântica:</strong> cantos arredondados e cores vibrantes criam conexão emocional e reduzem a complexidade técnica percebida; a hierarquia visual prioriza o CTA de descoberta através de um onboarding simplificado.</li>
+      </ul>
+
+      <figure class="project-modal__image">
+        <img
+          src="src/img/biafranzoi-destinoideal-2.gif"
+          alt="Demonstração animada do fluxo de busca e recomendação de destinos no protótipo do DestinoIdeal."
+          data-i18n-alt="case.destinoideal.imageAlt"
+        />
+      </figure>
+
+      <figure class="project-modal__image">
+        <img
+          src="src/img/biafranzoi-destinoideal-4.png"
+          alt="Página inicial do DestinoIdeal em desktop e mobile: buscador de destinos, seção de curadoria de lugares, oferta premium e depoimentos de viajantes."
+          data-i18n-alt="case.destinoideal.imageAlt4"
+        />
+      </figure>
+
+      <figure class="project-modal__image">
+        <img
+          src="src/img/biafranzoi-destinoideal-3.png"
+          alt="Style guide do DestinoIdeal: variações do logo, paleta de cores, tipografia, componentes de UI (botões, barra de navegação, cards) e variações de depoimento."
+          data-i18n-alt="case.destinoideal.imageAlt3"
+        />
+      </figure>
+
+      <h3 class="project-modal__heading" data-i18n="case.destinoideal.heading5">Retrospectiva e evolução</h3>
+      <p class="project-modal__text" data-i18n="case.destinoideal.body6"
+        >Dado o período de concepção de duas semanas, o foco foi validar as
+        propostas de valor visual e funcional. Os próximos passos críticos
+        incluem:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.destinoideal.nextSteps">
+        <li><strong>Validação de Product-Market Fit:</strong> testes de guerrilha para validar a relevância do algoritmo de recomendação.</li>
+        <li><strong>Uso de IA:</strong> testar agentes de IA na busca e nas recomendações, com potencial de pivotar o escopo da solução.</li>
+        <li><strong>Métricas de engajamento:</strong> definir KPIs como taxa de conversão do quiz e retenção de contas gratuitas.</li>
+        <li><strong>Acessibilidade:</strong> auditar contraste de cores para conformidade com WCAG e padrões básicos de acessibilidade.</li>
+      </ul>
+
+      <p class="project-modal__note" data-i18n="case.destinoideal.note">Protótipo em fase de validação.</p>
+    </template>
+
+    <template id="case-crediario">
+      <p class="project-modal__text" data-i18n="case.crediario.lead"
+        >Oito anos evoluindo um SaaS de crediário próprio para varejistas — do
+        primeiro redesenho de website à criação do Design System, de novos
+        módulos a um produto derivado, atuando de ponta a ponta entre Product
+        Design, UX/UI, Web, design gráfico e marketing.</p
+      >
+
+      <ol class="case-timeline">
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2026</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m0.title">Liderança da Squad de UX</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m0.items">
+              <li>Definição e acompanhamento trimestral de OKRs e metas da squad;</li>
+              <li>Definição de roadmap de projetos e iniciativas de melhoria do produto;</li>
+              <li>Colaboração com pares líderes de outras squads de Produto e lideranças de outros setores da empresa;</li>
+              <li>Participação no planejamento anual da empresa.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2024 – 2025</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m1.title">Contribuição no produto Crediário Digital</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m1.items">
+              <li>Organização da estratégia de lançamento do WebApp;</li>
+              <li>Prototipação de funcionalidades necessárias;</li>
+              <li>Prototipação de segunda versão redesenhada do WebApp, com melhorias de UI e usabilidade.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <div class="case-timeline__media">
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-digital-1.png" alt="Tela de configurações do Crediário Digital no WebApp, com ativação de pagamentos via Pix." data-i18n-alt="case.crediario.m1.alt1" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-digital-2.png" alt="Tela mobile de pagamento de parcelas do Crediário Digital." data-i18n-alt="case.crediario.m1.alt2" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-digital-3.png" alt="Tela mobile de pagamento concluído via Pix no Crediário Digital." data-i18n-alt="case.crediario.m1.alt3" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-digital-4.png" alt="Tela mobile para escanear o QR code e pagar via Pix no Crediário Digital." data-i18n-alt="case.crediario.m1.alt4" />
+              </figure>
+            </div>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2024</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m2.title">Contribuição no projeto Antecipação de Recebíveis</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m2.items">
+              <li>Levantamento de requisitos do projeto;</li>
+              <li>Prototipação de funcionalidades necessárias para o módulo Interno, permitindo a visualização e controle financeiro das antecipações.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2023 – 2024</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m3.title">Criação do produto MC Light</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m3.items">
+              <li>Liderança do projeto, alinhamento com stakeholders e desenvolvedora;</li>
+              <li>Levantamento de requisitos e métricas do projeto;</li>
+              <li>Pesquisa com usuários potenciais;</li>
+              <li>Prototipação completa com layout responsivo;</li>
+              <li>Handoff para desenvolvimento;</li>
+              <li>Criação de dashboard no Metabase e criação de consultas SQL para acompanhamento de métricas;</li>
+              <li>Prototipação de experimentos para aumentar a taxa de conversão.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <div class="case-timeline__media">
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-mclight-1.jpg" alt="Tela inicial do MC Light para começar a análise de um cliente." data-i18n-alt="case.crediario.m3.alt1" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-mclight-2.jpg" alt="Painel do MC Light com análise de crédito de um cliente, exibindo score e dados financeiros." data-i18n-alt="case.crediario.m3.alt2" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-mclight-3.png" alt="Board de prototipação das telas do MC Light." data-i18n-alt="case.crediario.m3.alt3" />
+              </figure>
+            </div>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2023</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m4.title">Redesign da identidade visual da empresa</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m4.items">
+              <li>Design do símbolo e logotipo a partir de referência da Diretoria;</li>
+              <li>Criação de diversas versões do logotipo;</li>
+              <li>Criação do manual da marca e aplicações recomendadas.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <div class="case-timeline__media">
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-identidade-1.jpg" alt="Novo logotipo do Meu Crediário aplicado em uma parede do escritório." data-i18n-alt="case.crediario.m4.alt1" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-identidade-2.jpg" alt="Aplicação da nova identidade do Meu Crediário em peça de marca com dispositivos." data-i18n-alt="case.crediario.m4.alt2" />
+              </figure>
+            </div>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2022 – 2023</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m5.title">Redesign do módulo Cobrança</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m5.items">
+              <li>Pesquisa com usuários do módulo Cobrança antigo;</li>
+              <li>Levantamento de requisitos do projeto;</li>
+              <li>Prototipação do módulo para validação com stakeholders;</li>
+              <li>Prototipação da versão final do módulo em colaboração com pares;</li>
+              <li>Rodada de testes com usuários usando a ferramenta Maze.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <div class="case-timeline__media">
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-cobranca-1.png" alt="Fluxo de prototipação do módulo Cobrança." data-i18n-alt="case.crediario.m5.alt1" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-cobranca-2.jpg" alt="Painel do módulo Cobrança com métricas de clientes e lista de contratos a cobrar." data-i18n-alt="case.crediario.m5.alt2" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-cobranca-3.jpg" alt="Tela mobile com os detalhes de cobrança de um cliente." data-i18n-alt="case.crediario.m5.alt3" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-cobranca-4.jpg" alt="Tela mobile de detalhamento de contratos no módulo Cobrança." data-i18n-alt="case.crediario.m5.alt4" />
+              </figure>
+            </div>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2021</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m6.title">Redesign do módulo Assinatura</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m6.items">
+              <li>Levantamento de requisitos para o projeto, que visava substituir o conceito de planos fechados e introduzir o conceito de recargas de créditos;</li>
+              <li>Prototipação do módulo completo, com versão mobile;</li>
+              <li>Validação e ajustes em conjunto com o Product Manager;</li>
+              <li>Organização da estratégia de migração de lojas do modelo de faturamento anterior para o novo.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <div class="case-timeline__media">
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-assinatura-1.jpg" alt="Tela desktop do módulo Assinatura do sistema Meu Crediário." data-i18n-alt="case.crediario.m6.alt1" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-assinatura-2.png" alt="Board de prototipação do módulo Assinatura." data-i18n-alt="case.crediario.m6.alt2" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-assinatura-3.jpg" alt="Tela mobile de nova recarga na carteira, com as formas de pagamento." data-i18n-alt="case.crediario.m6.alt3" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-assinatura-4.jpg" alt="Tela mobile para escanear o QR code da recarga." data-i18n-alt="case.crediario.m6.alt4" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-assinatura-5.jpg" alt="Tela mobile de cadastro de cartão para a recarga." data-i18n-alt="case.crediario.m6.alt5" />
+              </figure>
+            </div>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2020</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m7.title">Criação do Design System</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m7.items">
+              <li>Levantamento de inventário de componentes e necessidades do sistema;</li>
+              <li>Padronização e componentização de elementos reutilizáveis;</li>
+              <li>Criação de biblioteca no Zeroheight;</li>
+              <li>Colaboração com pares na melhoria de contrastes seguindo diretrizes da WCAG;</li>
+              <li>Manutenções periódicas.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <div class="case-timeline__media">
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-designsystem-1.png" alt="Página do Design System do Meu Crediário, com princípios, tipografia, cores e componentes." data-i18n-alt="case.crediario.m7.alt1" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-designsystem-2.png" alt="Biblioteca de componentes do Design System: botões e seus estados." data-i18n-alt="case.crediario.m7.alt2" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-designsystem-3.png" alt="Paleta de cores do Design System do Meu Crediário." data-i18n-alt="case.crediario.m7.alt3" />
+              </figure>
+            </div>
+            <ul class="case-timeline__tools">
+              <li class="case-timeline__logo"><img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-logo-figma.png" alt="Figma" /></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2020</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m8.title">Redesign do website</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m8.items">
+              <li>Levantamento de requisitos do projeto;</li>
+              <li>Prototipação do novo website no AdobeXD;</li>
+              <li>Validação com a Diretoria da empresa;</li>
+              <li>Construção das páginas no WordPress.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <div class="case-timeline__media">
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-website-1.png" alt="Página inicial do website do Meu Crediário: crediário próprio para grandes e pequenos varejistas." data-i18n-alt="case.crediario.m8.alt1" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-website-2.png" alt="Wireframe do novo website do Meu Crediário." data-i18n-alt="case.crediario.m8.alt2" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-website-3.png" alt="Wireframe de páginas internas do novo website." data-i18n-alt="case.crediario.m8.alt3" />
+              </figure>
+            </div>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2019</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m9.title">Criação da primeira versão mobile do sistema</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m9.items">
+              <li>Criação de MVP mobile da parte principal do sistema, melhorando a experiência dos usuários.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <div class="case-timeline__media">
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-mobile-1.png" alt="Board de prototipação no AdobeXD do MVP mobile do sistema Meu Crediário." data-i18n-alt="case.crediario.m9.alt1" />
+              </figure>
+            </div>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2019</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m10.title">Redesign da experiência de onboarding com estratégia de autoatendimento</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m10.items">
+              <li>Estudo sobre autoatendimento em SaaS;</li>
+              <li>Levantamento de ideias e táticas de conversão de leads em trials e trials em clientes;</li>
+              <li>Melhoria no onboarding e primeira experiência de uso do sistema.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year" data-i18n="case.crediario.yearPresent">2018 – atual</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m11.title">Análise e prototipagem de melhorias e novas funcionalidades</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m11.items">
+              <li>Pesquisa, análise, prototipação, validação e entrega de demandas de diversas fontes;</li>
+              <li>Monitoramento do comportamento do sistema e da experiência dos usuários com Hotjar;</li>
+              <li>Geração de demandas de melhoria e novas funcionalidades.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2018</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m12.title">Migração para UX</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m12.items">
+              <li>Workshop de UX Design;</li>
+              <li>Início de estudos sobre a área, atividades e ferramentas adequadas.</li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2018</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m13.title">Redesign do blog</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m13.items">
+              <li>Prototipação do novo layout do blog no AdobeXD;</li>
+              <li>Handoff e acompanhamento do desenvolvimento com colegas.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <div class="case-timeline__media">
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-blog-1.png" alt="Board de prototipação do novo layout do blog do Meu Crediário." data-i18n-alt="case.crediario.m13.alt1" />
+              </figure>
+            </div>
+            <ul class="case-timeline__tools">
+              <li class="case-timeline__logo"><img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-logo-xd.png" alt="Adobe XD" /></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2018</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m14.title">Redesign do website</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m14.items">
+              <li>Primeiros estudos de HTML5 e CSS3;</li>
+              <li>Prototipação do novo website no Photoshop;</li>
+              <li>Validação com a Diretoria da empresa.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <ul class="case-timeline__tools">
+              <li class="case-timeline__logo"><img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-logo-html5.png" alt="HTML5" /></li>
+              <li class="case-timeline__logo"><img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-logo-css3.png" alt="CSS3" /></li>
+              <li class="case-timeline__logo"><img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-logo-wordpress.png" alt="WordPress" /></li>
+            </ul>
+          </div>
+        </li>
+
+        <li class="case-timeline__item">
+          <div class="case-timeline__panel">
+            <span class="case-timeline__year">2018</span>
+            <h4 class="case-timeline__title" data-i18n="case.crediario.m15.title">Design para a equipe de Marketing</h4>
+            <ul class="case-timeline__list" data-i18n="case.crediario.m15.items">
+              <li>Design e manutenção de landing pages no RD Station;</li>
+              <li>Design de criativos para redes sociais, mídia física, e-mail marketing, anúncios, apresentações, camisetas, entre outros;</li>
+              <li>Diagramação de e-books;</li>
+              <li>Manutenção de fluxos de nutrição e segmentação de leads no RD Station.</li>
+            </ul>
+          </div>
+          <div class="case-timeline__side">
+            <div class="case-timeline__media">
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-marketing-1.jpg" alt="Peça de marketing do Meu Crediário: transforme seu crediário em uma máquina de vendas." data-i18n-alt="case.crediario.m15.alt1" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-marketing-2.jpg" alt="Peça de marketing com citação de Abilio Diniz sobre crise e valor." data-i18n-alt="case.crediario.m15.alt2" />
+              </figure>
+              <figure class="case-timeline__figure">
+                <img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-marketing-3.jpg" alt="Peça de marketing de Feliz Natal do Meu Crediário." data-i18n-alt="case.crediario.m15.alt3" />
+              </figure>
+            </div>
+            <ul class="case-timeline__tools">
+              <li class="case-timeline__logo"><img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-logo-illustrator.png" alt="Adobe Illustrator" /></li>
+              <li class="case-timeline__logo"><img loading="lazy" draggable="false" src="src/img/biafranzoi-crediario-logo-photoshop.png" alt="Adobe Photoshop" /></li>
+            </ul>
+          </div>
+        </li>
+      </ol>
+
+      <p class="project-modal__note" data-i18n="case.crediario.note">Agradecimentos a Jeison, Tiago, Natália e toda a equipe de Desenvolvedores, Comercial e CS pelo aprendizado, parceria e colaboração.</p>
+    </template>
+
+    <template id="case-digidoc">
+      <p class="project-modal__text" data-i18n="case.digidoc.lead"
+        >Um aplicativo em que a pessoa guarda seus documentos pessoais e gera
+        códigos QR para compartilhá-los com facilidade e segurança.</p
+      >
+
+      <div class="project-modal__embed">
+        <iframe
+          src="https://embed.figma.com/proto/pLKSC6WT8Cl1GQh2P3LMZk/DigiDoc--2020-?page-id=1907%3A152&amp;node-id=4042-1235&amp;scaling=scale-down&amp;content-scaling=responsive&amp;starting-point-node-id=4042%3A1290&amp;hide-ui=1&amp;embed-host=share"
+          aria-label="Protótipo interativo do DigiDoc no Figma"
+          data-i18n-aria-label="case.digidoc.protoLabel"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="project-modal__actions">
+        <a
+          class="button button--ghost button--icon"
+          href="https://www.figma.com/proto/pLKSC6WT8Cl1GQh2P3LMZk/DigiDoc--2020-?page-id=1907%3A152&amp;node-id=4042-1235&amp;viewport=253%2C47%2C0.14&amp;scaling=scale-down&amp;content-scaling=responsive&amp;starting-point-node-id=4042%3A1290&amp;hide-ui=1"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span data-i18n="case.digidoc.ctaProto">Ver protótipo</span>
+          <span aria-hidden="true">↗</span>
+          <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+        </a>
+        <a
+          class="button button--ghost button--icon"
+          href="https://www.figma.com/file/pLKSC6WT8Cl1GQh2P3LMZk/DigiDoc-%5BUpdated-2024%5D?type=design&amp;node-id=1907%3A152&amp;mode=design"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span data-i18n="case.digidoc.ctaFile">Ver arquivo no Figma</span>
+          <span aria-hidden="true">↗</span>
+          <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+        </a>
+      </div>
+
+      <p class="project-modal__text" data-i18n="case.digidoc.context"
+        >Em outubro de 2020, me juntei a dois colegas UX designers para
+        resolver um desafio sobre documentação pessoal no Brasil. Escolhi esse
+        tema porque enfrento problemas relacionados a ele — e porque era o
+        tema com menos alunos interessados em resolver.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.digidoc.heading1">Enquadrando o problema</h3>
+      <p class="project-modal__text" data-i18n="case.digidoc.body1"
+        >O sistema de identificação regionalizado no Brasil ainda leva a uma
+        abordagem descentralizada, permitindo que uma pessoa tenha múltiplas
+        identidades. O uso de documentos físicos segue predominante e, segundo
+        a Serasa Experian, <a href="https://g1.globo.com/economia/noticia/brasil-tem-1-tentativa-de-fraude-a-cada-16-segundos-em-2017-maior-indice-em-3-anos.ghtml" target="_blank" rel="noopener noreferrer">as principais tentativas de golpe no país se baseiam em identidades roubadas ou falsas<span class="sr-only"> (abre em nova guia)</span></a>.</p
+      >
+      <p class="project-modal__text" data-i18n="case.digidoc.body2"
+        >O governo tenta estimular a digitalização com projetos como o
+        <a href="https://www.techtudo.com.br/noticias/2019/04/como-vai-funcionar-o-documento-nacional-de-identificacao-dni-no-celular.ghtml" target="_blank" rel="noopener noreferrer">DNI (Documento Nacional de Identificação)<span class="sr-only"> (abre em nova guia)</span></a>, que centralizaria os documentos
+        num app. Mas, na prática, o cenário atual exige <a href="https://extra.globo.com/economia-e-financas/celular-ja-substitui-documentos-como-carteira-de-trabalho-cnh-cpf-titulo-de-eleitor-22152110.html" target="_blank" rel="noopener noreferrer">instalar vários aplicativos diferentes<span class="sr-only"> (abre em nova guia)</span></a> para ter a documentação digital.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.digidoc.heading2">Definindo que problema resolver</h3>
+      <p class="project-modal__text" data-i18n="case.digidoc.body3"
+        >Atacar a descentralização da documentação nacional seria irrealista —
+        é um problema de complexidade gigantesca. Optamos por trabalhar a
+        emissão de segundas vias: segundo o Instituto Geral de Perícias,
+        <a href="https://g1.globo.com/sc/santa-catarina/noticia/2020/06/18/igp-de-sc-disponibiliza-pedido-online-para-2a-via-de-carteira-de-identidade.ghtml" target="_blank" rel="noopener noreferrer">Santa Catarina emite 550 mil RGs por ano e 70% são segundas vias<span class="sr-only"> (abre em nova guia)</span></a>. Reduzir
+        esse número evita contratempos e custos para o cidadão e diminui o uso
+        desnecessário de recursos públicos e naturais.</p
+      >
+      <p class="project-modal__text" data-i18n="case.digidoc.goal"
+        ><strong>Nosso objetivo:</strong> reduzir em 30% a emissão de segundas
+        vias de documentos de identidade em Santa Catarina até outubro de
+        2021.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.digidoc.heading3">Entendendo o comportamento das pessoas</h3>
+      <p class="project-modal__text" data-i18n="case.digidoc.body4"
+        >Reunimos nossos pressupostos numa matriz CSD e priorizamos as
+        premissas de maior impacto no negócio sobre as quais tínhamos menos
+        certeza. Para cada hipótese, criamos perguntas baseadas no
+        comportamento passado ou atual das pessoas, para não induzir a
+        resposta. Divulgamos o formulário em grupos do Facebook e WhatsApp e
+        coletamos <strong>96 respostas em dois dias</strong>, cruzadas depois
+        no Data Studio:</p
+      >
+      <ul class="hypothesis-grid" data-i18n="case.digidoc.hypotheses">
+        <li class="hypothesis">
+          <span class="hypothesis__verdict hypothesis__verdict--invalid">Invalidada</span>
+          <p class="hypothesis__stat">63,5%</p>
+          <p class="hypothesis__finding">de quem costuma apresentar documentos ainda usa os físicos.</p>
+          <p class="hypothesis__belief">“As pessoas sabem que existem aplicativos de documentos digitais.”</p>
+          <p class="hypothesis__note">A pergunta deveria ter investigado o conhecimento da possibilidade, não o uso.</p>
+        </li>
+        <li class="hypothesis">
+          <span class="hypothesis__verdict hypothesis__verdict--invalid">Invalidada</span>
+          <p class="hypothesis__stat">36,6%</p>
+          <p class="hypothesis__finding">de quem usa apps de banco também usa apps governamentais de documentos.</p>
+          <p class="hypothesis__belief">“Quem usa aplicativos bancários tende a usar documentos digitais.”</p>
+        </li>
+        <li class="hypothesis">
+          <span class="hypothesis__verdict hypothesis__verdict--valid">Validada</span>
+          <p class="hypothesis__stat">72,7%</p>
+          <p class="hypothesis__finding">de quem tem 49 anos ou mais não usa apps de documentação digital — embora 45,5% considerem o digital tão seguro quanto o físico.</p>
+          <p class="hypothesis__belief">“Pessoas com mais de 50 anos acham mais seguro ter documentos físicos.”</p>
+        </li>
+        <li class="hypothesis">
+          <span class="hypothesis__verdict hypothesis__verdict--invalid">Invalidada</span>
+          <p class="hypothesis__stat">56,3%</p>
+          <p class="hypothesis__finding">usam seus documentos apenas ocasionalmente na semana; só 28,1% usam mais de duas vezes.</p>
+          <p class="hypothesis__belief">“É importante que as pessoas tenham seus documentos sempre acessíveis digitalmente.”</p>
+        </li>
+        <li class="hypothesis">
+          <span class="hypothesis__verdict hypothesis__verdict--invalid">Invalidada</span>
+          <p class="hypothesis__finding">O uso do documento físico ainda é majoritário em <strong>todas as faixas etárias</strong> pesquisadas.</p>
+          <p class="hypothesis__belief">“Pessoas com menos de 40 anos preferem ter documentos digitais.”</p>
+        </li>
+        <li class="hypothesis">
+          <span class="hypothesis__verdict hypothesis__verdict--valid">Validada</span>
+          <p class="hypothesis__stat">68,2%</p>
+          <p class="hypothesis__finding">de quem apresenta e confere documentos possui documentos digitais.</p>
+          <p class="hypothesis__belief">“Os servidores públicos sabem que existem documentos digitais.”</p>
+          <p class="hypothesis__note">A pergunta deveria ter investigado o conhecimento da possibilidade, não o uso.</p>
+        </li>
+        <li class="hypothesis">
+          <span class="hypothesis__verdict hypothesis__verdict--valid">Validada</span>
+          <p class="hypothesis__stat">83,3%</p>
+          <p class="hypothesis__finding">acham a conferência de documentos digitais mais fácil ou tão fácil quanto a física.</p>
+          <p class="hypothesis__belief">“Servidores que já conferiram documentos digitais preferem utilizá-los.”</p>
+        </li>
+      </ul>
+      <p class="project-modal__text" data-i18n="case.digidoc.body5"
+        >Depois conversamos com <strong>10 pessoas de perfis diferentes</strong>
+        para entender as motivações por trás das respostas. Juntando as duas
+        pesquisas:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.digidoc.findings">
+        <li>A falta de divulgação de que é possível usar documentos digitais é um dos principais motivos da baixa adoção;</li>
+        <li>Precisar instalar vários aplicativos para ter todos os documentos no celular é uma barreira concreta;</li>
+        <li>Há abertura dos servidores públicos para aceitar a conferência de documentos digitais;</li>
+        <li>Existe uma barreira de aceitação entre pessoas idosas — que, ainda assim, não veem o documento digital como totalmente inseguro;</li>
+        <li>Imprevistos, como um celular sem bateria, são um risco real no uso de documentos digitais.</li>
+      </ul>
+
+      <h3 class="project-modal__heading" data-i18n="case.digidoc.heading4">Nossos potenciais usuários</h3>
+      <p class="project-modal__text" data-i18n="case.digidoc.body6"
+        >Pessoas de 16 a 50 anos que buscam praticidade para transportar,
+        apresentar e compartilhar documentos pessoais — RG, CNH, cartão do
+        plano de saúde, identificação de estudante, carteirinha de academia e
+        por aí vai. Estão receptivas ao documento digital e insatisfeitas com
+        os aplicativos governamentais atuais.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.digidoc.heading5">Requisitos e solução</h3>
+      <p class="project-modal__text" data-i18n="case.digidoc.body7"
+        >A solução precisava dar acesso a documentos digitais válidos e aceitos
+        no dia a dia, manter tudo sempre à mão com segurança, permitir o
+        compartilhamento e reunir todos os documentos num só lugar. A pergunta
+        que nos guiou: <em>como poderíamos permitir o uso de documentos
+        pessoais de forma prática e segura, reduzindo perdas e danos e
+        agilizando a verificação?</em></p
+      >
+      <p class="project-modal__text" data-i18n="case.digidoc.body8"
+        >Geramos ideias e usamos uma matriz de impacto versus esforço para
+        chegar a um MVP. O caminho escolhido: cadastrar o documento por leitura
+        do código QR (ou manualmente) e deixar seus dados e QR code disponíveis
+        no app para consulta, compartilhamento e apresentação. Optamos pelo QR
+        code porque:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.digidoc.whyQr">
+        <li>É uma tecnologia amplamente usada e conhecida, o que torna a solução mais familiar e intuitiva;</li>
+        <li>Os documentos brasileiros já trazem códigos QR impressos — ou seja, é uma iniciativa já oficializada pelo governo.</li>
+      </ul>
+      <p class="project-modal__text" data-i18n="case.digidoc.body9"
+        >Integrar todos os documentos via API dos apps governamentais exigiria
+        padronizar dados entre vários órgãos — complexo demais para o escopo. E
+        digitalizar fotos por OCR envolvia uma tecnologia que dominávamos menos
+        e que julgamos menos dinâmica que o QR code.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.digidoc.heading6">Projetando o app</h3>
+      <p class="project-modal__text" data-i18n="case.digidoc.body10"
+        >Cada um de nós desenhou as telas e compartilhou com o time, até
+        consolidarmos um único esboço. Criamos um <a href="https://marvelapp.com/prototype/5hab93a" target="_blank" rel="noopener noreferrer">protótipo de baixa fidelidade no papel<span class="sr-only"> (abre em nova guia)</span></a>, com o app Marvel, e fizemos <strong>testes de usabilidade com
+        8 pessoas</strong>: pedimos que imaginassem precisar agendar uma
+        consulta médica importante e compartilhar sua identidade com a clínica
+        — uma tarefa que percorre o fluxo inteiro, de adicionar o documento a
+        compartilhá-lo. Todos conseguiram concluir, e os testes revelaram
+        pequenos pontos de atrito na navegação. Depois, montamos um fluxo de
+        usuário para enxergar o app inteiro e definir quais telas precisávamos
+        projetar.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.digidoc.heading7">UI e design visual</h3>
+      <p class="project-modal__text" data-i18n="case.digidoc.body11"
+        >Documentamos os estilos e componentes da marca — paleta, tipografia e
+        botões — pensando em escalabilidade e reuso. Uma preocupação constante
+        foi escolher cores e elementos com bom contraste e legibilidade, para
+        contribuir com a acessibilidade do app.</p
+      >
+
+      <figure class="project-modal__image">
+        <img
+          loading="lazy"
+          src="src/img/biafranzoi-digidoc-3.png"
+          alt="Style guide do DigiDoc: paleta de cores com códigos hexadecimais, escala tipográfica em Ubuntu (H1 a H6) e componentes de botão em seus vários estados."
+          data-i18n-alt="case.digidoc.alt1"
+        />
+      </figure>
+
+      <p class="project-modal__text" data-i18n="case.digidoc.body12"
+        >Com o fluxo, os wireframes e o style guide em mãos, partimos para o
+        protótipo de alta fidelidade do MVP. Em 2024 resolvi redesenhar as
+        telas para corrigir falhas estruturais, de usabilidade e de design,
+        conectando melhor as descobertas da pesquisa à solução: simplificar o
+        visual, criar uma arquitetura de informação mais clara e organizar
+        melhor os dados nas telas.</p
+      >
+
+      <figure class="project-modal__image">
+        <img
+          loading="lazy"
+          src="src/img/biafranzoi-digidoc-1.png"
+          alt="Telas do DigiDoc: início com documentos mais usados e recém-compartilhados, detalhe do documento, tela de compartilhamento com duração e senha, QR code gerado e leitura do QR de um novo documento."
+          data-i18n-alt="case.digidoc.alt2"
+        />
+      </figure>
+
+      <figure class="project-modal__image">
+        <img
+          loading="lazy"
+          src="src/img/biafranzoi-digidoc-4.png"
+          alt="Inventário completo das telas do DigiDoc, organizado por fluxo: splash, início, telas de menu (todos os documentos, meu documento, compartilhados e configurações), novo documento (leitura do QR, formulário, foto da frente e do verso e documento salvo), busca sem resultados e compartilhamento."
+          data-i18n-alt="case.digidoc.alt4"
+        />
+      </figure>
+
+      <h3 class="project-modal__heading" data-i18n="case.digidoc.heading8">Aprendizados e próximos passos</h3>
+      <ul class="project-modal__list" data-i18n="case.digidoc.learnings">
+        <li>O projeto foi a chance de aprender, experimentar e trabalhar em conjunto nas diferentes fases pelas quais um produto passa na concepção;</li>
+        <li>O próximo passo seria uma nova rodada de testes de usabilidade, agora com o protótipo de alta fidelidade;</li>
+        <li>Um ano após o lançamento, seria preciso verificar se a emissão de segundas vias em Santa Catarina caiu mesmo 30%;</li>
+        <li>Hoje eu definiria métricas mais ligadas à adoção e ao uso do produto, em vez de uma meta que depende só do ambiente externo — sujeito a inúmeras variáveis fora do nosso controle.</li>
+      </ul>
+
+      <p class="project-modal__note" data-i18n="case.digidoc.note">Projeto desenvolvido em trio, como estudo de caso do curso UX Unicórnio, com protótipo redesenhado em 2024.</p>
+    </template>
+
+    <template id="case-nebula">
+      <p class="project-modal__text" data-i18n="case.nebula.lead"
+        >Um SaaS de armazenamento focado em reduzir a fricção entre subir um
+        arquivo e colaborar nele.</p
+      >
+
+      <div class="project-modal__embed project-modal__embed--wide">
+        <iframe
+          src="https://embed.figma.com/proto/szJkgZAKcOlZJlXuEEffOw/Nebula--Bix-Tecnologia-2025-?page-id=2%3A4&amp;node-id=42-205&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=42%3A205&amp;embed-host=share"
+          aria-label="Protótipo interativo do Nebula no Figma"
+          data-i18n-aria-label="case.nebula.protoLabel"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="project-modal__actions">
+        <a
+          class="button button--ghost button--icon"
+          href="https://www.figma.com/proto/szJkgZAKcOlZJlXuEEffOw/Nebula-%5BBix-Tecnologia-2025%5D?page-id=2%3A4&amp;node-id=42-205&amp;viewport=337%2C307%2C0.14&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=42%3A205"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span data-i18n="case.nebula.ctaProto">Ver protótipo</span>
+          <span aria-hidden="true">↗</span>
+          <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+        </a>
+      </div>
+
+      <h3 class="project-modal__heading" data-i18n="case.nebula.heading1">O problema: atrito colaborativo e silos de informação</h3>
+      <p class="project-modal__text" data-i18n="case.nebula.body1"
+        >Em fluxos de trabalho multimídia, o tempo perdido na busca por
+        arquivos e a gestão ineficiente de permissões geram gargalos
+        operacionais. Soluções genéricas falham ao não fornecer contexto social
+        (quem editou o quê?) e ao dificultar o compartilhamento externo seguro
+        (links que expiram ou acesso excessivo).</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.nebula.heading2">Estratégia de UX: foco em produtividade desktop</h3>
+      <p class="project-modal__text" data-i18n="case.nebula.body2"
+        >Diferente de interfaces móveis, o foco aqui é a densidade de
+        informação útil.</p
+      >
+      <p class="project-modal__text" data-i18n="case.nebula.body3"
+        >O layout nasceu no papel: a barra lateral, a busca em destaque e o
+        feed de atividades à direita já apareciam no primeiro rascunho.</p
+      >
+
+      <figure class="project-modal__image">
+        <img
+          loading="lazy"
+          src="src/img/biafranzoi-nebula-2.jpg"
+          alt="Rascunho do painel do Nebula em um caderno quadriculado: barra lateral com Home, Files e Shared, o campo “Do que precisa?”, grades de arquivos e a coluna de últimas atividades."
+          data-i18n-alt="case.nebula.alt2"
+        />
+      </figure>
+
+      <h3 class="project-modal__heading" data-i18n="case.nebula.heading3">1. Visibilidade do estado do sistema (feed de atividades)</h3>
+      <p class="project-modal__text" data-i18n="case.nebula.body4"
+        >A barra lateral de “Latest updates” não é apenas estética; ela serve
+        para reduzir o overhead de comunicação. O usuário entende o status do
+        projeto sem precisar abrir arquivo por arquivo, aplicando o princípio
+        de reconhecimento em vez de recordação.</p
+      >
+
+      <figure class="project-modal__image">
+        <img
+          loading="lazy"
+          src="src/img/biafranzoi-nebula-6.png"
+          alt="Home do Nebula com os painéis “My files” e “Shared with me” lado a lado e o feed “Latest updates” à direita."
+          data-i18n-alt="case.nebula.alt6"
+        />
+      </figure>
+
+      <h3 class="project-modal__heading" data-i18n="case.nebula.heading4">2. Governança e segurança granular</h3>
+      <p class="project-modal__text" data-i18n="case.nebula.body5"
+        >Um diferencial no projeto é o modal de compartilhamento, onde
+        introduzi:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.nebula.governance">
+        <li><strong>Permissões temporais:</strong> acesso por tempo limitado (ex.: “por 2 dias”), essencial para freelancers e stakeholders externos;</li>
+        <li><strong>Controle de papéis:</strong> distinção clara entre Proprietário, Editor e Leitor, mitigando riscos de segurança.</li>
+      </ul>
+
+      <div class="project-modal__gallery">
+       <figure class="project-modal__image">
+        <img
+          loading="lazy"
+          src="src/img/biafranzoi-nebula-3.png"
+          alt="Modal de upload do Nebula mostrando o arquivo “Brand Guidelines” sendo enviado, com barra de progresso e os botões “Cancel upload” e “Finish upload”."
+          data-i18n-alt="case.nebula.alt3"
+        />
+      </figure>
+
+        <figure class="project-modal__image">
+          <img
+            loading="lazy"
+            src="src/img/biafranzoi-nebula-8.png"
+            alt="Modal de compartilhamento do Nebula para o arquivo “Product Roadmap 2025”, com lista de pessoas com acesso, papéis (“Can edit”, “Can view”) e uma permissão temporária “For 2 days” com senha."
+            data-i18n-alt="case.nebula.alt8"
+          />
+        </figure>
+        <figure class="project-modal__image">
+          <img
+            loading="lazy"
+            src="src/img/biafranzoi-nebula-5.png"
+            alt="Painel de arquivos do Nebula com a notificação “Sharing successful! Bix Challenge 2025 was successfully shared.” em destaque no canto superior direito."
+            data-i18n-alt="case.nebula.alt5"
+          />
+        </figure>
+      </div>
+
+      <h3 class="project-modal__heading" data-i18n="case.nebula.heading5">3. Recuperação de dados (experiência de busca)</h3>
+      <p class="project-modal__text" data-i18n="case.nebula.body6"
+        >A busca foi desenhada para ser o motor principal da interface. O
+        dropdown de resultados em tempo real permite que o usuário navegue
+        diretamente para o arquivo, ignorando a estrutura de pastas quando a
+        velocidade é a prioridade.</p
+      >
+
+      <figure class="project-modal__image">
+        <img
+          loading="lazy"
+          src="src/img/biafranzoi-nebula-7.png"
+          alt="Campo de busca do Nebula com o termo “Prod” digitado e um dropdown de resultados em tempo real mostrando “Product List (February)” e “Product Roadmap 2025”."
+          data-i18n-alt="case.nebula.alt7"
+        />
+      </figure>
+
+      <h3 class="project-modal__heading" data-i18n="case.nebula.heading6">Design de interface: consistência e dark mode</h3>
+      <p class="project-modal__text" data-i18n="case.nebula.body7"
+        >O uso do dark mode não é apenas uma escolha estética, mas uma decisão
+        de conforto visual para profissionais que passam longas horas em frente
+        ao monitor (redução de fadiga ocular).</p
+      >
+      <ul class="project-modal__list" data-i18n="case.nebula.ui">
+        <li><strong>Atomic Design:</strong> o sistema de ícones e cards foi componentizado para suportar diferentes estados (hover, selecionado, carregando);</li>
+        <li><strong>Affordances claras:</strong> o uso de cores de destaque guia o olhar para as ações primárias, como o botão “Upload new file”, mantendo a hierarquia visual equilibrada.</li>
+      </ul>
+
+      <h3 class="project-modal__heading" data-i18n="case.nebula.heading7">Retrospectiva e evolução</h3>
+      <p class="project-modal__text" data-i18n="case.nebula.body8"
+        >Como próximos passos para este case, eu focaria em:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.nebula.nextSteps">
+        <li><strong>Métrica de eficiência:</strong> comparação de tempo de tarefa de busca (quanto tempo o usuário leva para encontrar um arquivo específico via busca vs. pastas);</li>
+        <li><strong>Eficiência de uso:</strong> estabelecer atalhos de teclado para as ações do sistema, permitindo a redução de esforço de usuários avançados;</li>
+        <li><strong>Acessibilidade:</strong> auditar o contraste da interface para conformidade com os níveis mínimos (baseline) da WCAG 2.1, garantindo legibilidade e conforto visual, especialmente sob as restrições de contraste crítico do dark mode.</li>
+      </ul>
+    </template>
+
+    <footer class="site-footer">
+      <div class="site-footer__inner container">
+        <p class="site-footer__credits">
+          Atualizado em 07/2026 por Bia Franzoi.<br />
+          <span data-i18n="footer.credits">Feito com amor e contribuições de</span>
+          <a
+            href="https://www.linkedin.com/in/julietedias/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="site-footer__link"
+            >Juliete Dias<span class="sr-only" data-i18n="common.opensNewTabSpace"
+              > (abre em nova guia)</span
+            ></a
+          >.
+        </p>
+        <p class="site-footer__a11y">
+          <span data-i18n="footer.wcag">Compatível com critérios WCAG 2.</span>
+          <a
+            href="https://www.linkedin.com/in/biafranzoi/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="site-footer__link"
+            data-i18n="footer.reportIssue"
+            >Informar problema<span class="sr-only"
+              > de acessibilidade via LinkedIn (abre em nova guia)</span
+            ></a
+          >
+        </p>
+      </div>
+    </footer>
+
+    <nav class="dock" aria-label="Navegação principal" data-i18n-aria-label="dock.navAriaLabel">
+      <a href="#inicio" class="dock__item is-active">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M3 11 12 3l9 8" />
+          <path d="M5 10v11h5v-6h4v6h5V10" />
+        </svg>
+        <span data-i18n="dock.home">Início</span>
+      </a>
+      <a href="#projetos" class="dock__item">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <rect x="3" y="3" width="7" height="7" rx="1.5" />
+          <rect x="14" y="3" width="7" height="7" rx="1.5" />
+          <rect x="3" y="14" width="7" height="7" rx="1.5" />
+          <rect x="14" y="14" width="7" height="7" rx="1.5" />
+        </svg>
+        <span data-i18n="dock.projects">Projetos</span>
+      </a>
+      <a href="#sobre" class="dock__item">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 3.5-6 8-6s8 2 8 6" />
+        </svg>
+        <span data-i18n="dock.about">Sobre</span>
+      </a>
+      <a href="#lab" class="dock__item">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <!-- erlenmeyer: gargalo, corpo cônico e a linha do líquido -->
+          <path d="M10 2v7.5L4.6 18.4A2 2 0 0 0 6.3 21.5h11.4a2 2 0 0 0 1.7-3.1L14 9.5V2" />
+          <path d="M8.5 2h7" />
+          <path d="M6.8 15h10.4" />
+        </svg>
+        <span>Lab</span>
+      </a>
+      <a href="#depoimentos" class="dock__item">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path
+            d="M21 15a2 2 0 0 1-2 2H8l-5 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2Z"
+          />
+        </svg>
+        <span data-i18n="dock.testimonials">Depoimentos</span>
+      </a>
+      <a href="#contato" class="dock__item">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <path d="m3 7 9 6 9-6" />
+        </svg>
+        <span data-i18n="dock.contact">Contato</span>
+      </a>
+    </nav>
+
+    <script defer src="src/i18n.js"></script>
+    <script defer src="src/main.js"></script>
+  </body>
+</html>

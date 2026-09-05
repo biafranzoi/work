@@ -1,0 +1,12 @@
+# Documentos de anotação internos — não publicar (ainda)
+/ACCESSIBILITY.md
+/STYLEGUIDE.md
+/todo-claude-ignore.txt
+
+# Backups locais e ferramentas de dev — não fazem parte do site
+/backups/
+/.claude/
+
+# Lixo de sistema operacional / editor
+.DS_Store
+Thumbs.db

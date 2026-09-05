@@ -1,0 +1,2637 @@
+/* ---------- Temas ---------- */
+/* Dark Default (tema base — nenhum atributo no <html>). Trocar de tema só
+   redefine este bloco de tokens; nenhum outro seletor do arquivo referencia
+   cor fixa fora daqui (exceto os tokens "overlay-*", ver nota abaixo). */
+:root {
+  color-scheme: dark;
+  --bg: #0b0f0d;
+  --bg-elevated: #111714;
+  --border: #1f2a24;
+  /* borda de componentes interativos (botões, cards, controles): a mais fraca
+     possível que ainda garante 3:1 contra o fundo (WCAG 1.4.11, nível AA). */
+  --border-interactive: #526558;
+  --text: #e8efeb;
+  --text-muted: #9db0a7;
+  --accent: #2bd17e;
+  --accent-strong: color-mix(in srgb, var(--accent) 80%, black);
+  /* texto sobre o botão primário (fundo = --accent) */
+  --accent-contrast: #06130c;
+  /* espessura de borda/foco: o tema de alto contraste aumenta os dois */
+  --border-width: 1px;
+  --focus-width: 2px;
+
+  /* Tokens fixos — NÃO mudam entre temas. Usados só onde o elemento já senta
+     sobre um scrim escuro fixo (overlay de foto do card de projeto, chip da
+     órbita sobre a foto): a legibilidade ali depende do scrim, não da página,
+     então o texto precisa continuar claro mesmo no tema claro. */
+  --overlay-text: #e8efeb;
+  --overlay-text-muted: #9db0a7;
+  --overlay-accent: #2bd17e;
+
+  /* "Vidro": borda/fundo translúcidos de elementos que sentam sobre uma foto
+     (chip da órbita, tag do card de projeto) — sempre brancos, não do tema,
+     pelo mesmo motivo dos tokens overlay-* acima. */
+  --glass-border: rgb(255 255 255 / 0.16);
+  --glass-bg: rgb(255 255 255 / 0.08);
+  /* base do gradiente escuro sob o overlay do card de projeto */
+  --scrim-strong: rgb(0 0 0 / 0.8);
+
+  /* Sombra de elevação — preta fixa nos 3 temas (inclusive no claro): o
+     objetivo é destacar o elemento do conteúdo atrás dele, não combinar
+     com o fundo. */
+  --shadow-panel: 0 10px 30px rgb(0 0 0 / 0.4); /* painéis "vidro": topbar, menu de tema, dock */
+  --shadow-card: 0 12px 32px rgb(0 0 0 / 0.45); /* card do leque de imagens */
+  --shadow-chip: 0 4px 12px rgb(0 0 0 / 0.3); /* chip da órbita, logo do case */
+  --shadow-photo: 0 6px 16px rgb(0 0 0 / 0.4); /* moldura de foto da timeline do case */
+  --shadow-photo-raised: 0 14px 28px rgb(0 0 0 / 0.5); /* a mesma, erguida no hover */
+
+  --blur-panel: 14px; /* desfoque do fundo nos painéis "vidro" (topbar, menu de tema, dock) */
+  --blur-chip: 10px; /* desfoque do fundo nos chips "vidro" (órbita, tag) */
+  --radius-pill: 999px;
+
+  /* diâmetro dos botões circulares só-ícone */
+  --btn-size-sm: 2.25rem; /* social-btn, carousel__btn, chip da órbita */
+  --btn-size-md: 2.75rem; /* botão da topbar (play/pause, tema) */
+  --btn-size-lg: 3rem; /* item da dock, fechar do modal */
+
+  /* tamanho dos ícones SVG dentro dos controles acima */
+  --icon-size-sm: 16px;
+  --icon-size-md: 18px;
+  --icon-size-lg: 20px;
+
+  /* tonalidades fixas dos 5 cards do leque de imagens (hero): variação
+     puramente decorativa, visível só nas bordas/durante o carregamento da
+     foto real (que cobre o card inteiro via object-fit: cover) — por isso
+     fica fora do tema, como os tokens overlay-*/glass-* acima. */
+  --fan-tint-1: linear-gradient(160deg, #14231c, #0e1512);
+  --fan-tint-2: linear-gradient(160deg, #16281f, #101814);
+  --fan-tint-3: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--accent) 22%, #101814),
+    #121a16
+  );
+  --fan-tint-4: linear-gradient(160deg, #17231c, #111813);
+  --fan-tint-5: linear-gradient(160deg, #132018, #0d1410);
+
+  --font-sans:
+    "Space Grotesk", "Segoe UI", system-ui, -apple-system, Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+
+  /* Escala tipográfica — 5 tamanhos (fixos embaixo, fluidos no topo p/ mobile) */
+  --fs-sm: 0.875rem; /* 14px — rótulos, navegação, botões, metadados */
+  --fs-base: 1rem; /* 16px — corpo de texto */
+  --fs-lg: 1.25rem; /* 20px — destaques, subtítulos, títulos de card */
+  --fs-xl: clamp(1.75rem, 1.1rem + 3vw, 2.5rem); /* títulos de seção */
+  --fs-2xl: clamp(2.25rem, 1.3rem + 4.8vw, 4rem); /* display: hero, contato */
+
+  /* Espaçamentos seguem a grade de 8px: 0.5rem, 1rem, 1.5rem, 2rem, 2.5rem… */
+
+  --container: 80rem;
+  --radius: 12px;
+}
+
+/* Tema Claro */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f5f7f5;
+  --bg-elevated: #ffffff;
+  --border: #e1e7e3;
+  /* mesma regra do tema escuro — o mais fraco possível ainda com 3:1 contra o
+     fundo. No claro a borda escurece em vez de clarear, e o tom antigo
+     (#63766c) sobrava muito: dava 4.50:1 e pesava contra o fundo quase branco.
+     Este fica em 3.18:1 sobre --bg e 3.42:1 sobre --bg-elevated. */
+  --border-interactive: #7d8f85;
+  --text: #101a15;
+  --text-muted: #47584e;
+  --accent: #0c6338;
+  --accent-strong: color-mix(in srgb, var(--accent) 80%, black);
+  --accent-contrast: #ffffff;
+
+  /* Sombras: as do :root são calibradas para o escuro, onde preto a 40-45%
+     mal aparece sobre um fundo já quase preto. Sobre o fundo claro a mesma
+     opacidade vira uma mancha cinza pesada — aqui a elevação é sugerida com
+     preto bem mais diluído, mantendo as mesmas distâncias e desfoques. */
+  --shadow-panel: 0 10px 30px rgb(0 0 0 / 0.1);
+  --shadow-card: 0 12px 32px rgb(0 0 0 / 0.14);
+  --shadow-chip: 0 4px 12px rgb(0 0 0 / 0.1);
+  --shadow-photo: 0 6px 16px rgb(0 0 0 / 0.13);
+  --shadow-photo-raised: 0 14px 28px rgb(0 0 0 / 0.18);
+}
+
+/* --border-interactive existe pro contraste 3:1 de botões/controles (ver nota
+   no :root). Em cards que só exibem conteúdo — sem função de clique — esse
+   mesmo tom fica pesado demais contra o fundo quase branco do tema claro;
+   --border (mais claro) já é suficiente pra separar o card visualmente. */
+:root[data-theme="light"] .testimonial,
+:root[data-theme="light"] .project-modal__embed {
+  border-color: var(--border);
+}
+
+/* Tema Alto Contraste — calibrado pra AAA (7:1 texto normal, 4.5:1 texto
+   grande, e bem acima do 3:1 mínimo em bordas/foco) */
+:root[data-theme="high-contrast"] {
+  color-scheme: dark;
+  --bg: #000000;
+  --bg-elevated: #0a0a0a;
+  --border: #4d4d4d;
+  --border-interactive: #ffffff;
+  --text: #ffffff;
+  --text-muted: #d6d6d6;
+  --accent: #35e28f;
+  --accent-strong: color-mix(in srgb, var(--accent) 80%, black);
+  --accent-contrast: #000000;
+  --border-width: 2px;
+  --focus-width: 3px;
+}
+
+/* ---------- Reset básico ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  /* troca de tema com transição suave (WCAG 2.3.3 já desliga isso com
+     prefers-reduced-motion, ver o bloco no fim do arquivo). Elementos com
+     transition própria (a maioria dos botões/cards) sobrescrevem esta regra
+     — nesses casos as propriedades de cor já estão incluídas na lista deles. */
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease, box-shadow 0.3s ease, fill 0.3s ease;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  /* clip (e não hidden) para cortar o leque aberto sem gerar scroll horizontal */
+  overflow-x: clip;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* controles herdam a tipografia da página (evita o tamanho padrão do UA) */
+button {
+  font: inherit;
+}
+
+ul {
+  list-style: none;
+}
+
+/* ---------- Utilitários ---------- */
+.container {
+  width: min(var(--container), 100% - 3rem);
+  margin-inline: auto;
+}
+
+.accent {
+  color: var(--accent);
+}
+
+/* some visualmente mas continua disponível para leitores de tela
+   (técnica padrão: recorte de 1px em vez de display:none/visibility:hidden) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  word-break: keep-all;
+  white-space: nowrap;
+}
+
+/* indicador de foco visível e consistente em qualquer elemento interativo
+   (WCAG 2.4.7 Focus Visible, 1.4.11 Non-text Contrast) — reforça/uniformiza
+   os estados de foco já definidos em componentes específicos */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: var(--focus-width) solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  min-height: 100svh;
+  display: grid;
+  grid-template-columns: 1fr minmax(16rem, 27rem);
+  align-items: center;
+  gap: clamp(2rem, 6vw, 5rem);
+  padding-block: 4rem;
+}
+
+.hero__content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  /* garante que o leque aberto passe por trás do texto, nunca por cima */
+  position: relative;
+  z-index: 6;
+}
+
+/* ---------- Leque de imagens ---------- */
+.fan {
+  position: relative;
+  aspect-ratio: 1 / 1;
+}
+
+.fan__card {
+  position: absolute;
+  bottom: 4%;
+  /* levemente à esquerda do centro do quadrado do leque (46% em vez de 50%):
+     o texto do hero chega perto do leque pela esquerda e a borda da tela pela
+     direita; esse pequeno recuo equilibra a folga dos dois lados pro leque
+     abrir simétrico sem esbarrar no texto nem estourar a tela. */
+  left: 46%;
+  width: 66%;
+  aspect-ratio: 3 / 4;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  border-radius: var(--radius);
+  border: none;
+  background: var(--card-tint, var(--bg-elevated));
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  /* todas as cartas têm a mesma posição/tamanho (bottom, left, width iguais),
+     então já ocupam exatamente o mesmo retângulo antes de girar — usar o
+     MESMO transform-origin em todas faz esse ponto coincidir de verdade no
+     espaço da página, como se estivessem presas por um pino comum (leque de
+     baralho). Cada carta tinha antes um deslocamento vertical próprio
+     (--y) pra nivelar as pontas de baixo, mas isso deslocava o pino de cada
+     carta de forma diferente e quebrava essa coincidência — por isso não
+     existe mais. */
+  transform-origin: 50% 95%;
+  transform: translateX(-50%) rotate(var(--r));
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.fan__card:focus-visible {
+  outline: var(--focus-width) solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* mesmo overlay dos cards da seção Projetos (.project-card__overlay), mas
+   aqui só nome e tags revelam, só no card da frente, preservando o efeito
+   de "descoberta" do leque — sem descrição/CTA, que ficam só na grade da
+   seção Projetos */
+.fan__card .project-card__overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.fan__card--main:hover .project-card__overlay,
+.fan__card--main:focus-visible .project-card__overlay {
+  opacity: 1;
+}
+
+/* imagens reais entram aqui depois: <figure class="fan__card"><img ...></figure> */
+.fan__card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+/* ângulos e empilhamento. Leque de 4 cartas, simétrico em torno de 0deg nos DOIS
+   estados: os pares espelham o mesmo ângulo pra cada lado (-9/-3/+3/+9 fechado,
+   -21/-7/+7/+21 aberto). Como são 4 (par), não há carta exatamente no centro —
+   a principal (por cima, z-index mais alto) fica na casa interna a +3deg, quase
+   reta. Fechado: quase um baralho, cartas bem próximas. Aberto (hover): abre de
+   verdade, como uma mão de cartas — a diferença grande entre os dois estados é o
+   que faz o hover parecer uma abertura, não só um leve ajuste. ~21deg é o máximo
+   que cabe sem estourar a tela nem invadir o texto na largura mais apertada do
+   layout de 2 colunas (~1330px). ESTES VALORES ESPELHAM os de SLOTS em main.js —
+   se um mudar, o outro precisa acompanhar. */
+.fan__card:nth-child(1) {
+  --r: -9deg;
+  --r-open: -21deg;
+  --card-tint: var(--fan-tint-1);
+  z-index: 2;
+}
+
+.fan__card:nth-child(2) {
+  --r: -3deg;
+  --r-open: -7deg;
+  --card-tint: var(--fan-tint-2);
+  z-index: 4;
+}
+
+.fan__card:nth-child(3) {
+  --r: 3deg;
+  --r-open: 7deg;
+  --card-tint: var(--fan-tint-3);
+  z-index: 5;
+}
+
+.fan__card:nth-child(4) {
+  --r: 9deg;
+  --r-open: 21deg;
+  --card-tint: var(--fan-tint-4);
+  z-index: 3;
+}
+
+.fan:hover .fan__card {
+  transform: translateX(-50%) rotate(var(--r-open));
+}
+
+.hero__kicker {
+  color: var(--accent);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: var(--fs-sm);
+}
+
+.hero__title {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+
+.hero__subtitle {
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+  max-width: 42rem;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+/* ---------- Botões ---------- */
+.button {
+  display: inline-block;
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+}
+
+/* neon: primário sempre com brilho; secundário só ganha o brilho no hover */
+.button--primary {
+  background: var(--accent);
+  color: var(--accent-contrast);
+  box-shadow:
+    0 0 16px color-mix(in srgb, var(--accent) 55%, transparent),
+    0 0 32px color-mix(in srgb, var(--accent) 25%, transparent);
+}
+
+.button--primary:hover,
+.button--primary:focus-visible {
+  background: var(--accent-strong);
+  box-shadow:
+    0 0 20px color-mix(in srgb, var(--accent) 70%, transparent),
+    0 0 40px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.button--ghost {
+  border: var(--border-width) solid var(--border-interactive);
+  color: var(--text);
+  box-shadow: 0 0 0 0 transparent;
+}
+
+.button--ghost:hover,
+.button--ghost:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow:
+    0 0 16px color-mix(in srgb, var(--accent) 45%, transparent),
+    0 0 32px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* tema de alto contraste: sem brilho neon — numa tela pensada pra máxima
+   legibilidade, um glow desfocado atrapalha mais do que ajuda */
+:root[data-theme="high-contrast"] .button--primary,
+:root[data-theme="high-contrast"] .button--primary:hover,
+:root[data-theme="high-contrast"] .button--primary:focus-visible,
+:root[data-theme="high-contrast"] .button--ghost:hover,
+:root[data-theme="high-contrast"] .button--ghost:focus-visible {
+  box-shadow: none;
+}
+
+/* botão com ícone + rótulo (ex.: redes sociais no Contato) */
+.button--icon {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.button--icon svg {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+}
+
+/* ---------- Barra fixa no canto superior direito ---------- */
+/* agrupa o relógio e o controle único de play/pause */
+.topbar {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.topbar__clock {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 0.9rem;
+  border-radius: var(--radius-pill);
+  border: var(--border-width) solid var(--border-interactive);
+  background: color-mix(in srgb, var(--bg-elevated) 85%, transparent);
+  backdrop-filter: blur(var(--blur-panel));
+  -webkit-backdrop-filter: blur(var(--blur-panel));
+  box-shadow: var(--shadow-panel);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+/* rótulo do país, ao lado do horário: mesmo tamanho e peso do horário,
+   só separado por uma divisória sutil */
+.topbar__clock-country {
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+  border-left: var(--border-width) solid var(--border-interactive);
+  text-transform: uppercase;
+}
+
+/* balão com o "o que a Bia provavelmente está fazendo agora", de acordo
+   com a faixa de horário — aparece no hover/foco (desktop) ou no toque
+   (mobile, via .is-open alternado por clique) */
+.topbar__clock-tooltip {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  right: 0;
+  width: max-content;
+  max-width: 14rem;
+  padding: 0.6rem 0.85rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  font-variant-numeric: normal;
+  text-transform: none;
+  white-space: normal;
+  text-align: left;
+  line-height: 1.4;
+  box-shadow: var(--shadow-panel);
+  opacity: 0;
+  translate: 0 4px;
+  pointer-events: none;
+  transition: opacity 0.2s ease, translate 0.2s ease;
+}
+
+.topbar__clock:hover .topbar__clock-tooltip,
+.topbar__clock:focus-visible .topbar__clock-tooltip,
+.topbar__clock.is-open .topbar__clock-tooltip {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* tooltip dos botões de ícone do topo (Configurações, Pausar/Ativar
+   animações) — mesma linguagem do tooltip do dock de navegação, mas abaixo
+   do ícone (o topo da tela não tem espaço acima) e alinhado à direita, pra
+   não vazar a borda direita da janela no ícone mais à direita */
+.topbar__tooltip {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  translate: 0 4px;
+  pointer-events: none;
+  transition: opacity 0.2s ease, translate 0.2s ease,
+    background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.topbar__icon-btn:hover .topbar__tooltip,
+.topbar__icon-btn:focus-visible .topbar__tooltip {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* com o menu de configurações aberto, o tooltip ficaria por cima do painel —
+   some enquanto o menu está expandido */
+.theme-switcher__trigger[aria-expanded="true"] .topbar__tooltip {
+  opacity: 0;
+}
+
+/* botão circular "vidro" reaproveitado pelo play/pause e pelo seletor de
+   tema — um só controla as 4 animações contínuas da página (letreiro,
+   órbita, palavras rotativas, avanço automático dos depoimentos) */
+.topbar__icon-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--btn-size-md);
+  height: var(--btn-size-md);
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: var(--border-width) solid var(--border-interactive);
+  background: color-mix(in srgb, var(--bg-elevated) 85%, transparent);
+  backdrop-filter: blur(var(--blur-panel));
+  -webkit-backdrop-filter: blur(var(--blur-panel));
+  box-shadow: var(--shadow-panel);
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: border-color 0.3s ease, color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.topbar__icon-btn svg {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+}
+
+/* o atributo [hidden] não é confiável em <svg> inline em todos os
+   navegadores (o UA stylesheet do HTML nem sempre alcança o namespace SVG) */
+.topbar__icon-btn svg[hidden] {
+  display: none;
+}
+
+.topbar__icon-btn:hover,
+.topbar__icon-btn:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* o botão de tema fica "aceso" (mesma cor de estado ativo) enquanto o
+   menu está aberto, pra ficar claro que ele controla o popover visível */
+.theme-switcher__trigger[aria-expanded="true"] {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+/* ---------- Seletor de tema ---------- */
+.theme-switcher {
+  position: relative;
+}
+
+.theme-menu {
+  position: absolute;
+  top: calc(100% + 0.75rem);
+  right: 0;
+  z-index: 31;
+  display: grid;
+  gap: 0.25rem;
+  padding: 0.375rem;
+  /* não 999px: isso é pra pílulas de uma linha só, num painel de 3 linhas
+     vira uma "cápsula" que não acompanha o conteúdo */
+  border-radius: 1rem;
+  border: var(--border-width) solid var(--border-interactive);
+  background: color-mix(in srgb, var(--bg-elevated) 95%, transparent);
+  backdrop-filter: blur(var(--blur-panel));
+  -webkit-backdrop-filter: blur(var(--blur-panel));
+  box-shadow: var(--shadow-panel);
+}
+
+.theme-menu[hidden] {
+  display: none;
+}
+
+/* rótulo pequeno acima de cada grupo do painel (Tema / Idioma) */
+.theme-menu__label {
+  padding: 0.375rem 0.6rem 0.125rem;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* separa os grupos Tema/Idioma dentro do mesmo painel */
+.theme-menu__divider {
+  height: var(--border-width);
+  margin-block: 0.25rem;
+  background: var(--border);
+}
+
+.theme-menu__option {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  padding: 0.5rem 0.9rem 0.5rem 0.6rem;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: none;
+  color: var(--text-muted);
+  font: inherit;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+.theme-menu__option svg {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+  flex-shrink: 0;
+}
+
+/* marcador de "selecionado": um pontinho que só aparece na opção ativa,
+   em vez de depender só da cor pra comunicar o estado (WCAG 1.4.1) */
+.theme-menu__option::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  margin-left: auto;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.theme-menu__option:hover,
+.theme-menu__option:focus-visible {
+  color: var(--text);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.theme-menu__option[aria-checked="true"] {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.theme-menu__option[aria-checked="true"]::after {
+  opacity: 1;
+}
+
+@media (max-width: 36rem) {
+  .topbar {
+    top: 1rem;
+    right: 1rem;
+    gap: 0.5rem;
+  }
+
+  .topbar__clock {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.75rem;
+  }
+
+  /* o botão de ícone da topbar não tem override aqui de propósito: o tamanho
+     base (--btn-size-md, 44px) já é o alvo de toque recomendado */
+
+  .theme-menu {
+    top: calc(100% + 0.5rem);
+  }
+}
+
+@media (max-width: 22rem) {
+  /* tela muito estreita: mantém só os botões, prioridade de espaço */
+  .topbar__clock {
+    display: none;
+  }
+}
+
+/* ---------- Marquee de ferramentas ---------- */
+.marquee {
+  overflow: hidden;
+  border-top: 1px solid var(--border);
+  padding-block: 2rem;
+  /* esmaece as bordas laterais para a entrada/saída ficar suave */
+  mask-image: linear-gradient(
+    to right,
+    transparent,
+    black 10%,
+    black 90%,
+    transparent
+  );
+}
+
+.marquee__track {
+  display: flex;
+  width: max-content;
+  /* a duração é recalculada via JS para manter a velocidade constante em qualquer tela */
+  animation: marquee-scroll var(--marquee-duration, 28s) linear infinite;
+}
+
+.marquee:hover .marquee__track,
+.marquee.is-paused .marquee__track {
+  animation-play-state: paused;
+}
+
+.marquee__list {
+  display: flex;
+  align-items: center;
+}
+
+.marquee__list li {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  color: var(--text-muted);
+  font-size: var(--fs-base);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+/* intercala uma ferramenta mais esmaecida */
+.marquee__list li:nth-child(even) {
+  color: color-mix(in srgb, var(--text-muted) 40%, var(--bg));
+}
+
+.marquee__list li:hover {
+  color: var(--text);
+}
+
+.marquee__list li::after {
+  content: "✦";
+  color: var(--accent);
+  font-size: 0.7em;
+  margin-inline: 1.5rem;
+}
+
+@keyframes marquee-scroll {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* ---------- Seções ---------- */
+.section {
+  padding-block: 6rem;
+  border-top: 1px solid var(--border);
+}
+
+.section__title {
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+}
+
+/* ---------- Sobre ---------- */
+.about {
+  display: grid;
+  grid-template-columns: minmax(15rem, 24rem) 1fr;
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+.about__text {
+  display: grid;
+  gap: 1.5rem;
+  max-width: 46rem;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+}
+
+.about__actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.about__socials {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* botão circular só de ícone, no mesmo idioma visual do .carousel__btn/.dock__item */
+.social-btn {
+  display: grid;
+  place-items: center;
+  width: var(--btn-size-sm);
+  height: var(--btn-size-sm);
+  border-radius: 50%;
+  border: var(--border-width) solid var(--border-interactive);
+  color: var(--text-muted);
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.social-btn svg {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+
+.social-btn:hover,
+.social-btn:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+/* ---------- Órbita de ícones ---------- */
+.orbit {
+  position: relative;
+  aspect-ratio: 1 / 1;
+  display: grid;
+  place-items: center;
+  /* o anel gira, e a CAIXA de um quadrado girado é maior que ele (a 45° fica
+     √2 ≈ 1.41x mais larga). Essa caixa invisível esticava a largura rolável da
+     página e criava rolagem horizontal fantasma no celular (WCAG 1.4.10
+     Reflow). Os chips nunca saem do quadrado da órbita — o raio que eles
+     percorrem cabe dentro dele em qualquer ângulo —, então recortar aqui não
+     esconde nada visível. */
+  overflow: hidden;
+}
+
+.orbit__avatar {
+  width: 66%;
+  aspect-ratio: 1 / 1;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    160deg,
+    color-mix(in srgb, var(--accent) 16%, var(--bg-elevated)),
+    var(--bg-elevated) 65%
+  );
+}
+
+/* a foto real entra aqui: <div class="orbit__avatar"><img ...></div> */
+.orbit__avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: inherit;
+}
+
+.orbit__ring {
+  position: absolute;
+  inset: 0;
+  animation: orbit-spin 36s linear infinite;
+}
+
+.orbit.is-paused .orbit__ring,
+.orbit.is-paused .orbit__chip {
+  animation-play-state: paused;
+}
+
+.orbit__icon {
+  position: absolute;
+  /* encolhe o raio da órbita: fica entre a metade do lado (33%) e a
+     diagonal (~47%) do quadrado, então os chips passam sobre as pontas.
+     10% (e não menos) porque é o valor em que o chip mais externo ainda
+     cabe inteiro dentro do quadrado da órbita em QUALQUER ângulo do giro —
+     medido, sobra ~2px. Isso é o que deixa o overflow:hidden da .orbit
+     (necessário contra a rolagem horizontal, ver lá) não recortar nada. */
+  inset: 10%;
+  transform: rotate(var(--a));
+}
+
+.orbit__chip {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  translate: 50% -50%;
+  display: grid;
+  place-items: center;
+  width: var(--btn-size-sm);
+  height: var(--btn-size-sm);
+  border-radius: 50%;
+  /* glass: fundo translúcido desfocando o que passa por trás */
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-chip));
+  -webkit-backdrop-filter: blur(var(--blur-chip));
+  /* tom neutro em vez do verde de destaque: são 14 marcas de ferramentas,
+     não precisam competir visualmente com os CTAs da página. Cor fixa (não
+     do tema): o chip sempre senta sobre a foto, não sobre o fundo da página */
+  color: var(--overlay-text-muted);
+  box-shadow: var(--shadow-chip);
+  /* contra-rotação: cancela o giro do anel e o ângulo do próprio ícone,
+     mantendo o conteúdo sempre em pé */
+  animation: orbit-counter 36s linear infinite;
+}
+
+/* ícone da ferramenta dentro do chip (preserva o aspecto via viewBox).
+   1.2rem em vez de --icon-size-*: só aqui o glifo escala com a fonte da
+   página (rem), não em px fixo, porque o chip inteiro é proporcional ao
+   tamanho da órbita, não um botão de UI padrão */
+.orbit__chip svg {
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+/* monograma de texto no lugar do ícone (produtos Adobe — ver nota no HTML).
+   Ocupa a mesma caixa de 1.2rem do glifo dos vizinhos, para o peso visual
+   dos chips ficar parelho */
+.orbit__mono {
+  font-size: 0.85rem;
+  font-weight: 700;
+  line-height: 1.2rem;
+  letter-spacing: -0.01em;
+}
+
+@keyframes orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes orbit-counter {
+  from {
+    transform: rotate(calc(var(--a) * -1));
+  }
+  to {
+    transform: rotate(calc(var(--a) * -1 - 360deg));
+  }
+}
+
+/* ---------- Foco em (palavras rotativas) ---------- */
+.focus {
+  border-top: 1px solid var(--border);
+  /* o padding compensa a janela maior das palavras: altura total da faixa
+     fica a mesma (~180px) */
+  padding-block: 2.5rem;
+  /* faixa com brilho verde sutil ao centro: marca a seção como divisor,
+     na mesma família visual do letreiro de ferramentas */
+  background: linear-gradient(
+    180deg,
+    var(--bg),
+    color-mix(in srgb, var(--accent) 6%, var(--bg)) 50%,
+    var(--bg)
+  );
+}
+
+.focus__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1rem 2rem;
+}
+
+/* idêntico aos itens do letreiro: mesmo tamanho, cor e tracking */
+.focus__label {
+  color: var(--text-muted);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: var(--fs-base);
+}
+
+/* janela de uma linha: esconde as palavras fora da vez.
+   1.5em de altura por fatia dá folga para descendentes (q, j, p)
+   não vazarem na fatia vizinha */
+.focus__words {
+  display: inline-block;
+  height: 1.5em;
+  overflow: hidden;
+  font-size: var(--fs-2xl);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  line-height: 1.2;
+}
+
+.focus__stack {
+  display: flex;
+  flex-direction: column;
+  animation: focus-cycle 9s ease infinite;
+}
+
+.focus.is-paused .focus__stack {
+  animation-play-state: paused;
+}
+
+.focus__stack span {
+  height: 1.5em;
+  display: flex;
+  align-items: center;
+  /* alinhadas ao início da janela: a distância até o "Foco em"
+     fica igual para todas as palavras */
+  justify-content: flex-start;
+  color: var(--text);
+}
+
+/* 4 itens (3 palavras + cópia da 1ª): cada passo sobe 25% da pilha.
+   O quadro de 100% é idêntico ao de 0%, então o reinício é invisível. */
+@keyframes focus-cycle {
+  0%,
+  26% {
+    transform: translateY(0);
+  }
+
+  33%,
+  59% {
+    transform: translateY(-25%);
+  }
+
+  66%,
+  92% {
+    transform: translateY(-50%);
+  }
+
+  100% {
+    transform: translateY(-75%);
+  }
+}
+
+/* ---------- Projetos (grid bento) ----------
+   3 colunas × 2 linhas: os cards grandes ocupam 2 colunas em diagonal
+   (superior-esquerda / inferior-direita) e os pequenos completam */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* O botão é só a área de clique/hover, e ela precisa ficar PARADA: quem
+   inclina é o __inner. Com o transform aqui, afundar uma borda encolhia a
+   projeção do próprio botão, ele saía de baixo do cursor perto da borda, o
+   :hover caía, o card voltava ao normal e entrava de novo sob o cursor —
+   piscando entre inclinado e reto. */
+.project-card {
+  position: relative;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+  background: none;
+  border: 0;
+  border-radius: var(--radius);
+  /* posição do ponteiro dentro do card, de -1 (esquerda/topo) a 1
+     (direita/base). O JS escreve os dois números no pointermove e elas
+     descem para o __inner por herança; sem ele ficam em 0 e o card não
+     inclina. Ver montagem em main.js. */
+  --mx: 0;
+  --my: 0;
+  --lift: 0px;
+}
+
+.project-card__inner {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: var(--bg-elevated);
+  border: var(--border-width) solid transparent;
+  border-radius: var(--radius);
+  /* a borda por onde o ponteiro passa afunda: rotaciona no sentido oposto ao
+     lado em que ele está, como se o cursor empurrasse o card. A perspectiva
+     fica no próprio transform (não no pai), então cada card tem o seu ponto
+     de fuga e o conteúdo — imagem inclusive — é projetado junto. */
+  transform: perspective(1000px) translateY(var(--lift))
+    rotateX(calc(var(--my) * -4deg)) rotateY(calc(var(--mx) * 4deg));
+  transition:
+    transform 0.2s ease-out,
+    border-color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+/* o card grande define a altura da linha; os pequenos esticam junto */
+.project-card--lg {
+  grid-column: span 2;
+  aspect-ratio: 16 / 10;
+}
+
+/* o levantamento entra como variável para somar à inclinação, em vez de
+   sobrescrever o transform inteiro */
+.project-card:hover,
+.project-card:focus-visible {
+  --lift: -4px;
+}
+
+/* no hover quem dá o retorno visual é a inclinação; só o foco por teclado
+   ainda acende a borda, junto do outline */
+.project-card:focus-visible .project-card__inner {
+  border-color: var(--accent);
+}
+
+.project-card:focus-visible {
+  outline: var(--focus-width) solid var(--accent);
+  outline-offset: 2px;
+}
+
+.project-card__media {
+  position: absolute;
+  /* 4px maior que o card em todo o contorno: cobre a sobra do translate de
+     parallax abaixo sem precisar de scale (esse excedente é fixo, não um
+     zoom de hover). */
+  inset: -4px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--accent) 18%, var(--bg-elevated)),
+    var(--bg-elevated) 60%
+  );
+  /* acompanha o ponteiro alguns pixels a mais que o card: a imagem parece
+     estar num plano à frente do fundo, o que dá profundidade à inclinação. */
+  translate: calc(var(--mx) * 4px) calc(var(--my) * 4px);
+  transition: translate 0.2s ease-out;
+}
+
+/* a imagem real entra aqui: <span class="project-card__media"><img ...></span> */
+.project-card__media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* nome + descrição: aparecem no hover/foco */
+.project-card__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, transparent 35%, var(--scrim-strong));
+  transition: background 0.3s ease;
+}
+
+/* no hover/foco a descrição e o CTA se revelam por cima da imagem — a
+   vinheta escurece e sobe mais pra garantir contraste de leitura mesmo
+   sobre imagens claras */
+.project-card:hover .project-card__overlay,
+.project-card:focus-visible .project-card__overlay,
+.fan__card--main:hover .project-card__overlay,
+.fan__card--main:focus-visible .project-card__overlay {
+  background: linear-gradient(180deg, transparent 10%, var(--scrim-strong) 55%, rgb(0 0 0 / 0.92));
+}
+
+.project-card__name {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  /* sempre sobre o scrim escuro do overlay — cor fixa, não a do tema */
+  color: var(--overlay-text);
+}
+
+/* tags do projeto: mesmo "glass" dos chips da órbita, sempre visíveis */
+.project-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--blur-chip));
+  -webkit-backdrop-filter: blur(var(--blur-chip));
+  /* sempre sobre o scrim escuro do overlay — cor fixa, não a do tema */
+  color: var(--overlay-text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+/* descrição e CTA ficam recolhidos; expandem no hover/foco do card */
+.project-card__desc {
+  /* sempre sobre o scrim escuro do overlay — cor fixa, não a do tema */
+  color: var(--overlay-text-muted);
+  font-size: var(--fs-sm);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.project-card:hover .project-card__desc,
+.project-card:focus-visible .project-card__desc {
+  /* folga extra além do necessário: evita cortar texto quando o usuário
+     aumenta o espaçamento de linha/parágrafo (WCAG 1.4.12 Text Spacing) */
+  max-height: 10rem;
+  opacity: 1;
+}
+
+/* convite explícito ao clique, na cor de interação do site */
+.project-card__cta {
+  /* sempre sobre o scrim escuro do overlay — cor fixa, não a do tema */
+  color: var(--overlay-accent);
+  font-weight: 600;
+  font-size: var(--fs-sm);
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+}
+
+.project-card:hover .project-card__cta,
+.project-card:focus-visible .project-card__cta {
+  max-height: 3rem;
+  opacity: 1;
+}
+
+/* ---------- Playground (recursos externos) ---------- */
+.playground__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.playground-card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem;
+  background: var(--bg-elevated);
+  border: var(--border-width) solid var(--border-interactive);
+  border-radius: var(--radius);
+  color: var(--text);
+  transition: transform 0.25s ease, border-color 0.3s ease;
+}
+
+.playground-card:hover,
+.playground-card:focus-visible {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+/* Variante com um link extra dentro da descrição (crédito de colega) além do
+   link principal do projeto: dois links dentro do mesmo card não podem ser
+   dois <a> aninhados (HTML inválido — o parser fecharia o <a> de fora
+   assim que encontrasse o de dentro). Por isso aqui o card é um <div>, e o
+   próprio título vira o <a> "esticado" (::after cobrindo o card inteiro via
+   position:relative + inset:0), enquanto o link do nome fica por cima dele
+   (position:relative + z-index:1) — os dois continuam clicáveis e por
+   teclado, sem link aninhado em link. */
+.playground-card--linked {
+  position: relative;
+}
+
+.playground-card__link::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+/* o card é um <div>, então não recebe foco: quem recebe são os links de
+   dentro. :has() repassa o destaque pro card quando QUALQUER link dele está
+   focado por teclado (título ou nome do colega), reproduzindo o mesmo retorno
+   visual que os outros cards têm via :focus-visible. Usa :focus-visible (e
+   não :focus-within) pra manter a convenção do site: destaque de foco só na
+   navegação por teclado, não no clique de mouse. */
+.playground-card--linked:has(a:focus-visible) {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+/* link do nome do colega, dentro de __desc: sublinhado (mesmo padrão dos
+   links em texto corrido do site — ver .project-modal__text a) e acima do
+   ::after esticado do título, senão ficaria inacessível ao clique */
+.playground-card__desc a {
+  position: relative;
+  z-index: 1;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-interactive);
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.playground-card__desc a:hover,
+.playground-card__desc a:focus-visible {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+.playground-card__icon {
+  display: grid;
+  place-items: center;
+  width: var(--btn-size-md);
+  height: var(--btn-size-md);
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+  color: var(--accent);
+}
+
+.playground-card__icon svg {
+  width: var(--icon-size-md);
+  height: var(--icon-size-md);
+}
+
+.playground-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+  min-width: 0;
+}
+
+.playground-card__title {
+  font-weight: 600;
+  font-size: var(--fs-base);
+}
+
+.playground-card__desc {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.playground-card__arrow {
+  margin-left: auto;
+  flex-shrink: 0;
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.playground-card:hover .playground-card__arrow,
+.playground-card:focus-visible .playground-card__arrow,
+.playground-card--linked:has(a:focus-visible) .playground-card__arrow {
+  color: var(--accent);
+  transform: translate(2px, -2px);
+}
+
+/* ---------- Depoimentos ---------- */
+/* carrossel: viewport com scroll-snap, setas laterais e dots */
+.carousel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.carousel__viewport {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  /* esconde a barra de rolagem sem desabilitar o scroll */
+  scrollbar-width: none;
+}
+
+.carousel__viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel__slide {
+  /* position:relative dá um bloco de contenção pros filhos absolutos (ex.: o
+     texto .sr-only "abre em nova guia" dentro do link do depoimento). Sem
+     isso, esse span de 1px do slide FORA da tela (o 2º depoimento, à espera
+     do scroll) escapava do clip do carrossel e criava rolagem horizontal
+     fantasma na página inteira no mobile. */
+  position: relative;
+  flex: 0 0 100%;
+  scroll-snap-align: center;
+  display: flex;
+  justify-content: center;
+  /* padding lateral para a sombra/borda do card não cortar no overflow */
+  padding-inline: 2px;
+}
+
+.carousel__slide .testimonial {
+  width: 100%;
+}
+
+/* cluster de navegação sob o carrossel: ‹ dots › */
+.carousel__nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.carousel__btn {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: var(--btn-size-sm);
+  height: var(--btn-size-sm);
+  padding: 0;
+  cursor: pointer;
+  border: var(--border-width) solid var(--border-interactive);
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  transition: border-color 0.3s ease, color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.carousel__btn svg {
+  width: var(--icon-size-sm);
+  height: var(--icon-size-sm);
+}
+
+.carousel__btn:hover,
+.carousel__btn:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.carousel__dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.carousel__dot {
+  width: 8px;
+  height: 8px;
+  padding: 0;
+  border: none;
+  border-radius: var(--radius-pill);
+  background: var(--border-interactive);
+  cursor: pointer;
+  transition: background-color 0.2s ease, width 0.2s ease;
+}
+
+.carousel__dot.is-active {
+  width: 20px;
+  background: var(--accent);
+}
+
+.testimonial {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: var(--bg-elevated);
+  border: var(--border-width) solid var(--border-interactive);
+  border-radius: var(--radius);
+}
+
+.testimonial blockquote {
+  color: var(--text-muted);
+  /* --fs-xl é fluido e já passa de 32px em telas >480px; --fs-lg (20px fixo)
+     é o único tamanho da escala que fica sempre entre 20-32px */
+  font-size: var(--fs-lg);
+  line-height: 1.7;
+}
+
+/* aspas decorativas em verde */
+.testimonial blockquote::before {
+  content: "\201C";
+  display: block;
+  font-size: 3em;
+  line-height: 1;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.testimonial figcaption {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.testimonial__name {
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.testimonial__name:hover,
+.testimonial__name:focus-visible {
+  color: var(--accent);
+}
+
+.testimonial__role {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+/* ---------- Contato ---------- */
+.section--center {
+  text-align: center;
+}
+
+.contact__text {
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+  max-width: 40rem;
+  margin-inline: auto;
+  margin-bottom: 3rem;
+}
+
+.contact__email {
+  display: inline-block;
+  /* o e-mail nunca quebra em duas linhas: partir um endereço no meio
+     atrapalha a leitura e a seleção pra copiar. Em vez de quebrar, a fonte
+     encolhe até ele caber inteiro numa linha só.
+     O divisor 10.7 é a largura do texto em múltiplos do font-size (medido
+     nesta fonte/peso, já contando o letter-spacing negativo): com
+     largura = 10.7 × fonte, isolar a fonte dá (espaço disponível) / 10.7.
+     Os 72px descontados cobrem as margens do .container (3rem) mais a barra
+     de rolagem e uma folga. --fs-2xl segue sendo o teto no desktop. */
+  font-size: min(var(--fs-2xl), calc((100vw - 72px) / 10.7));
+  white-space: nowrap;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 3rem;
+  transition: color 0.2s ease;
+}
+
+.contact__email:hover,
+.contact__email:focus-visible {
+  color: var(--accent);
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* ---------- Modal de projeto ---------- */
+.project-modal {
+  width: 100vw;
+  height: 100dvh;
+  max-width: 100vw;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.project-modal[open] {
+  animation: modal-in 0.25s ease;
+}
+
+@keyframes modal-in {
+  from {
+    opacity: 0;
+  }
+}
+
+.project-modal__close {
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  /* sem isso, qualquer elemento do case com transform (ex.: as fotos
+     giradas de .case-timeline__figure) cria seu próprio contexto de
+     empilhamento e, por vir depois no HTML, pinta por cima do botão fixo
+     — mesmo ele sendo "fixed". Um z-index alto aqui garante que o botão de
+     fechar fique sempre acima de qualquer conteúdo do modal, não importa
+     a ordem no DOM. */
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: var(--btn-size-lg);
+  height: var(--btn-size-lg);
+  padding: 0;
+  cursor: pointer;
+  border: var(--border-width) solid var(--border-interactive);
+  border-radius: 50%;
+  background: var(--bg-elevated);
+  color: var(--text);
+  transition:
+    border-color 0.3s ease,
+    color 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.project-modal__close:hover,
+.project-modal__close:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.project-modal__close svg {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+
+.project-modal__content {
+  padding-block: 6rem;
+  display: grid;
+  gap: 1rem;
+}
+
+/* Centraliza o bloco de conteúdo do case na tela: a área do conteúdo continua
+   com a largura do container (não muda) e os textos seguem alinhados à
+   esquerda; só a coluna de leitura (limitada a 46rem) deixa de encostar na
+   borda esquerda e passa a ficar no centro. width:100% faz cada bloco preencher
+   até o próprio max-width (46rem) em vez de encolher no texto — assim as bordas
+   esquerdas de todos os blocos coincidem numa coluna só — e margin-inline:auto
+   joga essa coluna pro centro. Figuras full-bleed (hero, max-width:none) seguem
+   ocupando toda a largura, porque aí a margem automática vira zero. */
+.project-modal__content > *,
+.project-modal__body > * {
+  width: 100%;
+  margin-inline: auto;
+}
+
+.project-modal__kicker {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: var(--fs-sm);
+  max-width: 46rem;
+}
+
+.project-modal__title {
+  font-size: var(--fs-2xl);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  max-width: 46rem;
+}
+
+.project-modal__text {
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+  max-width: 46rem;
+}
+
+/* conteúdo dinâmico (placeholder curto ou clone de <template id="case-*">,
+   ver openProject em main.js) — mesmo ritmo de --gap do .project-modal__content
+   pai, mas isolado num container próprio pra poder ser trocado inteiro via JS */
+.project-modal__body {
+  display: grid;
+  gap: 1rem;
+}
+
+/* título de seção dentro do estudo de caso (Contexto, Pesquisa, Escopo…).
+   Maior que o corpo (--fs-lg/20px) pra criar hierarquia clara de heading —
+   antes empatava com o texto e não se destacava. Fica abaixo do título do
+   modal (--fs-2xl) e da barra de seções (--fs-xl). */
+.project-modal__heading {
+  font-size: clamp(1.5rem, 1.25rem + 1vw, 1.875rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+  max-width: 46rem;
+  margin-top: 1.5rem;
+}
+
+.project-modal__list {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 46rem;
+  padding-left: 1.25rem;
+}
+
+.project-modal__list li {
+  color: var(--text-muted);
+  font-size: var(--fs-lg);
+  list-style: disc;
+}
+
+.project-modal__list strong {
+  color: var(--text);
+}
+
+/* faixa de metadados do case (Categoria / Papel / Duração) */
+.project-modal__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem 2.5rem;
+  padding-block: 1.5rem;
+  border-block: var(--border-width) solid var(--border);
+  max-width: 46rem;
+}
+
+.project-modal__meta-item dt {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+}
+
+.project-modal__meta-item dd {
+  color: var(--text);
+  font-size: var(--fs-base);
+  font-weight: 600;
+}
+
+.project-modal__image {
+  max-width: 46rem;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: var(--border-width) solid var(--border);
+}
+
+.project-modal__image img {
+  width: 100%;
+  display: block;
+}
+
+/* imagem de abertura do case, logo abaixo do título: ocupa toda a largura do
+   overlay (as demais figuras ficam limitadas a 46rem, junto com o texto) */
+.project-modal__image--hero {
+  max-width: none;
+  margin-bottom: 0.5rem;
+}
+
+.project-modal__image--hero img {
+  width: 100%;
+}
+
+/* galeria de telas em sequência (ex.: o fluxo de compartilhamento do Nebula):
+   colunas que se ajustam à largura disponível e colapsam pra 1 no mobile,
+   mantendo a mesma largura total das demais figuras do case (46rem) */
+.project-modal__gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr));
+  gap: 1rem;
+  max-width: 46rem;
+}
+
+.project-modal__gallery .project-modal__image {
+  max-width: none;
+  margin: 0;
+}
+
+/* links dentro do texto do case (fontes citadas, ferramentas). Mesma
+   linguagem visual do .site-footer__link — o reset global tira sublinhado
+   e cor de <a>, então o link precisa recuperar os dois pra ser reconhecível */
+.project-modal__text a,
+.project-modal__list a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-interactive);
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.project-modal__text a:hover,
+.project-modal__text a:focus-visible,
+.project-modal__list a:hover,
+.project-modal__list a:focus-visible {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+/* player do protótipo (iframe do Figma). Fica em destaque: quebra a largura da
+   coluna de leitura (46rem) e ocupa até 50% da largura da tela — este base é o
+   protótipo de celular (DigiDoc), proporção 10/19; a altura acompanha a
+   proporção. Centraliza na tela mesmo quando fica mais largo que o container:
+   `margin-inline: 0` cancela a centralização automática herdada de
+   `.project-modal__body > *` (senão ela + o translate empurrariam o bloco pro
+   lado), e `left: 50%` + `translateX(-50%)` centram pelo centro do container,
+   que já coincide com o centro da tela. */
+.project-modal__embed {
+  /* largura pela proporção 10/19 (celular), limitada por dois tetos: 50% da
+     largura da tela E uma altura de 82vh pra caber na viewport (senão um
+     celular a 50vw ficaria altíssimo). `82vh * 10/19` é a largura que deixa a
+     altura exatamente em 82vh, então a proporção nunca distorce. */
+  width: min(50vw, calc(82vh * 10 / 19));
+  aspect-ratio: 10 / 19;
+  margin-inline: 0;
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: var(--border-width) solid var(--border-interactive);
+  background: var(--bg-elevated);
+}
+
+/* protótipos de desktop/web (DestinoIdeal, Nebula): até 70% da largura da tela,
+   proporção 16/10 (herdam o breakout e a centralização do base acima) */
+.project-modal__embed--wide {
+  width: min(70vw, calc(82vh * 16 / 10));
+  aspect-ratio: 16 / 10;
+}
+
+/* na coluna única (mobile) o protótipo pode ocupar quase toda a largura */
+@media (max-width: 52rem) {
+  .project-modal__embed {
+    width: min(92vw, calc(82vh * 10 / 19));
+  }
+
+  .project-modal__embed--wide {
+    width: min(92vw, calc(82vh * 16 / 10));
+  }
+
+  /* menos respiro vertical no case dentro do modal — o topo ainda passa
+     folgado do botão de fechar (fixo no canto) */
+  .project-modal__content {
+    padding-block: 5rem 3rem;
+  }
+}
+
+.project-modal__embed iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* linha de botões de ação do case (abrir protótipo/arquivo) */
+.project-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 0.5rem;
+  max-width: 46rem;
+}
+
+/* ---------- Grade de hipóteses de pesquisa (case DigiDoc) ----------
+   No material original cada hipótese vinha com um gráfico de rosca mostrando
+   um único percentual. Aqui o dado é reconstruído em card, com o token de
+   destaque do site: veredito, o número que sustenta a conclusão e a crença
+   original — assim o resultado ganha peso visual, acompanha os 3 temas e
+   continua sendo texto (traduzível e legível por leitor de tela). */
+.hypothesis-grid {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 46rem;
+  margin-top: 0.5rem;
+}
+
+.hypothesis {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  padding: 1.25rem;
+  background: var(--bg-elevated);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+}
+
+/* o veredito nunca depende só da cor: o próprio rótulo diz
+   "Validada"/"Invalidada" (WCAG 1.4.1) */
+.hypothesis__verdict {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.hypothesis__verdict--valid {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 14%, transparent);
+}
+
+.hypothesis__verdict--invalid {
+  color: var(--text-muted);
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+}
+
+.hypothesis__stat {
+  color: var(--accent);
+  font-size: var(--fs-xl);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+
+.hypothesis__finding {
+  font-size: var(--fs-base);
+}
+
+/* usado quando a conclusão não tem um percentual único (hipótese 5) */
+.hypothesis__finding strong {
+  color: var(--accent);
+}
+
+/* a crença original, separada do resultado; margin-top auto alinha o bloco
+   no rodapé do card mesmo com textos de alturas diferentes */
+.hypothesis__belief {
+  width: 100%;
+  margin-top: auto;
+  padding-top: 0.75rem;
+  border-top: var(--border-width) solid var(--border);
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-style: italic;
+}
+
+.hypothesis__note {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+@media (max-width: 36rem) {
+  .hypothesis-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* nota final do case (ex.: "Projeto em andamento.") */
+.project-modal__note {
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+  font-style: italic;
+  /* mesma medida (46rem) do corpo do case pra ficar na coluna central da
+     página, com o texto à esquerda — em vez de esticar até a borda do
+     container (o .project-modal__body > * dá width:100% + margin-inline:auto,
+     então o max-width abaixo é o que centraliza o bloco) */
+  max-width: 46rem;
+}
+
+/* ---------- Linha do tempo de case (só no case Meu Crediário) ----------
+   Trilho vertical CENTRAL com marcos alternando esquerda/direita (zigue-zague),
+   inspirado na infografia original. Cada marco tem um painel de texto de um
+   lado e, do outro, as imagens/logos "jogados" (pequenos, girados e sobrepostos,
+   como fotos espalhadas). Imagens propositalmente pequenas e não amplináveis,
+   por privacidade do Meu Crediário. Reaproveita os tokens do site. */
+.case-timeline {
+  list-style: none;
+  position: relative;
+  max-width: 60rem;
+  margin: 1.5rem auto 0;
+  padding: 0;
+}
+
+/* trilho central */
+.case-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: 50%;
+  width: var(--border-width);
+  background: var(--border);
+  transform: translateX(-50%);
+}
+
+.case-timeline__item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 3.5rem;
+  align-items: start;
+  margin-bottom: 3.5rem;
+}
+
+/* ponto do marco, no trilho central */
+.case-timeline__item::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 4px var(--bg);
+  transform: translateX(-50%);
+  z-index: 2;
+}
+
+/* alterna os lados: ímpar = texto à esquerda / imagens à direita; par troca */
+.case-timeline__panel {
+  grid-column: 1;
+  background: var(--bg-elevated);
+  border: var(--border-width) solid var(--border);
+  border-radius: var(--radius);
+  padding: 1.25rem 1.5rem;
+}
+
+.case-timeline__side {
+  grid-column: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.case-timeline__item:nth-child(even) .case-timeline__panel {
+  grid-column: 2;
+}
+
+.case-timeline__item:nth-child(even) .case-timeline__side {
+  grid-column: 1;
+  grid-row: 1;
+  align-items: flex-end;
+}
+
+.case-timeline__year {
+  display: block;
+  color: var(--accent);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 0.5rem;
+}
+
+.case-timeline__title {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.75rem;
+}
+
+.case-timeline__list {
+  display: grid;
+  gap: 0.4rem;
+  padding-left: 1.25rem;
+}
+
+.case-timeline__list li {
+  color: var(--text-muted);
+  font-size: var(--fs-base);
+  list-style: disc;
+}
+
+/* pilha de "fotos jogadas": pequenas, giradas e sobrepostas. nowrap mantém
+   todas numa única fileira sobreposta (nenhuma cai pra baixo das outras); a
+   pilha se sobrepõe pela margem negativa das figuras e, quando há muitas
+   imagens, transborda pro lado de fora do trilho — o mesmo lado "de fora" da
+   coluna, sem invadir o texto nem o trilho central. */
+.case-timeline__media {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  padding-top: 0.5rem;
+}
+
+.case-timeline__figure {
+  --rot: 0deg;
+  /* a figura encolhe pra dimensão da imagem (que respeita a proporção,
+     ver regra da <img> abaixo) — nada de aspect-ratio fixo que cortaria */
+  flex: 0 0 auto;
+  margin: 0.5rem 0 0.5rem -2rem;
+  overflow: hidden;
+  border-radius: 6px;
+  /* moldura branca de "foto" (fixa, não do tema) + sombra pra descolar da pilha */
+  border: 4px solid #fff;
+  box-shadow: var(--shadow-photo);
+  background: #fff;
+  transform: rotate(var(--rot));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  /* iOS: sem menu de "salvar imagem" no toque longo */
+  -webkit-touch-callout: none;
+}
+
+/* a primeira de cada lado não recua (não há nada pra sobrepor) */
+.case-timeline__media .case-timeline__figure:first-child {
+  margin-left: 0;
+}
+
+/* espalhamento: giro e deslocamento vertical variados por posição */
+.case-timeline__figure:nth-child(5n + 1) {
+  --rot: -5deg;
+}
+.case-timeline__figure:nth-child(5n + 2) {
+  --rot: 3deg;
+  margin-top: 1.4rem;
+}
+.case-timeline__figure:nth-child(5n + 3) {
+  --rot: -2deg;
+  margin-top: 0.2rem;
+}
+.case-timeline__figure:nth-child(5n + 4) {
+  --rot: 6deg;
+  margin-top: 1rem;
+}
+.case-timeline__figure:nth-child(5n + 5) {
+  --rot: -3deg;
+  margin-top: 1.8rem;
+}
+
+.case-timeline__figure img {
+  display: block;
+  /* proporção original preservada: a imagem inteira aparece, nada é cortado.
+     Os dois limites juntos deixam prints largos (desktop) limitados pela
+     largura e telas altas (mobile) pela altura, mantendo todas com um peso
+     visual parecido — e bem menores que os originais, por privacidade. */
+  width: auto;
+  height: auto;
+  max-width: 13rem;
+  max-height: 15rem;
+  /* privacidade: sem clique/arraste/menu de contexto na imagem — não abre em
+     nova guia nem salva; o alvo do clique passa a ser a moldura, não a <img> */
+  pointer-events: none;
+  user-select: none;
+}
+
+/* leve destaque no hover: endireita e sobe um pouco, SEM ampliar (mantém a
+   imagem pequena de propósito). z-index tira a foto de baixo da pilha */
+.case-timeline__figure:hover,
+.case-timeline__figure:focus-within {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: var(--shadow-photo-raised);
+  z-index: 6;
+}
+
+/* logos das ferramentas: tiles brancos pequenos (visíveis nos 3 temas),
+   também levemente girados pra combinar com as fotos jogadas */
+.case-timeline__tools {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  padding-top: 0.25rem;
+}
+
+.case-timeline__logo {
+  display: grid;
+  place-items: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 10px;
+  background: #ffffff;
+  border: 3px solid #fff;
+  box-shadow: var(--shadow-chip);
+  transform: rotate(-3deg);
+}
+
+.case-timeline__logo:nth-child(even) {
+  transform: rotate(4deg);
+}
+
+.case-timeline__logo img {
+  max-width: 64%;
+  max-height: 64%;
+  pointer-events: none;
+  user-select: none;
+}
+
+/* agradecimentos no fim do case: centralizado sob a linha do tempo (só aqui —
+   o seletor de irmão adjacente não alcança a nota dos outros cases) */
+.case-timeline + .project-modal__note {
+  text-align: left;
+  max-width: 46rem;
+  margin-inline: auto;
+  margin-top: 1rem;
+}
+
+/* Abaixo de 60rem (a própria largura máxima da linha do tempo) o layout de
+   duas colunas fica estreito demais pra pilha de fotos numa fileira só —
+   colapsa pra coluna única com o trilho à esquerda, e aí as fotos podem
+   quebrar em mais de uma fileira (flex-wrap), já que a largura total é curta. */
+@media (max-width: 60rem) {
+  .case-timeline {
+    max-width: none;
+    margin-top: 1rem;
+  }
+
+  .case-timeline::before {
+    left: 0.4rem;
+  }
+
+  .case-timeline__item {
+    grid-template-columns: 1fr;
+    column-gap: 0;
+    padding-left: 1.75rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .case-timeline__item::before {
+    left: 0.4rem;
+  }
+
+  .case-timeline__panel,
+  .case-timeline__item:nth-child(even) .case-timeline__panel,
+  .case-timeline__side,
+  .case-timeline__item:nth-child(even) .case-timeline__side {
+    grid-column: 1;
+    grid-row: auto;
+    align-items: flex-start;
+  }
+
+  /* numa coluna estreita, a fileira única transbordaria a tela — deixa
+     quebrar (nesse layout as fotos ficam empilhadas mesmo, é o esperado) */
+  .case-timeline__media {
+    flex-wrap: wrap;
+  }
+}
+
+/* trava o scroll da página enquanto o modal está aberto */
+body:has(dialog[open]) {
+  overflow: hidden;
+}
+
+/* ---------- Cursor customizado (ponto + anel) ---------- */
+/* a classe é aplicada via JS só quando o follower está ativo,
+   então nunca ficamos sem cursor se o script falhar */
+.has-custom-cursor,
+.has-custom-cursor * {
+  cursor: none !important;
+}
+
+.cursor-dot,
+.cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  opacity: 0;
+}
+
+.cursor-dot {
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px;
+  background: var(--accent);
+  z-index: 102;
+  transition: scale 0.2s ease, opacity 0.2s ease;
+}
+
+/* estados do ponto na variante "trail" (sem anel, o próprio ponto reage) */
+.cursor-dot--hover {
+  scale: 2;
+}
+
+.cursor-dot--down {
+  scale: 1.3;
+}
+
+/* partículas do rastro (variante "trail"): tamanho e opacidade
+   individuais definidos inline pelo JS */
+.cursor-trail {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  background: var(--accent);
+  pointer-events: none;
+  opacity: 0;
+  z-index: 101;
+  /* centraliza a partícula no ponto, independente do tamanho dela */
+  transform: translate(-50%, -50%);
+}
+
+.cursor-trail.is-visible {
+  opacity: var(--trail-opacity, 0.5);
+}
+
+.cursor-ring {
+  width: 36px;
+  height: 36px;
+  margin: -18px 0 0 -18px;
+  border: 1.5px solid color-mix(in srgb, var(--accent) 60%, transparent);
+  z-index: 101;
+  transition: scale 0.25s ease, border-color 0.25s ease,
+    background-color 0.25s ease, opacity 0.2s ease;
+}
+
+.cursor-dot.is-visible,
+.cursor-ring.is-visible {
+  opacity: 1;
+}
+
+/* sobre elementos interativos o anel cresce e ganha preenchimento */
+.cursor-ring--hover {
+  scale: 1.5;
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+}
+
+.cursor-ring--down {
+  scale: 0.85;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--border);
+  /* respiro extra embaixo para a dock não cobrir o texto */
+  padding-block: 2rem 7rem;
+  color: var(--text-muted);
+  font-size: var(--fs-sm);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+}
+
+.site-footer__a11y {
+  text-align: right;
+}
+
+@media (max-width: 30rem) {
+  .site-footer__inner {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .site-footer__a11y {
+    text-align: left;
+  }
+}
+
+.site-footer__link {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-interactive);
+  text-underline-offset: 2px;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+
+.site-footer__link:hover,
+.site-footer__link:focus-visible {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+/* ---------- Dock de navegação (menu bottom) ---------- */
+.dock {
+  position: fixed;
+  left: 50%;
+  bottom: 1.5rem;
+  translate: -50% 0;
+  z-index: 20;
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border-radius: var(--radius-pill);
+  border: var(--border-width) solid var(--border-interactive);
+  background: color-mix(in srgb, var(--bg-elevated) 80%, transparent);
+  backdrop-filter: blur(var(--blur-panel));
+  -webkit-backdrop-filter: blur(var(--blur-panel));
+  box-shadow: var(--shadow-panel);
+}
+
+/* botões circulares só de ícone, como na referência */
+.dock__item {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--btn-size-lg);
+  height: var(--btn-size-lg);
+  border-radius: 50%;
+  /* tingido pela cor de texto do próprio tema, não branco fixo: no tema
+     claro um branco a 6% seria quase invisível sobre um fundo já claro */
+  background: color-mix(in srgb, var(--text) 6%, transparent);
+  color: var(--text-muted);
+  transition: color 0.2s ease, background-color 0.2s ease;
+}
+
+/* o nome da seção vira tooltip acima do ícone no hover/foco */
+.dock__item span {
+  position: absolute;
+  bottom: calc(100% + 0.5rem);
+  left: 50%;
+  translate: -50% 4px;
+  padding: 0.25rem 0.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, translate 0.2s ease,
+    background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+.dock__item:hover span,
+.dock__item:focus-visible span {
+  opacity: 1;
+  translate: -50% 0;
+}
+
+.dock__item svg {
+  width: var(--icon-size-lg);
+  height: var(--icon-size-lg);
+}
+
+.dock__item:hover,
+.dock__item:focus-visible {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--text) 12%, transparent);
+}
+
+.dock__item.is-active {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 18%, transparent);
+}
+
+@media (max-width: 36rem) {
+  .dock {
+    gap: 0.5rem;
+  }
+
+  .dock__item {
+    width: var(--btn-size-md);
+    height: var(--btn-size-md);
+  }
+}
+
+/* ---------- Animação de reveal no scroll ----------
+   O deslocamento usa a propriedade translate, não transform: assim ele se
+   compõe com o transform próprio do elemento (a inclinação 3D do card de
+   projeto, o levantamento no hover) em vez de sobrescrevê-lo — .reveal.is-
+   visible vem depois no arquivo e ganharia a disputa com transform: none. */
+.reveal {
+  opacity: 0;
+  translate: 0 24px;
+  transition:
+    opacity 0.6s ease,
+    translate 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  translate: none;
+}
+
+/* ==================================================================
+   Responsivo — tablet e celular.
+   Fica no FIM do arquivo de propósito: várias regras aqui sobrescrevem
+   grid/aspect de componentes definidos mais acima (.projects, .about,
+   .playground__grid, .project-card…) e, com a mesma especificidade, quem
+   vem por último no arquivo vence — então precisa estar depois deles.
+   ================================================================== */
+
+/* ---------- Tablet e celular (≤ 56rem) ----------
+   Abaixo do layout de 2 colunas do hero, o site vira uma coluna só. */
+@media (max-width: 56rem) {
+  .hero {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    min-height: auto;
+    padding-block: 5rem 3rem;
+  }
+
+  /* o leque de projetos é uma interação de hover/mouse — some no
+     tablet/celular (só faz sentido no desktop) pra priorizar o texto */
+  .hero__fan {
+    display: none;
+  }
+
+  /* sobre: foto acima do texto (ordem natural do DOM), ambos em largura
+     total, um sob o outro */
+  .about {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .about__visual {
+    max-width: 30rem;
+    margin-inline: auto;
+    width: 100%;
+  }
+
+  .about__text {
+    max-width: none;
+  }
+
+  /* projetos e links de lab: um por linha, ocupando a largura toda */
+  .projects,
+  .playground__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-card,
+  .project-card--lg {
+    grid-column: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  /* seções mais compactas verticalmente no toque */
+  .section {
+    padding-block: 4rem;
+  }
+}
+
+/* ---------- Celular (≤ 36rem) ---------- */
+@media (max-width: 36rem) {
+  /* card de projeto mais alto no celular, pra caber nome/tags/descrição/CTA
+     do overlay com folga sobre a imagem */
+  .project-card,
+  .project-card--lg {
+    aspect-ratio: 4 / 3;
+  }
+
+  /* ícone do card de lab some no celular — o texto ganha a largura toda */
+  .playground-card__icon {
+    display: none;
+  }
+
+  .playground-card {
+    padding: 1.1rem 1.25rem;
+  }
+}
+
+/* sem hover (touch): nome, descrição e CTA ficam sempre visíveis, e a
+   vinheta escura já entra no estado "aberto" (mais forte) pra garantir
+   contraste de leitura, já que o conteúdo não espera mais o hover */
+@media (hover: none) {
+  .project-card__desc,
+  .project-card__cta {
+    max-height: 10rem;
+    opacity: 1;
+  }
+
+  .project-card__overlay,
+  .fan__card--main .project-card__overlay {
+    background: linear-gradient(
+      180deg,
+      transparent 8%,
+      var(--scrim-strong) 52%,
+      rgb(0 0 0 / 0.92)
+    );
+  }
+
+  /* descrição vira teaser de até 3 linhas — evita textos longos estourarem
+     o card e mantém o overlay limpo */
+  .project-card__desc {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  /* troca de tema instantânea em vez de fade suave */
+  *,
+  *::before,
+  *::after {
+    transition: none;
+  }
+
+  .carousel__viewport {
+    scroll-behavior: auto;
+  }
+
+  .reveal {
+    opacity: 1;
+    translate: none;
+    transition: none;
+  }
+
+  .button,
+  .project-card,
+  .project-card__inner,
+  .project-card__media,
+  .project-card__desc,
+  .project-card__cta,
+  .fan__card,
+  .fan__card::after {
+    transition: none;
+  }
+
+  .marquee__track {
+    animation: none;
+  }
+
+  .project-modal[open] {
+    animation: none;
+  }
+
+  .orbit__ring,
+  .orbit__chip,
+  .focus__stack {
+    animation: none;
+  }
+
+  /* sem animação, mantém os ícones em pé com contra-rotação estática */
+  .orbit__chip {
+    transform: rotate(calc(var(--a) * -1));
+  }
+}
