@@ -313,42 +313,32 @@ button:focus-visible,
   border-radius: inherit;
 }
 
-/* ângulos e empilhamento. Leque de 4 cartas, simétrico em torno de 0deg nos DOIS
-   estados: os pares espelham o mesmo ângulo pra cada lado (-9/-3/+3/+9 fechado,
-   -21/-7/+7/+21 aberto). Como são 4 (par), não há carta exatamente no centro —
-   a principal (por cima, z-index mais alto) fica na casa interna a +3deg, quase
-   reta. Fechado: quase um baralho, cartas bem próximas. Aberto (hover): abre de
-   verdade, como uma mão de cartas — a diferença grande entre os dois estados é o
-   que faz o hover parecer uma abertura, não só um leve ajuste. ~21deg é o máximo
-   que cabe sem estourar a tela nem invadir o texto na largura mais apertada do
-   layout de 2 colunas (~1330px). ESTES VALORES ESPELHAM os de SLOTS em main.js —
-   se um mudar, o outro precisa acompanhar. */
+/* ângulos e empilhamento. Leque de 3 cartas, simétrico em torno de 0deg nos DOIS
+   estados: a carta central (2ª) fica reta e por cima (z-index mais alto), e as
+   laterais espelham o mesmo ângulo pra cada lado (-8/0/+8 fechado, -18/0/+18
+   aberto). Fechado: quase um baralho, cartas bem próximas. Aberto (hover): abre
+   de verdade, como uma mão de cartas — a diferença grande entre os dois estados é
+   o que faz o hover parecer uma abertura, não só um leve ajuste. ESTES VALORES
+   ESPELHAM os de SLOTS em main.js — se um mudar, o outro precisa acompanhar. */
 .fan__card:nth-child(1) {
-  --r: -9deg;
-  --r-open: -21deg;
+  --r: -8deg;
+  --r-open: -18deg;
   --card-tint: var(--fan-tint-1);
-  z-index: 2;
+  z-index: 1;
 }
 
 .fan__card:nth-child(2) {
-  --r: -3deg;
-  --r-open: -7deg;
+  --r: 0deg;
+  --r-open: 0deg;
   --card-tint: var(--fan-tint-2);
-  z-index: 4;
+  z-index: 3;
 }
 
 .fan__card:nth-child(3) {
-  --r: 3deg;
-  --r-open: 7deg;
+  --r: 8deg;
+  --r-open: 18deg;
   --card-tint: var(--fan-tint-3);
-  z-index: 5;
-}
-
-.fan__card:nth-child(4) {
-  --r: 9deg;
-  --r-open: 21deg;
-  --card-tint: var(--fan-tint-4);
-  z-index: 3;
+  z-index: 2;
 }
 
 .fan:hover .fan__card {

@@ -120,19 +120,18 @@ document.querySelectorAll(".reveal").forEach((el) => {
 });
 
 // Leque interativo: clicar num card de trás o traz para a posição principal,
-// trocando de lugar com o card que estava na frente. Leque de 4 cartas,
-// simétrico em torno de 0deg — como são 4 (par) não há carta exatamente no
-// centro, então a principal (topo, z mais alto) fica na casa interna a +3deg,
-// quase reta; o leque abre pra ambos os lados no hover, todas girando a partir
-// do mesmo pino (ver transform-origin no CSS). Os valores aqui espelham os do
-// CSS (nth-child); se um mudar, o outro precisa acompanhar.
+// trocando de lugar com o card que estava na frente. Leque de 3 cartas,
+// simétrico em torno de 0deg — a carta central (2ª) fica reta e por cima (z mais
+// alto), e as laterais espelham o mesmo ângulo pra cada lado; o leque abre pra
+// ambos os lados no hover, todas girando a partir do mesmo pino (ver
+// transform-origin no CSS). Os valores aqui espelham os do CSS (nth-child); se
+// um mudar, o outro precisa acompanhar.
 const SLOTS = [
-  { r: "-9deg", open: "-21deg", z: 2 },
-  { r: "-3deg", open: "-7deg", z: 4 },
-  { r: "3deg", open: "7deg", z: 5 },
-  { r: "9deg", open: "21deg", z: 3 },
+  { r: "-8deg", open: "-18deg", z: 1 },
+  { r: "0deg", open: "0deg", z: 3 },
+  { r: "8deg", open: "18deg", z: 2 },
 ];
-const MAIN_SLOT = 2;
+const MAIN_SLOT = 1;
 
 const cards = [...document.querySelectorAll(".fan__card")];
 const slotOf = new Map(cards.map((card, i) => [card, i]));
