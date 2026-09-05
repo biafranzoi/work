@@ -43,7 +43,7 @@ handoff and front-end, in sync with agile methodologies.
 - **LinkedIn:** https://www.linkedin.com/in/biafranzoi/
 - **Behance:** https://www.behance.net/biafranzoi
 - **GitHub:** https://github.com/biafranzoi
-- **Resume (PDF):** [download](https://drive.google.com/uc?export=download&id=13fOyRemcc30J6I9xJce9sXgZ-_Nk7qns)
+- **Resume (PDF):** [download](https://drive.google.com/uc?export=download&id=176EZeYHmomNo3ZRhAdoOXiZ_z61lx-HQ)
 
 ### About this repository
 
