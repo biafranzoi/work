@@ -584,7 +584,7 @@
   // data-i18n-href="chave" (ex.: o currículo em inglês vive num arquivo à parte).
   var EN_HREF = {
     "about.downloadCvHref":
-      "https://drive.google.com/uc?export=download&id=180XFoXax3ydkra7kp2xvDzV9_0Z63f3K",
+      "https://drive.google.com/uc?export=download&id=176EZeYHmomNo3ZRhAdoOXiZ_z61lx-HQ",
   };
 
   // Traduções para inglês: valor do atributo aria-label dos elementos
