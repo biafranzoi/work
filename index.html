@@ -945,11 +945,27 @@
         >Com desk research e entrevistas qualitativas com 12 potenciais
         usuários da região, cheguei a alguns achados:</p
       >
+      <ul class="hypothesis-grid" data-i18n="case.compraki.stats">
+        <li class="hypothesis">
+          <p class="hypothesis__stat">91%</p>
+          <p class="hypothesis__finding">percebem a variação de preços entre mercados.</p>
+        </li>
+        <li class="hypothesis">
+          <p class="hypothesis__stat">75%</p>
+          <p class="hypothesis__finding">não fazem nenhuma pesquisa prévia antes de comprar.</p>
+        </li>
+        <li class="hypothesis">
+          <p class="hypothesis__stat">58%</p>
+          <p class="hypothesis__finding">dividem a compra entre mais de um mercado para aproveitar promoções.</p>
+        </li>
+        <li class="hypothesis">
+          <p class="hypothesis__stat">53,8%</p>
+          <p class="hypothesis__finding">apontam “perder tempo” como a maior dor da experiência atual.</p>
+        </li>
+      </ul>
       <ul class="project-modal__list" data-i18n="case.compraki.findings">
         <li>A maioria dos entrevistados já usa algum tipo de lista de compras — no papel, no WhatsApp ou em um aplicativo.</li>
-        <li>91% percebem a variação de preços entre mercados, mas 75% não fazem nenhuma pesquisa prévia antes de comprar.</li>
-        <li>58% dividem a compra entre mais de um mercado para aproveitar promoções.</li>
-        <li>O maior atrito não é a falta de dados, e sim o tempo para processá-los: 53,8% apontam “perder tempo” como a maior dor.</li>
+        <li>O maior atrito não é a falta de dados, e sim o tempo para processá-los.</li>
         <li>O consumidor não quer só o preço de um produto — quer saber onde a lista inteira (ex.: 20 itens) sai mais barata.</li>
         <li>Pesquisas de mercado confirmaram que não existem APIs abertas das grandes redes, o que inviabilizava a integração direta pensada na hipótese inicial.</li>
       </ul>
@@ -957,10 +973,22 @@
         >Uma pesquisa de preços de cesta básica em três mercados da região
         reforçou a disparidade:</p
       >
-      <ul class="project-modal__list" data-i18n="case.compraki.prices">
-        <li>Mercado 1 — R$ 163,36 (referência)</li>
-        <li>Mercado 2 — R$ 218,55 (+33,78%)</li>
-        <li>Mercado 3 — R$ 180,02 (+10,19%)</li>
+      <ul class="price-bars" data-i18n="case.compraki.prices">
+        <li class="price-bar">
+          <span class="price-bar__label">Mercado 1</span>
+          <span class="price-bar__track"><span class="price-bar__fill price-bar__fill--best" style="width: 74.8%"></span></span>
+          <span class="price-bar__value">R$ 163,36 <span class="price-bar__tag price-bar__tag--best">referência</span></span>
+        </li>
+        <li class="price-bar">
+          <span class="price-bar__label">Mercado 2</span>
+          <span class="price-bar__track"><span class="price-bar__fill" style="width: 100%"></span></span>
+          <span class="price-bar__value">R$ 218,55 <span class="price-bar__tag">+33,78%</span></span>
+        </li>
+        <li class="price-bar">
+          <span class="price-bar__label">Mercado 3</span>
+          <span class="price-bar__track"><span class="price-bar__fill" style="width: 82.4%"></span></span>
+          <span class="price-bar__value">R$ 180,02 <span class="price-bar__tag">+10,19%</span></span>
+        </li>
       </ul>
 
       <h3 class="project-modal__heading" data-i18n="case.compraki.heading4">A pivotagem necessária</h3>
@@ -1001,6 +1029,20 @@
         de fluxo da loja para evitar horários de pico — ficou mapeada para
         uma próxima versão.</p
       >
+
+      <h3 class="project-modal__heading" data-i18n="case.compraki.heading6">Protótipo em desenvolvimento</h3>
+      <div class="project-modal__actions">
+        <a
+          class="button button--ghost button--icon"
+          href="https://www.figma.com/make/imDJprONi0ngt1v7fNDsCW/Compraki?fullscreen=1&amp;t=cMyBuoPdMi7sK201-1&amp;code-node-id=0-6"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span data-i18n="case.compraki.ctaPrototype">Abrir protótipo</span>
+          <span aria-hidden="true">↗</span>
+          <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+        </a>
+      </div>
 
       <p class="project-modal__note" data-i18n="case.compraki.note">Projeto em andamento.</p>
     </template>

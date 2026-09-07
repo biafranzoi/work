@@ -153,19 +153,22 @@
     "case.compraki.heading3": "Research and findings",
     "case.compraki.body3":
       "Through desk research and qualitative interviews with 12 potential users in the region, I found:",
+    "case.compraki.stats":
+      '<li class="hypothesis"><p class="hypothesis__stat">91%</p><p class="hypothesis__finding">notice price variation between stores.</p></li>' +
+      '<li class="hypothesis"><p class="hypothesis__stat">75%</p><p class="hypothesis__finding">do no research at all before shopping.</p></li>' +
+      '<li class="hypothesis"><p class="hypothesis__stat">58%</p><p class="hypothesis__finding">split their shopping across more than one store to catch promotions.</p></li>' +
+      '<li class="hypothesis"><p class="hypothesis__stat">53.8%</p><p class="hypothesis__finding">cite “wasting time” as the biggest pain of the current experience.</p></li>',
     "case.compraki.findings":
       "<li>Most interviewees already use some kind of shopping list — on paper, in WhatsApp, or in an app.</li>" +
-      "<li>91% notice price variation between stores, but 75% do no research before shopping.</li>" +
-      "<li>58% split their shopping between more than one store to catch promotions.</li>" +
-      "<li>The biggest friction isn't a lack of data, it's the time to process it: 53.8% cite “wasting time” as the top pain point.</li>" +
+      "<li>The biggest friction isn't a lack of data, it's the time to process it.</li>" +
       "<li>Shoppers don't just want one product's price — they want to know where the whole list (say, 20 items) is cheapest.</li>" +
       "<li>Market research confirmed there are no open APIs from major chains, ruling out the direct-integration approach from the initial hypothesis.</li>",
     "case.compraki.body4":
       "A basic-basket price survey across three local supermarkets reinforced the gap:",
     "case.compraki.prices":
-      "<li>Store 1 — R$ 163.36 (baseline)</li>" +
-      "<li>Store 2 — R$ 218.55 (+33.78%)</li>" +
-      "<li>Store 3 — R$ 180.02 (+10.19%)</li>",
+      '<li class="price-bar"><span class="price-bar__label">Store 1</span><span class="price-bar__track"><span class="price-bar__fill price-bar__fill--best" style="width: 74.8%"></span></span><span class="price-bar__value">R$ 163.36 <span class="price-bar__tag price-bar__tag--best">baseline</span></span></li>' +
+      '<li class="price-bar"><span class="price-bar__label">Store 2</span><span class="price-bar__track"><span class="price-bar__fill" style="width: 100%"></span></span><span class="price-bar__value">R$ 218.55 <span class="price-bar__tag">+33.78%</span></span></li>' +
+      '<li class="price-bar"><span class="price-bar__label">Store 3</span><span class="price-bar__track"><span class="price-bar__fill" style="width: 82.4%"></span></span><span class="price-bar__value">R$ 180.02 <span class="price-bar__tag">+10.19%</span></span></li>',
     "case.compraki.heading4": "The necessary pivot",
     "case.compraki.body5": "With direct integration off the table, I pivoted the project's scope:",
     "case.compraki.pivot":
@@ -180,6 +183,8 @@
       "<li><strong>Crowdsourced updates:</strong> scanning receipt QR codes keeps the price database current.</li>",
     "case.compraki.body8":
       "A future convenience-prediction feature — store traffic indicators to help shoppers avoid peak hours — has been mapped out for a later version.",
+    "case.compraki.heading6": "Prototype in development",
+    "case.compraki.ctaPrototype": "Open prototype",
     "case.compraki.note": "Project in progress.",
 
     // Estudo de caso completo: DestinoIdeal

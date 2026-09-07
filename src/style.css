@@ -1946,6 +1946,83 @@ button:focus-visible,
   }
 }
 
+/* comparação de preços da cesta básica: barras proporcionais ao maior valor,
+   com a mais barata (referência) destacada em accent. Continua sendo lista/texto
+   traduzível; as larguras são decorativas (proporcionais aos valores). */
+.price-bars {
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+  max-width: 46rem;
+  margin-top: 0.5rem;
+  padding: 0;
+}
+
+.price-bar {
+  display: grid;
+  grid-template-columns: 5.5rem 1fr auto;
+  align-items: center;
+  gap: 1rem;
+}
+
+.price-bar__label {
+  color: var(--text);
+  font-weight: 600;
+  font-size: var(--fs-base);
+}
+
+.price-bar__track {
+  height: 1.25rem;
+  background: color-mix(in srgb, var(--text) 8%, transparent);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.price-bar__fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-pill);
+  background: var(--border-interactive);
+}
+
+/* a cesta mais barata é a referência — destacada na cor de marca */
+.price-bar__fill--best {
+  background: var(--accent);
+}
+
+.price-bar__value {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--text);
+  font-weight: 600;
+  font-size: var(--fs-base);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.price-bar__tag {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.price-bar__tag--best {
+  color: var(--accent);
+}
+
+/* no celular a barra passa a ocupar a linha inteira, sob rótulo + valor */
+@media (max-width: 36rem) {
+  .price-bar {
+    grid-template-columns: 1fr auto;
+  }
+
+  .price-bar__track {
+    grid-column: 1 / -1;
+    order: 3;
+  }
+}
+
 /* nota final do case (ex.: "Projeto em andamento.") */
 .project-modal__note {
   color: var(--text-muted);
