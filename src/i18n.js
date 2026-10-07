@@ -273,7 +273,7 @@
     "case.destinoideal.note": "Prototype in validation phase.",
 
     // Estudo de caso completo: Meu Crediário — linha do tempo
-    // (src/img/biafranzoi-crediario-*, <template id="case-crediario">).
+    // (src/img/biafranzoi-crediario-*, <template id="case-meucrediario">).
     // "case.crediario.categoryValue" é omitido de propósito: "SaaS · WebApp"
     // é idêntico nos dois idiomas, então o texto do HTML já serve para EN.
     "case.crediario.lead":
@@ -732,10 +732,10 @@
   // card.dataset.case do projeto.
   var KICKER_OVERRIDES = {
     pt: {
-      crediario: "+8 anos de trabalho",
+      meucrediario: "+8 anos de trabalho",
     },
     en: {
-      crediario: "+8 years of work",
+      meucrediario: "+8 years of work",
     },
   };
 
