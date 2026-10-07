@@ -291,9 +291,30 @@
           Projetos em <span class="accent">destaque</span>
         </h2>
         <!-- 2 cards por linha, alternando maior/menor em diagonal: linha 1
-             grande-à-esquerda, linha 2 grande-à-direita -->
+             grande-à-esquerda, linha 2 grande-à-direita. Com 6 cards num grid
+             de 3 colunas, a sequência grande(2)/pequeno(1) fecha exatamente
+             3 linhas — mexer na ordem ou no --lg de um card quebra o encaixe. -->
         <div class="projects">
-          <button type="button" class="project-card project-card--lg reveal" data-case="crediario">
+          <button type="button" class="project-card project-card--lg reveal" data-case="flashback">
+            <span class="project-card__inner">
+              <span class="project-card__media" aria-hidden="true"
+                ><img src="src/img/biafranzoi-flashback-1.png" alt=""
+              /></span>
+              <span class="project-card__overlay">
+                <span class="project-card__name">Flashback Machine</span>
+                <span class="project-card__tags">
+                  <span class="tag">Website</span>
+                </span>
+                <span class="project-card__desc" data-i18n="project.flashback.descLong"
+                  >Linha do tempo interativa da história do Brasil: os
+                  acontecimentos ficam posicionados pela distância real entre
+                  eles e cada afirmação traz a sua fonte.</span
+                >
+                <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="project-card reveal" data-case="crediario">
             <span class="project-card__inner">
               <span class="project-card__media" aria-hidden="true"
                 ><img src="src/img/biafranzoi-crediario-1.jpg" alt=""
@@ -304,10 +325,9 @@
                   <span class="tag">WebApp</span>
                   <span class="tag" data-i18n="tag.8years">+8 anos</span>
                 </span>
-                <span class="project-card__desc" data-i18n="project.crediario.descLong"
+                <span class="project-card__desc" data-i18n="project.crediario.descShort"
                   >Atuação em todo o ciclo de UX, do redesign da plataforma à
-                  evolução do Design System, em colaboração multifuncional
-                  contínua desde 2018.</span
+                  evolução do Design System.</span
                 >
                 <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
               </span>
@@ -326,25 +346,6 @@
                 <span class="project-card__desc" data-i18n="project.digidoc.desc"
                   >Carteira de documentos pessoais com códigos QR para
                   compartilhamento fácil e seguro.</span
-                >
-                <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
-              </span>
-            </span>
-          </button>
-          <button type="button" class="project-card reveal" data-case="compraki">
-            <span class="project-card__inner">
-              <span class="project-card__media" aria-hidden="true"
-                ><img src="src/img/biafranzoi-compraki-1.png" alt=""
-              /></span>
-              <span class="project-card__overlay">
-                <span class="project-card__name">Compraki</span>
-                <span class="project-card__tags">
-                  <span class="tag">App</span>
-                </span>
-                <span class="project-card__desc" data-i18n="project.compraki.descShort"
-                  >Gestor de listas inteligente que utiliza crowdsourcing via
-                  NFC-e para comparar o custo total do carrinho entre
-                  mercados.</span
                 >
                 <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
               </span>
@@ -381,6 +382,25 @@
                 <span class="project-card__desc" data-i18n="project.nebula.desc"
                   >SaaS de armazenamento focado em reduzir a fricção entre
                   upload e colaboração em arquivos.</span
+                >
+                <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
+              </span>
+            </span>
+          </button>
+          <button type="button" class="project-card reveal" data-case="compraki">
+            <span class="project-card__inner">
+              <span class="project-card__media" aria-hidden="true"
+                ><img src="src/img/biafranzoi-compraki-1.png" alt=""
+              /></span>
+              <span class="project-card__overlay">
+                <span class="project-card__name">Compraki</span>
+                <span class="project-card__tags">
+                  <span class="tag">App</span>
+                </span>
+                <span class="project-card__desc" data-i18n="project.compraki.descShort"
+                  >Gestor de listas inteligente que utiliza crowdsourcing via
+                  NFC-e para comparar o custo total do carrinho entre
+                  mercados.</span
                 >
                 <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
               </span>
@@ -923,6 +943,154 @@
          ganhar um case completo entra aqui como um novo <template id="case-*">,
          associado ao card via data-case="*" — os que não têm case aqui caem
          no texto curto padrão (.project-card__desc) como placeholder. -->
+    <template id="case-flashback">
+      <p class="project-modal__text" data-i18n="case.flashback.lead"
+        >Uma linha do tempo interativa da história do Brasil, onde a distância
+        entre os acontecimentos é proporcional ao tempo de verdade — e cada
+        afirmação tem fonte. Projeto autoral, do conceito à publicação:
+        curadoria editorial, design e todo o front-end são meus.</p
+      >
+
+      <div class="project-modal__embed project-modal__embed--wide">
+        <iframe
+          src="https://biafranzoi.github.io/flashback-machine/"
+          aria-label="Flashback Machine, a linha do tempo interativa, embutida nesta página"
+          data-i18n-aria-label="case.flashback.embedLabel"
+          loading="lazy"
+          allowfullscreen
+        ></iframe>
+      </div>
+
+      <div class="project-modal__actions">
+        <a
+          class="button button--ghost button--icon"
+          href="https://biafranzoi.github.io/flashback-machine/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <span data-i18n="case.flashback.ctaSite">Abrir o site</span>
+          <span aria-hidden="true">↗</span>
+          <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+        </a>
+      </div>
+
+      <h3 class="project-modal__heading" data-i18n="case.flashback.heading1">O problema</h3>
+      <p class="project-modal__text" data-i18n="case.flashback.body1"
+        >Sempre quis enxergar como os marcos históricos se relacionam entre si,
+        e nunca encontrei isso em lugar nenhum. As linhas do tempo que existem
+        tratam o tempo como uma lista: cada acontecimento ocupa o mesmo espaço
+        do seguinte, independentemente de separá-los três anos ou três séculos.
+        O resultado é que o leitor perde justamente a informação mais
+        importante — o ritmo. E, num assunto em que há negacionismo organizado
+        circulando, a maioria dos conteúdos ainda pede que você confie na
+        palavra de quem escreveu.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.flashback.heading2">A decisão central: tempo em escala real</h3>
+      <p class="project-modal__text" data-i18n="case.flashback.body2"
+        >Toda a geometria da interface sai de uma única regra — quantos pixels
+        vale um ano. Os marcos são posicionados por esse cálculo, nunca por
+        ordem na lista. Séculos sem registro ficam vazios na tela, e a
+        aceleração do século XX aparece como uma aglomeração densa de pontos
+        que você vê antes de ler qualquer palavra. O vazio é conteúdo.</p
+      >
+
+      <figure class="project-modal__image">
+        <img
+          src="src/img/biafranzoi-flashback-2.png"
+          alt="Visão geral da Flashback Machine na escala “tudo”: de 1480 a 2035, com poucos pontos espalhados até 1800 e um adensamento visível a partir do século XX."
+          data-i18n-alt="case.flashback.imageAlt2"
+        />
+      </figure>
+
+      <p class="project-modal__text" data-i18n="case.flashback.body3"
+        >Essa decisão criou os dois problemas de design mais interessantes do
+        projeto:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.flashback.tradeoffs">
+        <li><strong>Zoom sem perder o lugar.</strong> São cinco escalas, de “tudo” a “detalhe”. Aproximar com o cursor ou com a pinça do trackpad reconstrói a linha inteira ancorando o ano que está sob o ponteiro — ele não escapa de baixo do dedo. Clicar num período não só rola até ele: escolhe a escala em que aquele período ocupa cerca de 82% da tela e o centraliza.</li>
+        <li><strong>Rótulos que não se atropelam.</strong> Num trecho denso, dezenas de títulos competem pelo mesmo espaço. Eles são distribuídos em faixas empilhadas, cada rótulo na primeira faixa onde caiba. Quando não cabe em nenhuma, o rótulo some e o ponto continua ali, clicável e com dica no hover — rótulo cortado pela borda é pior que rótulo ausente.</li>
+      </ul>
+
+      <h3 class="project-modal__heading" data-i18n="case.flashback.heading3">Critério editorial como decisão de produto</h3>
+      <p class="project-modal__text" data-i18n="case.flashback.body4"
+        >A nomenclatura segue o que é corrente na historiografia acadêmica
+        brasileira: golpe de 1964 e não “revolução”; chegada e não
+        “descobrimento”; abolição como resultado de resistência negra e campanha
+        abolicionista, não como dádiva da princesa. São 100 fontes, todas
+        verificadas, sendo 18 documentos primários — leis, constituições, atos
+        institucionais, a Carta de Pero Vaz de Caminha e a sentença da Corte
+        Interamericana de Direitos Humanos no caso Gomes Lund.</p
+      >
+      <p class="project-modal__text" data-i18n="case.flashback.body5"
+        >Quando a leitura de um episódio é genuinamente disputada entre
+        historiadores, o marco ganha um campo próprio dizendo o que está em
+        jogo — presente em 14 dos 80 marcos. Ele não serve para dar peso igual a
+        teoria sem lastro documental: a tese da conspiração inglesa na Guerra do
+        Paraguai aparece como refutada, porque é isso que a pesquisa
+        estabeleceu. Separar “o que se sabe” de “o que se disputa” foi uma
+        decisão de interface tanto quanto de conteúdo.</p
+      >
+
+      <figure class="project-modal__image">
+        <img
+          src="src/img/biafranzoi-flashback-3.png"
+          alt="Painel do marco “Lei Áurea” aberto sobre a linha do tempo, com o resumo, o campo “o que se disputa” e as fontes: o verbete e o texto da lei de 1888."
+          data-i18n-alt="case.flashback.imageAlt3"
+        />
+      </figure>
+
+      <h3 class="project-modal__heading" data-i18n="case.flashback.heading4">Arquitetura: nada entre o disco e o navegador</h3>
+      <p class="project-modal__text" data-i18n="case.flashback.body6"
+        >Como o projeto precisa durar e continuar fácil de editar anos depois,
+        parti de três restrições: sem build, sem dependências e sem servidor em
+        produção. Não há bundler nem etapa de compilação — o que está no disco é
+        o que o navegador recebe. Todo o conteúdo vive num único arquivo de
+        dados, que é o único lugar a tocar para acrescentar um marco.</p
+      >
+      <ul class="hypothesis-grid" data-i18n="case.flashback.stats">
+        <li class="hypothesis">
+          <p class="hypothesis__stat">80</p>
+          <p class="hypothesis__finding">marcos do Brasil, de 1500 a 2023.</p>
+        </li>
+        <li class="hypothesis">
+          <p class="hypothesis__stat">100</p>
+          <p class="hypothesis__finding">fontes verificadas, sendo 18 documentos primários.</p>
+        </li>
+        <li class="hypothesis">
+          <p class="hypothesis__stat">38 KB</p>
+          <p class="hypothesis__finding">o site inteiro com gzip, os 80 marcos incluídos.</p>
+        </li>
+        <li class="hypothesis">
+          <p class="hypothesis__stat">0</p>
+          <p class="hypothesis__finding">dependências, etapas de build, rastreadores, anúncios e logins.</p>
+        </li>
+      </ul>
+      <p class="project-modal__text" data-i18n="case.flashback.body7"
+        >Link morto num site de história custa mais caro que erro de layout, e
+        por isso escrevi um verificador que percorre todas as fontes e falha se
+        alguma parar de responder. Ele roda antes de qualquer publicação de
+        conteúdo. Estado atual: 100 de 100 no ar.</p
+      >
+
+      <h3 class="project-modal__heading" data-i18n="case.flashback.heading5">Leitura, acessibilidade e permalinks</h3>
+      <ul class="project-modal__list" data-i18n="case.flashback.access">
+        <li><strong>Teclado de ponta a ponta:</strong> as setas pulam de marco em marco, <kbd>Enter</kbd> e <kbd>Esc</kbd> abrem e fecham o detalhe, <kbd>+</kbd> e <kbd>−</kbd> trocam de escala, <kbd>Home</kbd> e <kbd>End</kbd> vão às pontas da linha.</li>
+        <li><strong>Contraste medido, não estimado:</strong> cada token de cor foi verificado sobre o fundo — 15,7:1 nos títulos e 4,9:1 nos metadados, acima dos 4,5:1 que a WCAG pede para texto pequeno. A linha do tempo e as bordas de chip são tokens separados de propósito: a linha é a espinha do gráfico e precisa pesar mais que a borda de um componente.</li>
+        <li><strong>Movimento reduzido respeitado:</strong> a rolagem animada tem implementação própria justamente porque a nativa é ignorada em silêncio sob movimento reduzido — com a preferência ligada, o deslocamento vira salto instantâneo e o destino sempre chega.</li>
+        <li><strong>Cada marco tem endereço:</strong> abrir um detalhe grava um permalink legível, sem empilhar entradas no histórico. Link que não corresponde mais a nada devolve o leitor à linha do tempo em vez de mostrar conteúdo que a URL não promete.</li>
+      </ul>
+
+      <h3 class="project-modal__heading" data-i18n="case.flashback.heading6">O que vem a seguir</h3>
+      <ul class="project-modal__list" data-i18n="case.flashback.next">
+        <li><strong>Vários países ao mesmo tempo:</strong> a renderização em raias paralelas já funciona e foi testada com dois países — falta só o controle de seleção múltipla. É o passo que transforma a linha do tempo em ferramenta de comparação.</li>
+        <li><strong>Busca:</strong> com 80 marcos já faz falta, e cresce junto com o acervo.</li>
+        <li><strong>Layout dedicado para celular:</strong> hoje funciona, mas não é o alvo do desenho atual.</li>
+      </ul>
+
+      <p class="project-modal__note" data-i18n="case.flashback.note">No ar e em evolução. Sem anúncio, sem login, sem rastreador.</p>
+    </template>
+
     <template id="case-compraki">
       <p class="project-modal__text" data-i18n="project.compraki.descLong"
         >Gestor de listas inteligente que utiliza crowdsourcing via NFC-e

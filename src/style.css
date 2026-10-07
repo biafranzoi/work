@@ -1708,6 +1708,22 @@ button:focus-visible,
   color: var(--text);
 }
 
+/* tecla citada no corpo de um case (ex.: os atalhos da Flashback Machine).
+   Sem esta regra o <kbd> cai no monoespaçado do navegador, que vem menor que
+   o texto ao redor e destoa da tipografia do site — daí herdar a família e
+   fixar o tamanho em 0.9em do contexto, não um valor absoluto. */
+.project-modal__body kbd {
+  display: inline-block;
+  padding: 0.1em 0.45em;
+  font-family: inherit;
+  font-size: 0.9em;
+  line-height: 1.4;
+  color: var(--text);
+  background: var(--bg-elevated);
+  border: var(--border-width) solid var(--border);
+  border-radius: 0.3rem;
+}
+
 /* faixa de metadados do case (Categoria / Papel / Duração) */
 .project-modal__meta {
   display: flex;

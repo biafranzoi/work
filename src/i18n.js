@@ -55,6 +55,8 @@
     "hero.ctaPrimary": "View projects",
     "hero.ctaSecondary": "Get in touch",
 
+    "project.flashback.descLong":
+      "Interactive timeline of Brazilian history: events are placed by the real distance between them, and every claim carries its source.",
     "project.compraki.descShort":
       "Smart list manager that uses NFC-e crowdsourcing to compare the total cart cost across supermarkets.",
     "project.compraki.descLong":
@@ -137,6 +139,51 @@
     "caseMeta.role": "My role",
     "caseMeta.duration": "Duration",
     "caseMeta.client": "Client",
+
+    // Estudo de caso completo: Flashback Machine
+    // (src/img/biafranzoi-flashback-*.png, <template id="case-flashback">)
+    "case.flashback.lead":
+      "An interactive timeline of Brazilian history where the distance between events is proportional to real time — and every claim has a source. A personal project from concept to launch: editorial curation, design, and the entire front-end are mine.",
+    "case.flashback.ctaSite": "Open the site",
+    "case.flashback.heading1": "The problem",
+    "case.flashback.body1":
+      "I always wanted to see how historical events relate to one another, and I never found that anywhere. Existing timelines treat time as a list: every event takes up the same space as the next one, whether three years or three centuries separate them. The reader loses exactly the most important information — the rhythm. And on a subject with organized denialism in circulation, most content still asks you to take the author's word for it.",
+    "case.flashback.heading2": "The core decision: time at real scale",
+    "case.flashback.body2":
+      "The whole geometry of the interface comes out of a single rule — how many pixels a year is worth. Events are placed by that calculation, never by their order in a list. Centuries with no records stay empty on screen, and the acceleration of the 20th century shows up as a dense cluster of dots you see before reading a single word. The emptiness is content.",
+    "case.flashback.body3":
+      "That decision created the two most interesting design problems in the project:",
+    "case.flashback.tradeoffs":
+      "<li><strong>Zooming without losing your place.</strong> There are five scales, from “everything” to “detail”. Zooming with the cursor or a trackpad pinch rebuilds the whole timeline anchored on the year under the pointer — it doesn't slip out from under your finger. Clicking a period doesn't just scroll to it: it picks the scale at which that period fills about 82% of the screen, and centers it.</li>" +
+      "<li><strong>Labels that don't collide.</strong> In a dense stretch, dozens of titles compete for the same space. They're distributed across stacked bands, each label in the first band where it fits. When it fits nowhere, the label disappears and the dot stays there, clickable and with a tooltip on hover — a label clipped by the edge is worse than a missing one.</li>",
+    "case.flashback.heading3": "Editorial criteria as a product decision",
+    "case.flashback.body4":
+      "The naming follows current Brazilian academic historiography: the 1964 coup, not a “revolution”; arrival, not “discovery”; abolition as the result of Black resistance and the abolitionist campaign, not as a gift from the princess. There are 100 sources, all verified, 18 of them primary documents — laws, constitutions, institutional acts, Pero Vaz de Caminha's letter, and the Inter-American Court of Human Rights ruling in the Gomes Lund case.",
+    "case.flashback.body5":
+      "When the reading of an episode is genuinely disputed among historians, the event gets a field of its own stating what is at stake — present in 14 of the 80 events. It isn't there to give equal weight to theories with no documentary basis: the English-conspiracy thesis about the Paraguayan War appears as refuted, because that's what the research established. Separating “what is known” from “what is disputed” was as much an interface decision as a content one.",
+    "case.flashback.heading4": "Architecture: nothing between disk and browser",
+    "case.flashback.body6":
+      "Since the project needs to last and stay easy to edit years from now, I started from three constraints: no build, no dependencies, no server in production. There's no bundler and no compile step — what's on disk is what the browser gets. All the content lives in a single data file, the only place to touch to add an event.",
+    "case.flashback.stats":
+      '<li class="hypothesis"><p class="hypothesis__stat">80</p><p class="hypothesis__finding">Brazilian events, from 1500 to 2023.</p></li>' +
+      '<li class="hypothesis"><p class="hypothesis__stat">100</p><p class="hypothesis__finding">verified sources, 18 of them primary documents.</p></li>' +
+      '<li class="hypothesis"><p class="hypothesis__stat">38 KB</p><p class="hypothesis__finding">the entire site gzipped, all 80 events included.</p></li>' +
+      '<li class="hypothesis"><p class="hypothesis__stat">0</p><p class="hypothesis__finding">dependencies, build steps, trackers, ads, and logins.</p></li>',
+    "case.flashback.body7":
+      "A dead link on a history site costs more than a layout bug, so I wrote a checker that walks every source and fails if any of them stops responding. It runs before any content goes live. Current state: 100 out of 100 up.",
+    "case.flashback.heading5": "Reading, accessibility, and permalinks",
+    "case.flashback.access":
+      "<li><strong>Full keyboard support:</strong> the arrow keys jump from event to event, <kbd>Enter</kbd> and <kbd>Esc</kbd> open and close the detail panel, <kbd>+</kbd> and <kbd>−</kbd> change scale, <kbd>Home</kbd> and <kbd>End</kbd> go to each end of the timeline.</li>" +
+      "<li><strong>Contrast measured, not guessed:</strong> every color token was checked against the background — 15.7:1 on headings and 4.9:1 on metadata, above the 4.5:1 WCAG asks for small text. The timeline and the component borders are deliberately separate tokens: the line is the backbone of the chart and has to carry more weight than the edge of a chip.</li>" +
+      "<li><strong>Reduced motion respected:</strong> the animated scrolling has its own implementation precisely because the native one is silently ignored under reduced motion — with the preference on, the movement becomes an instant jump and the destination always arrives.</li>" +
+      "<li><strong>Every event has an address:</strong> opening a detail writes a readable permalink without stacking entries in the browser history. A link that no longer matches anything returns the reader to the timeline instead of showing content the URL doesn't promise.</li>",
+    "case.flashback.heading6": "What comes next",
+    "case.flashback.next":
+      "<li><strong>Several countries at once:</strong> rendering in parallel lanes already works and has been tested with two countries — only the multi-select control is missing. That's the step that turns the timeline into a comparison tool.</li>" +
+      "<li><strong>Search:</strong> at 80 events it's already missed, and the need grows with the collection.</li>" +
+      "<li><strong>A dedicated mobile layout:</strong> it works today, but it isn't what the current design targets.</li>",
+    "case.flashback.note":
+      "Live and evolving. No ads, no login, no trackers.",
 
     // Estudo de caso completo: Compraki (src/img/biafranzoi-compraki-*.png,
     // <template id="case-compraki"> em index.html)
@@ -493,6 +540,10 @@
   // Traduções para inglês: valor do atributo alt dos elementos marcados com
   // data-i18n-alt="chave".
   var EN_ALT = {
+    "case.flashback.imageAlt2":
+      "Flashback Machine overview at the “everything” scale: from 1480 to 2035, with a few scattered dots up to 1800 and a visible thickening from the 20th century on.",
+    "case.flashback.imageAlt3":
+      "The “Lei Áurea” event panel open over the timeline, with the summary, the “what is disputed” field, and the sources: the encyclopedia entry and the text of the 1888 law.",
     "case.compraki.imageAlt":
       "Compraki prototype screens: product search, list building, market comparison by best total price and best distance, and premium subscription screens.",
     "case.destinoideal.imageAlt":
@@ -610,6 +661,8 @@
     "carousel.dotsGroupLabel": "Navigate between testimonials",
     "modal.close": "Close",
     "dock.navAriaLabel": "Main navigation",
+    "case.flashback.embedLabel":
+      "Flashback Machine, the interactive timeline, embedded on this page",
     "case.digidoc.protoLabel": "Interactive DigiDoc prototype on Figma",
     "case.nebula.protoLabel": "Interactive Nebula prototype on Figma",
     "case.destinoideal.protoLabel": "Interactive DestinoIdeal prototype on Figma",
