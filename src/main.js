@@ -207,10 +207,49 @@ function renderProject(card) {
   }
 }
 
-function openProject(card) {
+// Link direto: enquanto um projeto está aberto, o slug dele fica na URL como
+// ?projeto=slug, para que o endereço possa ser copiado e compartilhado — abrir
+// esse link já cai com o modal aberto no projeto certo. Query string, e não
+// hash, porque o hash já é da navegação entre seções (dock e âncoras).
+const PROJECT_PARAM = "projeto";
+
+// o modal empilhou uma entrada no histórico (abertura por clique)? Se sim,
+// fechar volta uma entrada, em vez de deixar um "voltar" que não leva a nada.
+// Quem chega direto pelo link compartilhado não tem essa entrada.
+let pushedHistoryEntry = false;
+
+const slugInUrl = () =>
+  new URL(window.location.href).searchParams.get(PROJECT_PARAM);
+
+// mesma URL, só trocando (ou tirando) o parâmetro do projeto — preserva hash
+// de seção e qualquer outro parâmetro que já esteja ali
+const urlForSlug = (slug) => {
+  const url = new URL(window.location.href);
+  if (slug) url.searchParams.set(PROJECT_PARAM, slug);
+  else url.searchParams.delete(PROJECT_PARAM);
+  return url;
+};
+
+const cardForSlug = (slug) => {
+  if (!slug) return null;
+  // CSS.escape: o slug vem da URL, então pode ser qualquer coisa — sem escapar,
+  // um valor com caracteres de sintaxe faria o querySelector lançar
+  const value = CSS.escape(slug);
+  // o leque repete três dos projetos; o card do grid é o que tem o texto curto
+  // de fallback, então ele vem primeiro
+  return (
+    document.querySelector(`.project-card[data-case="${value}"]`) ??
+    document.querySelector(`[data-case="${value}"]`)
+  );
+};
+
+function openProject(card, { fromUrl = false } = {}) {
   currentCard = card;
   renderProject(card);
-  modal.showModal();
+  // já aberto só acontece ao trocar de projeto pelo histórico (voltar/avançar);
+  // chamar showModal() num <dialog> aberto é um no-op nos motores atuais, mas
+  // dava InvalidStateError na especificação antiga
+  if (!modal.open) modal.showModal();
   // o <dialog> é um único elemento reaproveitado por todos os projetos: o
   // scroll de uma visita anterior (mesmo já fechada) fica guardado nele e
   // reaparece ao reabrir, mesmo para outro projeto. Sem este reset, o modal
@@ -219,6 +258,52 @@ function openProject(card) {
   // none) não tem caixa de layout, então scrollTop não pega enquanto ele
   // ainda não foi exibido.
   modal.scrollTop = 0;
+
+  // numa abertura vinda da própria URL (carga inicial ou voltar/avançar) o
+  // endereço já está certo: escrever de novo criaria uma entrada duplicada
+  if (fromUrl) return;
+  const slug = card.dataset.case;
+  if (!slug) return;
+  history.pushState({ [PROJECT_PARAM]: slug }, "", urlForSlug(slug));
+  pushedHistoryEntry = true;
+}
+
+// Fechar o modal (botão, Esc, clique fora) tira o projeto da URL. O estado é
+// decidido pela própria URL, não por uma flag: o evento "close" do <dialog> é
+// assíncrono, então quando ele chega um fechamento feito pelo histórico já
+// limpou o parâmetro — e aí não há nada a fazer aqui.
+modal.addEventListener("close", () => {
+  if (!slugInUrl()) return;
+  if (pushedHistoryEntry) {
+    // desfaz a entrada que a abertura empilhou: assim o "voltar" depois de
+    // fechar leva o visitante para onde ele estava antes de abrir o projeto
+    pushedHistoryEntry = false;
+    history.back();
+  } else {
+    history.replaceState(null, "", urlForSlug(null));
+  }
+});
+
+// Voltar/avançar do navegador: a URL manda no estado do modal
+window.addEventListener("popstate", () => {
+  const card = cardForSlug(slugInUrl());
+  // a entrada atual é de um projeto? Então fechar pelo botão deve voltar
+  pushedHistoryEntry = card !== null;
+  if (card) {
+    openProject(card, { fromUrl: true });
+  } else if (modal.open) {
+    modal.close();
+  }
+});
+
+// Abertura por link direto (?projeto=slug no carregamento)
+const initialSlug = slugInUrl();
+if (initialSlug) {
+  const initialCard = cardForSlug(initialSlug);
+  if (initialCard) openProject(initialCard, { fromUrl: true });
+  // slug que não existe mais (projeto renomeado, link digitado errado): a
+  // página fica normal, sem o parâmetro morto na barra de endereço
+  else history.replaceState(null, "", urlForSlug(null));
 }
 
 // ao trocar de idioma com um case aberto, re-renderiza a partir do template
