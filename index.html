@@ -2,6 +2,15 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
+
+    <!-- Com um case aberto, o endereço vira /projeto/slug/ (History API, ver
+         "Link direto" em main.js) — e sem este <base> as URLs relativas
+         passariam a ser resolvidas a partir dessa pasta imaginária, quebrando
+         as imagens dos cases (que entram no DOM depois, clonadas dos
+         <template>). O href relativo de um <base> é congelado na carga da
+         página, então "./" fica valendo a pasta real do index.html: "/" no
+         servidor local, "/work/" no GitHub Pages. -->
+    <base href="./" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark light" />
     <meta name="description" content="Portfólio de Bia — Product Designer" />

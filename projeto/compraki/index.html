@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+
+    <!-- Endereço próprio do case: esta página existe só para que
+         /projeto/compraki/ seja um link de verdade — compartilhável, recarregável
+         e indexável — com título e preview próprios. Ela não mostra o case:
+         devolve o visitante ao portfólio, que reabre o case e recoloca este
+         mesmo endereço na barra (ver "Link direto" em src/main.js).
+         Ao criar um case novo, duplique esta pasta. -->
+
+    <title>Compraki · Bia Franzoi</title>
+    <meta name="description" content="Gestor de listas inteligente que utiliza crowdsourcing via NFC-e para comparar o custo total do carrinho entre mercados." />
+    <link
+      rel="canonical"
+      href="https://biafranzoi.github.io/work/projeto/compraki/"
+    />
+
+    <!-- Open Graph (preview ao compartilhar o link) -->
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Bia Franzoi" />
+    <meta property="og:title" content="Compraki — Bia Franzoi" />
+    <meta property="og:description" content="Gestor de listas inteligente que utiliza crowdsourcing via NFC-e para comparar o custo total do carrinho entre mercados." />
+    <meta
+      property="og:url"
+      content="https://biafranzoi.github.io/work/projeto/compraki/"
+    />
+    <!-- imagem compartilhada por todos os cases; para dar uma só a este
+         projeto, troque por um arquivo 1200x630 próprio -->
+    <meta
+      property="og:image"
+      content="https://biafranzoi.github.io/work/src/img/og-image.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Bia Franzoi — Senior Product Designer" />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Compraki — Bia Franzoi" />
+    <meta name="twitter:description" content="Gestor de listas inteligente que utiliza crowdsourcing via NFC-e para comparar o custo total do carrinho entre mercados." />
+    <meta
+      name="twitter:image"
+      content="https://biafranzoi.github.io/work/src/img/og-image.png"
+    />
+    <meta name="twitter:image:alt" content="Bia Franzoi — Senior Product Designer" />
+
+    <link rel="icon" type="image/png" href="../../src/img/biafranzoi-logo.png" />
+
+    <!-- mesma cor de fundo do site: sem isso o salto para o portfólio pisca
+         branco -->
+    <style>
+      html {
+        background: #0b0f0d;
+        color: #e7efe9;
+        font-family: system-ui, sans-serif;
+      }
+      p {
+        margin: 3rem;
+        text-align: center;
+      }
+      a {
+        color: #4ade80;
+      }
+    </style>
+
+    <script>
+      // A raiz é calculada, e não fixa, porque o site roda em "/" no servidor
+      // local e em "/work/" no GitHub Pages — e porque o endereço pode chegar
+      // com ou sem a barra final. replace() em vez de href: a volta do
+      // navegador não deve cair de novo aqui.
+      (function () {
+        var root = location.pathname.replace(/projeto\/[^/]*\/?$/, "");
+        location.replace(root + "?projeto=compraki" + location.hash);
+      })();
+    </script>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=../../?projeto=compraki" />
+    </noscript>
+  </head>
+  <body>
+    <p>Abrindo <strong>Compraki</strong>… <a href="../../?projeto=compraki">continuar</a></p>
+  </body>
+</html>

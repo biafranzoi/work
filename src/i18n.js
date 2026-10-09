@@ -29,6 +29,10 @@
 //      captureOriginals()/applyLanguage() (não está na página até ser
 //      clonado por main.js) — por isso usa i18n.translateNode(elemento)
 //      depois de clonado, não precisa de nenhum passo extra aqui.
+//   5. Um case novo também precisa da pasta projeto/<slug>/ (duplique a de
+//      um case existente): é ela que dá ao projeto um endereço próprio,
+//      /projeto/slug/, com título e preview próprios ao compartilhar. Ver a
+//      seção 4.6 do STYLEGUIDE.md.
 (function () {
   "use strict";
 

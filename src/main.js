@@ -230,25 +230,52 @@ function renderProject(card) {
 }
 
 // Link direto: enquanto um projeto está aberto, o slug dele fica na URL como
-// ?projeto=slug, para que o endereço possa ser copiado e compartilhado — abrir
-// esse link já cai com o modal aberto no projeto certo. Query string, e não
-// hash, porque o hash já é da navegação entre seções (dock e âncoras).
+// um caminho próprio — <raiz>/projeto/slug/ —, para que o endereço possa ser
+// copiado e compartilhado. Enquanto a navegação acontece aqui, esse caminho é
+// só History API; mas ele também existe de verdade como /projeto/slug/, uma
+// página mínima com o título e o preview (Open Graph) daquele case que
+// devolve o visitante para cá. É isso que faz o link aberto do zero (ou um
+// F5) funcionar, e é isso que dá a cada case um preview próprio ao ser
+// compartilhado — antes, todos os projetos mostravam o cartão genérico do
+// portfólio.
+//
+// O caminho substituiu a query ?projeto=slug, que continua aceita: é o
+// formato dos links já compartilhados e é também como as páginas de
+// /projeto/* entregam o visitante aqui (elas não sabem onde fica a raiz).
+// Quem chega por ela tem o endereço normalizado para o caminho novo.
 const PROJECT_PARAM = "projeto";
+const PROJECT_PATH = "projeto";
+
+// raiz do site: "/" no servidor local, "/work/" no GitHub Pages. Lida uma vez
+// só, na carga, porque logo em seguida o próprio endereço pode virar
+// /projeto/slug/ e deixar de servir de referência. Mesmo motivo do
+// <base href="./"> no index.html.
+const SITE_ROOT = window.location.pathname.replace(/[^/]*$/, "");
 
 // o modal empilhou uma entrada no histórico (abertura por clique)? Se sim,
 // fechar volta uma entrada, em vez de deixar um "voltar" que não leva a nada.
 // Quem chega direto pelo link compartilhado não tem essa entrada.
 let pushedHistoryEntry = false;
 
-const slugInUrl = () =>
-  new URL(window.location.href).searchParams.get(PROJECT_PARAM);
+const slugInUrl = () => {
+  const url = new URL(window.location.href);
+  if (url.pathname.startsWith(SITE_ROOT)) {
+    const rest = url.pathname.slice(SITE_ROOT.length);
+    const match = rest.match(new RegExp("^" + PROJECT_PATH + "/([^/]+)/?$"));
+    // o slug vem da URL: decodifica pra bater com o data-case do card
+    if (match) return decodeURIComponent(match[1]);
+  }
+  return url.searchParams.get(PROJECT_PARAM);
+};
 
-// mesma URL, só trocando (ou tirando) o parâmetro do projeto — preserva hash
-// de seção e qualquer outro parâmetro que já esteja ali
+// mesma URL, só trocando (ou tirando) o projeto — preserva o hash de seção e
+// qualquer outro parâmetro que já esteja ali
 const urlForSlug = (slug) => {
   const url = new URL(window.location.href);
-  if (slug) url.searchParams.set(PROJECT_PARAM, slug);
-  else url.searchParams.delete(PROJECT_PARAM);
+  url.searchParams.delete(PROJECT_PARAM);
+  url.pathname = slug
+    ? SITE_ROOT + PROJECT_PATH + "/" + encodeURIComponent(slug) + "/"
+    : SITE_ROOT;
   return url;
 };
 
@@ -318,13 +345,19 @@ window.addEventListener("popstate", () => {
   }
 });
 
-// Abertura por link direto (?projeto=slug no carregamento)
+// Abertura por link direto (/projeto/slug/ ou o ?projeto=slug antigo)
 const initialSlug = slugInUrl();
 if (initialSlug) {
   const initialCard = cardForSlug(initialSlug);
-  if (initialCard) openProject(initialCard, { fromUrl: true });
+  if (initialCard) {
+    openProject(initialCard, { fromUrl: true });
+    // normaliza o endereço sem criar entrada no histórico: quem veio pela
+    // página de /projeto/slug/ (que redireciona pra cá com ?projeto=slug) ou
+    // por um link antigo termina com o caminho novo na barra
+    history.replaceState(null, "", urlForSlug(initialSlug));
+  }
   // slug que não existe mais (projeto renomeado, link digitado errado): a
-  // página fica normal, sem o parâmetro morto na barra de endereço
+  // página fica normal, sem o endereço morto na barra
   else history.replaceState(null, "", urlForSlug(null));
 }
 

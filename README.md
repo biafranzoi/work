@@ -26,6 +26,7 @@ Inclui temas claro, escuro e alto contraste, e conteúdo em português e inglês
 - `src/main.js` — interações
 - `src/i18n.js` — traduções PT/EN
 - `src/img/` — imagens
+- `projeto/<slug>/` — endereço próprio de cada case (`/projeto/compraki/`), com título e preview próprios ao compartilhar; abre o portfólio com aquele case
 
 ---
 
@@ -56,3 +57,4 @@ English.
 - `src/main.js` — interactions
 - `src/i18n.js` — PT/EN translations
 - `src/img/` — images
+- `projeto/<slug>/` — each case study's own URL (`/projeto/compraki/`), with its own title and link preview; opens the portfolio with that case
