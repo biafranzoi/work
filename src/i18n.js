@@ -118,6 +118,7 @@
     "modal.textPlaceholder":
       "This is where the project content goes: context, challenge, process, images, and results. Replace this placeholder with the full case study.",
 
+    "footer.updated": "Updated 10/2026.",
     "footer.credits": "Made with love by Bia Franzoi and contributions from",
     "footer.wcag": "Compliant with WCAG 2 criteria.",
     "footer.reportIssue":
