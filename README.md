@@ -1,12 +1,12 @@
-# Bia Franzoi — Senior Product Designer
+# Bia Franzoi — Lead Design Engineer
 
 **Português** · [English ↓](#english)
 
-**Desenho produtos que resolvem problemas reais.**
+**Trazendo ideias para a vida real com design e IA.**
 
-Mais de 12 anos de vivência no ecossistema de tecnologia e design. Pós-graduada
-em UX Design pela PUCRS. Domínio completo de ponta a ponta — do design ao
-handoff e front-end, em sintonia com metodologias ágeis.
+Mais de 12 anos no ecossistema de tecnologia e design. Pós-graduada em UX pela
+PUCRS. A IA é minha parceira de execução para tirar ideias do papel com
+pesquisa, design, front-end e deploy.
 
 ## Contato
 
@@ -32,11 +32,11 @@ Inclui temas claro, escuro e alto contraste, e conteúdo em português e inglês
 
 ## English
 
-**I design products that solve real problems.**
+**Bringing ideas to life with design and AI.**
 
-More than 12 years of experience in the technology and design ecosystem.
-Postgraduate in UX Design from PUCRS. Full end-to-end mastery — from design to
-handoff and front-end, in sync with agile methodologies.
+More than 12 years in the technology and design ecosystem. Postgraduate in UX
+from PUCRS. AI is my execution partner for getting ideas off the ground:
+research, design, front-end, and deploy.
 
 ### Contact
 

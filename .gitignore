@@ -10,3 +10,6 @@
 # Lixo de sistema operacional / editor
 .DS_Store
 Thumbs.db
+
+# Gerador local da imagem de preview (og-image) — ferramenta de dev
+/tools/
