@@ -49,9 +49,9 @@
     "settings.lang.label": "Language",
 
     "hero.title":
-      'Hi, I\'m <span class="accent">Bia Franzoi</span>.<br />\n            I design <span class="accent">products</span> that solve real problems.',
+      'Hi, I\'m <span class="accent">Bia Franzoi</span>.<br />\n            Bringing <span class="accent">ideas</span> to life with <span class="accent">design and AI</span>.',
     "hero.subtitle":
-      "More than <strong>12 years of experience</strong> in the technology and design ecosystem. <strong>Postgraduate in UX Design</strong> from PUCRS. Full end-to-end mastery — from design to handoff and front-end, in sync with agile methodologies.",
+      "More than <strong>12 years</strong> in the technology and design ecosystem, <strong>postgraduate in UX</strong> from PUCRS. AI is my execution partner for getting ideas off the ground: research, design, front-end, and deploy.",
     "hero.ctaPrimary": "View projects",
     "hero.ctaSecondary": "Get in touch",
 
