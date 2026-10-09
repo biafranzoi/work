@@ -339,6 +339,40 @@ for (const card of document.querySelectorAll(".project-card")) {
   card.addEventListener("click", () => openProject(card));
 }
 
+// Lab: o "Carregar mais" revela os cards menores (links externos) que vêm
+// depois da galeria de projetos, e o "Carregar menos" (no fim do grid) os
+// recolhe. Os dois se revezam — só o que cabe no estado atual fica em cena —
+// e o foco vai sempre para o que entra no lugar do que saiu, pra quem navega
+// por teclado não perder o lugar. Os cards continuam com .reveal observado:
+// como estavam hidden, nunca cruzaram a viewport e só na primeira abertura
+// recebem a animação de entrada.
+const labExtra = document.getElementById("lab-extra");
+const labMoreRow = document.querySelector(".lab__toggle-row--more");
+const labLessRow = document.querySelector(".lab__toggle-row--less");
+if (labExtra && labMoreRow && labLessRow) {
+  const labMoreBtn = labMoreRow.querySelector(".lab__toggle");
+  const labLessBtn = labLessRow.querySelector(".lab__toggle");
+
+  const setLabExpanded = (expanded) => {
+    labExtra.hidden = !expanded;
+    labMoreRow.hidden = expanded;
+    labLessRow.hidden = !expanded;
+    labMoreBtn.setAttribute("aria-expanded", String(expanded));
+    labLessBtn.setAttribute("aria-expanded", String(expanded));
+  };
+
+  labMoreBtn.addEventListener("click", () => {
+    setLabExpanded(true);
+    const first = labExtra.querySelector("a[href]");
+    if (first) first.focus();
+  });
+
+  labLessBtn.addEventListener("click", () => {
+    setLabExpanded(false);
+    labMoreBtn.focus();
+  });
+}
+
 // Inclinação 3D dos cards de projeto: o ponteiro "empurra" a borda por onde
 // passa. Aqui o JS só publica a posição dele dentro do card (--mx/--my, de -1
 // a 1); quem vira isso em rotação e parallax é o CSS. Como o cursor
@@ -544,7 +578,6 @@ if (globalPauseBtn) {
   const pausableTargets = [
     document.querySelector(".marquee"),
     document.querySelector(".orbit"),
-    document.querySelector(".focus"),
   ].filter(Boolean);
 
   const applyState = (paused) => {

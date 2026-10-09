@@ -381,6 +381,16 @@ button:focus-visible,
   border-radius: var(--radius);
   font-weight: 600;
   font-size: var(--fs-sm);
+  /* a classe serve tanto em <a> quanto em <button>: zera o visual de controle
+     que o navegador dá ao <button> (fundo cinza, borda e fonte do sistema)
+     para os dois ficarem idênticos. As variantes abaixo repõem o que é delas
+     (fundo no --primary, borda no --ghost). */
+  background: none;
+  border: 0;
+  color: var(--text);
+  font-family: inherit;
+  text-align: center;
+  cursor: pointer;
   transition:
     transform 0.2s ease,
     background-color 0.2s ease,
@@ -975,96 +985,6 @@ button:focus-visible,
   }
 }
 
-/* ---------- Foco em (palavras rotativas) ---------- */
-.focus {
-  border-top: 1px solid var(--border);
-  /* o padding compensa a janela maior das palavras: altura total da faixa
-     fica a mesma (~180px) */
-  padding-block: 2.5rem;
-  /* faixa com brilho verde sutil ao centro: marca a seção como divisor,
-     na mesma família visual do letreiro de ferramentas */
-  background: linear-gradient(
-    180deg,
-    var(--bg),
-    color-mix(in srgb, var(--accent) 6%, var(--bg)) 50%,
-    var(--bg)
-  );
-}
-
-.focus__inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem 2rem;
-}
-
-/* idêntico aos itens do letreiro: mesmo tamanho, cor e tracking */
-.focus__label {
-  color: var(--text-muted);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: var(--fs-base);
-}
-
-/* janela de uma linha: esconde as palavras fora da vez.
-   1.5em de altura por fatia dá folga para descendentes (q, j, p)
-   não vazarem na fatia vizinha */
-.focus__words {
-  display: inline-block;
-  height: 1.5em;
-  overflow: hidden;
-  font-size: var(--fs-2xl);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 1.2;
-}
-
-.focus__stack {
-  display: flex;
-  flex-direction: column;
-  animation: focus-cycle 9s ease infinite;
-}
-
-.focus.is-paused .focus__stack {
-  animation-play-state: paused;
-}
-
-.focus__stack span {
-  height: 1.5em;
-  display: flex;
-  align-items: center;
-  /* alinhadas ao início da janela: a distância até o "Foco em"
-     fica igual para todas as palavras */
-  justify-content: flex-start;
-  color: var(--text);
-}
-
-/* 4 itens (3 palavras + cópia da 1ª): cada passo sobe 25% da pilha.
-   O quadro de 100% é idêntico ao de 0%, então o reinício é invisível. */
-@keyframes focus-cycle {
-  0%,
-  26% {
-    transform: translateY(0);
-  }
-
-  33%,
-  59% {
-    transform: translateY(-25%);
-  }
-
-  66%,
-  92% {
-    transform: translateY(-50%);
-  }
-
-  100% {
-    transform: translateY(-75%);
-  }
-}
-
 /* ---------- Projetos (grid bento) ----------
    3 colunas × 2 linhas: os cards grandes ocupam 2 colunas em diagonal
    (superior-esquerda / inferior-direita) e os pequenos completam */
@@ -1254,11 +1174,31 @@ button:focus-visible,
   opacity: 1;
 }
 
+/* ---------- Lab: "Carregar mais" / "Carregar menos" ----------
+   Divide a seção em duas levas: a galeria de projetos em destaque e, só
+   depois do clique, os cards menores de links externos. Cada botão fica numa
+   linha própria — a do "mais" antes do grid, a do "menos" depois dele. */
+.lab__toggle-row {
+  display: flex;
+  justify-content: center;
+  margin-block-start: 2.5rem;
+}
+
+/* o display destas duas regras tem especificidade maior que o display:none que
+   o navegador dá ao [hidden] — sem isto o elemento apareceria mesmo escondido */
+.lab__toggle-row[hidden],
+.playground__grid[hidden] {
+  display: none;
+}
+
 /* ---------- Playground (recursos externos) ---------- */
 .playground__grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.5rem;
+  /* vem depois do botão (ou do lugar dele, já escondido): mesmo respiro
+     que separa a galeria do "Carregar mais" */
+  margin-block-start: 2.5rem;
 }
 
 .playground-card {
@@ -2708,8 +2648,7 @@ body:has(dialog[open]) {
   }
 
   .orbit__ring,
-  .orbit__chip,
-  .focus__stack {
+  .orbit__chip {
     animation: none;
   }
 

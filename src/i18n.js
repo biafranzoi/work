@@ -77,12 +77,8 @@
     "marquee.leadership": "Leadership",
     "marquee.prototyping": "Prototyping",
 
-    "projects.title": 'Featured <span class="accent">projects</span>',
-
-    "focus.label": "Focus on",
-    "focus.word1": "experience",
-    "focus.word2": "usability",
-    "focus.word3": "quality",
+    "lab.loadMore": "Load more",
+    "lab.loadLess": "Load less",
 
     "about.title": 'About <span class="accent">me</span>',
     "about.p1":
@@ -128,7 +124,6 @@
       'Report issue<span class="sr-only"> — accessibility, via LinkedIn (opens in new tab)</span>',
 
     "dock.home": "Home",
-    "dock.projects": "Projects",
     "dock.about": "About",
     "dock.testimonials": "Testimonials",
     "dock.contact": "Contact",
@@ -650,7 +645,6 @@
     "settings.theme.groupLabel": "Site theme",
     "settings.lang.groupLabel": "Site language",
     "marquee.ariaLabel": "Tools and technologies I use",
-    "focus.ariaLabel": "Focus on experience, usability, and quality",
     "about.visualAlt": "Photo of Bia",
     "about.socialsGroupLabel": "Social media",
     "social.linkedin": "LinkedIn (opens in new tab)",

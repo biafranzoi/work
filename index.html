@@ -189,6 +189,16 @@
         <svg class="anim-toggle__play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" hidden><path d="M8 5v14l11-7z"/></svg>
         <span class="topbar__tooltip" aria-hidden="true">Pausar animações</span>
       </button>
+      <button
+        type="button"
+        class="topbar__icon-btn"
+        id="back-to-top"
+        aria-label="Voltar ao topo"
+        data-i18n-aria-label="topbar.backToTop"
+      >
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5"/><path d="m5 12 7-7 7 7"/></svg>
+        <span class="topbar__tooltip" data-i18n="topbar.backToTop" aria-hidden="true">Voltar ao topo</span>
+      </button>
     </div>
 
     <main>
@@ -207,7 +217,7 @@
             front-end, em sintonia com metodologias ágeis.
           </p>
           <div class="hero__actions reveal">
-            <a href="#projetos" class="button button--primary" data-i18n="hero.ctaPrimary">Ver projetos</a>
+            <a href="#lab" class="button button--primary" data-i18n="hero.ctaPrimary">Ver projetos</a>
             <a href="#contato" class="button button--ghost" data-i18n="hero.ctaSecondary">Fale comigo</a>
           </div>
         </div>
@@ -283,13 +293,11 @@
       </section>
 
       <section
-        id="projetos"
+        id="lab"
         class="section container"
-        aria-labelledby="projetos-heading"
+        aria-labelledby="lab-heading"
       >
-        <h2 id="projetos-heading" class="section__title reveal" data-i18n="projects.title">
-          Projetos em <span class="accent">destaque</span>
-        </h2>
+        <h2 id="lab-heading" class="section__title reveal">Lab</h2>
         <!-- 2 cards por linha, alternando maior/menor em diagonal: linha 1
              grande-à-esquerda, linha 2 grande-à-direita. Com 6 cards num grid
              de 3 colunas, a sequência grande(2)/pequeno(1) fecha exatamente
@@ -407,24 +415,187 @@
             </span>
           </button>
         </div>
-      </section>
-
-      <section
-        class="focus"
-        aria-label="Foco em experiência, usabilidade e qualidade"
-        data-i18n-aria-label="focus.ariaLabel"
-      >
-        <div class="focus__inner container">
-          <span class="focus__label" data-i18n="focus.label">Foco em</span>
-          <span class="focus__words" aria-hidden="true">
-            <span class="focus__stack">
-              <span data-i18n="focus.word1">experiência</span>
-              <span data-i18n="focus.word2">usabilidade</span>
-              <span data-i18n="focus.word3">qualidade</span>
-              <!-- cópia da primeira palavra: faz o loop emendar sem salto -->
-              <span data-i18n="focus.word1">experiência</span>
+        <!-- a galeria acima são os projetos em destaque; os cards menores
+             (links externos) só entram depois do "Carregar mais". Os dois
+             botões comandam o mesmo grid e se revezam: um fica escondido
+             enquanto o outro está em cena. -->
+        <div class="lab__toggle-row lab__toggle-row--more">
+          <button
+            type="button"
+            class="button button--ghost lab__toggle"
+            aria-expanded="false"
+            aria-controls="lab-extra"
+            data-i18n="lab.loadMore"
+          >
+            Carregar mais
+          </button>
+        </div>
+        <div class="playground__grid" id="lab-extra" hidden>
+          <a
+            href="https://www.figma.com/proto/NjH2P6eMiS9oiyRbJDmjb8/Resutoran-Ye%CC%84ga%CC%84--2024-?node-id=88-24&amp;viewport=339%2C62%2C0.11&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=88%3A24&amp;page-id=1%3A2&amp;hide-ui=1"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
             </span>
-          </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Yēgā</span>
+              <span class="playground-card__desc" data-i18n="playground.yega.desc">Protótipo de site para um restaurante japonês fictício.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.figma.com/community/file/1139359843803728746/design-quotes-posters?q_id=9b7f3af1-e2b6-43c2-8946-69eef50088cc"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Pôsteres de Citações de Design</span>
+              <span class="playground-card__desc" data-i18n="playground.designQuotes.desc">Pôsteres com citações sobre Design.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.figma.com/community/file/1147700693688534881/newspaper-template?q_id=0bde82b6-8fc6-465d-a1c1-2b8e8838d630"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Template de Jornal Digital</span>
+              <span class="playground-card__desc" data-i18n="playground.newspaper.desc">Template de jornal para Figma.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <div class="playground-card playground-card--linked reveal">
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <a
+                class="playground-card__title playground-card__link"
+                href="https://www.figma.com/community/file/1174471510579245595/2022-cup-sticker-template?q_id=9b7f3af1-e2b6-43c2-8946-69eef50088cc"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Template Figurinha da Copa do Mundo 2022<span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span></a
+              >
+              <span class="playground-card__desc" data-i18n="playground.worldCup.desc"
+                >Criado para um projeto de gerador de figurinha de
+                <a href="https://github.com/julietedias/2022-cup-sticker" target="_blank" rel="noopener noreferrer"
+                  >Juliete Dias<span class="sr-only"> (abre em nova guia)</span></a
+                >.</span
+              >
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+          </div>
+          <div class="playground-card playground-card--linked reveal">
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <a
+                class="playground-card__title playground-card__link"
+                href="https://www.behance.net/gallery/208899199/General-App"
+                target="_blank"
+                rel="noopener noreferrer"
+                >UI para App de jogo General<span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span></a
+              >
+              <span class="playground-card__desc" data-i18n="playground.generalApp.desc"
+                >Interface para um app de jogo de
+                <a href="https://github.com/gabrielkgg/marcador-general" target="_blank" rel="noopener noreferrer"
+                  >Gabriel Alves<span class="sr-only"> (abre em nova guia)</span></a
+                >.</span
+              >
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+          </div>
+          <a
+            href="https://www.behance.net/gallery/156817307/Coisa-Fina-Brecho"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Logotipo Coisa Fina Brechó</span>
+              <span class="playground-card__desc" data-i18n="playground.coisaFina.desc">Identidade visual para brechó da cidade de Rio do Sul/SC.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.behance.net/gallery/156895689/Saiti"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Logotipo Saiti</span>
+              <span class="playground-card__desc" data-i18n="playground.saiti.desc">Identidade visual da Saiti, empresa de Rio do Sul/SC.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.behance.net/gallery/63317047/E-commerce-Banners-Design-for-Carro-de-Mola-2014-2018"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">Banners para E-commerce de Decoração</span>
+              <span class="playground-card__desc" data-i18n="playground.decorBanners.desc">Banners para a Carro de Mola, de Rio do Sul/SC.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+          <a
+            href="https://www.behance.net/gallery/63319783/E-commerce-E-mail-Design-for-Carro-de-Mola-2014-2018"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="playground-card reveal"
+          >
+            <span class="playground-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
+            </span>
+            <span class="playground-card__body">
+              <span class="playground-card__title">E-mail Marketing para E-commerce de Decoração</span>
+              <span class="playground-card__desc" data-i18n="playground.decorEmail.desc">E-mails para a Carro de Mola, de Rio do Sul/SC.</span>
+            </span>
+            <span class="playground-card__arrow" aria-hidden="true">↗</span>
+            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
+          </a>
+        </div>
+        <div class="lab__toggle-row lab__toggle-row--less" hidden>
+          <button
+            type="button"
+            class="button button--ghost lab__toggle"
+            aria-expanded="true"
+            aria-controls="lab-extra"
+            data-i18n="lab.loadLess"
+          >
+            Carregar menos
+          </button>
         </div>
       </section>
 
@@ -599,170 +770,6 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section
-        id="lab"
-        class="section container"
-        aria-labelledby="lab-heading"
-      >
-        <h2 id="lab-heading" class="section__title reveal">Lab</h2>
-        <div class="playground__grid">
-          <a
-            href="https://www.figma.com/proto/NjH2P6eMiS9oiyRbJDmjb8/Resutoran-Ye%CC%84ga%CC%84--2024-?node-id=88-24&amp;viewport=339%2C62%2C0.11&amp;scaling=scale-down&amp;content-scaling=fixed&amp;starting-point-node-id=88%3A24&amp;page-id=1%3A2&amp;hide-ui=1"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="playground-card reveal"
-          >
-            <span class="playground-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
-            </span>
-            <span class="playground-card__body">
-              <span class="playground-card__title">Yēgā</span>
-              <span class="playground-card__desc" data-i18n="playground.yega.desc">Protótipo de site para um restaurante japonês fictício.</span>
-            </span>
-            <span class="playground-card__arrow" aria-hidden="true">↗</span>
-            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
-          </a>
-          <a
-            href="https://www.figma.com/community/file/1139359843803728746/design-quotes-posters?q_id=9b7f3af1-e2b6-43c2-8946-69eef50088cc"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="playground-card reveal"
-          >
-            <span class="playground-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
-            </span>
-            <span class="playground-card__body">
-              <span class="playground-card__title">Pôsteres de Citações de Design</span>
-              <span class="playground-card__desc" data-i18n="playground.designQuotes.desc">Pôsteres com citações sobre Design.</span>
-            </span>
-            <span class="playground-card__arrow" aria-hidden="true">↗</span>
-            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
-          </a>
-          <a
-            href="https://www.figma.com/community/file/1147700693688534881/newspaper-template?q_id=0bde82b6-8fc6-465d-a1c1-2b8e8838d630"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="playground-card reveal"
-          >
-            <span class="playground-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
-            </span>
-            <span class="playground-card__body">
-              <span class="playground-card__title">Template de Jornal Digital</span>
-              <span class="playground-card__desc" data-i18n="playground.newspaper.desc">Template de jornal para Figma.</span>
-            </span>
-            <span class="playground-card__arrow" aria-hidden="true">↗</span>
-            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
-          </a>
-          <div class="playground-card playground-card--linked reveal">
-            <span class="playground-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.852 8.981h-4.588V0h4.588c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.491-4.49 4.491zM12.735 7.51h3.117c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-3.117V7.51zm0 1.471H8.148c-2.476 0-4.49-2.014-4.49-4.49S5.672 0 8.148 0h4.588v8.981zm-4.587-7.51c-1.665 0-3.019 1.355-3.019 3.019s1.354 3.02 3.019 3.02h3.117V1.471H8.148zm4.587 15.019H8.148c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h4.588v8.98zM8.148 8.981c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h3.117V8.981H8.148zM8.172 24c-2.489 0-4.515-2.014-4.515-4.49s2.014-4.49 4.49-4.49h4.588v4.441c0 2.503-2.047 4.539-4.563 4.539zm-.024-7.51a3.023 3.023 0 0 0-3.019 3.019c0 1.665 1.365 3.019 3.044 3.019 1.705 0 3.093-1.376 3.093-3.068v-2.97H8.148zm7.704 0h-.098c-2.476 0-4.49-2.014-4.49-4.49s2.014-4.49 4.49-4.49h.098c2.476 0 4.49 2.014 4.49 4.49s-2.014 4.49-4.49 4.49zm-.097-7.509c-1.665 0-3.019 1.355-3.019 3.019s1.355 3.019 3.019 3.019h.098c1.665 0 3.019-1.355 3.019-3.019s-1.355-3.019-3.019-3.019h-.098z"/></svg>
-            </span>
-            <span class="playground-card__body">
-              <a
-                class="playground-card__title playground-card__link"
-                href="https://www.figma.com/community/file/1174471510579245595/2022-cup-sticker-template?q_id=9b7f3af1-e2b6-43c2-8946-69eef50088cc"
-                target="_blank"
-                rel="noopener noreferrer"
-                >Template Figurinha da Copa do Mundo 2022<span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span></a
-              >
-              <span class="playground-card__desc" data-i18n="playground.worldCup.desc"
-                >Criado para um projeto de gerador de figurinha de
-                <a href="https://github.com/julietedias/2022-cup-sticker" target="_blank" rel="noopener noreferrer"
-                  >Juliete Dias<span class="sr-only"> (abre em nova guia)</span></a
-                >.</span
-              >
-            </span>
-            <span class="playground-card__arrow" aria-hidden="true">↗</span>
-          </div>
-          <div class="playground-card playground-card--linked reveal">
-            <span class="playground-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
-            </span>
-            <span class="playground-card__body">
-              <a
-                class="playground-card__title playground-card__link"
-                href="https://www.behance.net/gallery/208899199/General-App"
-                target="_blank"
-                rel="noopener noreferrer"
-                >UI para App de jogo General<span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span></a
-              >
-              <span class="playground-card__desc" data-i18n="playground.generalApp.desc"
-                >Interface para um app de jogo de
-                <a href="https://github.com/gabrielkgg/marcador-general" target="_blank" rel="noopener noreferrer"
-                  >Gabriel Alves<span class="sr-only"> (abre em nova guia)</span></a
-                >.</span
-              >
-            </span>
-            <span class="playground-card__arrow" aria-hidden="true">↗</span>
-          </div>
-          <a
-            href="https://www.behance.net/gallery/156817307/Coisa-Fina-Brecho"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="playground-card reveal"
-          >
-            <span class="playground-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
-            </span>
-            <span class="playground-card__body">
-              <span class="playground-card__title">Logotipo Coisa Fina Brechó</span>
-              <span class="playground-card__desc" data-i18n="playground.coisaFina.desc">Identidade visual para brechó da cidade de Rio do Sul/SC.</span>
-            </span>
-            <span class="playground-card__arrow" aria-hidden="true">↗</span>
-            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
-          </a>
-          <a
-            href="https://www.behance.net/gallery/156895689/Saiti"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="playground-card reveal"
-          >
-            <span class="playground-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
-            </span>
-            <span class="playground-card__body">
-              <span class="playground-card__title">Logotipo Saiti</span>
-              <span class="playground-card__desc" data-i18n="playground.saiti.desc">Identidade visual da Saiti, empresa de Rio do Sul/SC.</span>
-            </span>
-            <span class="playground-card__arrow" aria-hidden="true">↗</span>
-            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
-          </a>
-          <a
-            href="https://www.behance.net/gallery/63317047/E-commerce-Banners-Design-for-Carro-de-Mola-2014-2018"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="playground-card reveal"
-          >
-            <span class="playground-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
-            </span>
-            <span class="playground-card__body">
-              <span class="playground-card__title">Banners para E-commerce de Decoração</span>
-              <span class="playground-card__desc" data-i18n="playground.decorBanners.desc">Banners para a Carro de Mola, de Rio do Sul/SC.</span>
-            </span>
-            <span class="playground-card__arrow" aria-hidden="true">↗</span>
-            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
-          </a>
-          <a
-            href="https://www.behance.net/gallery/63319783/E-commerce-E-mail-Design-for-Carro-de-Mola-2014-2018"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="playground-card reveal"
-          >
-            <span class="playground-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.969 16.927a2.561 2.561 0 0 0 1.901.677 2.501 2.501 0 0 0 1.531-.475c.362-.235.636-.584.779-.99h2.585a5.091 5.091 0 0 1-1.9 2.896 5.292 5.292 0 0 1-3.091.88 5.839 5.839 0 0 1-2.284-.433 4.871 4.871 0 0 1-1.723-1.211 5.657 5.657 0 0 1-1.08-1.874 7.057 7.057 0 0 1-.383-2.393c-.005-.8.129-1.595.396-2.349a5.313 5.313 0 0 1 5.088-3.604 4.87 4.87 0 0 1 2.376.563c.661.362 1.231.87 1.668 1.485a6.2 6.2 0 0 1 .943 2.133c.194.821.263 1.666.205 2.508h-7.699c-.063.79.184 1.574.688 2.187ZM6.947 4.084a8.065 8.065 0 0 1 1.928.198 4.29 4.29 0 0 1 1.49.638c.418.303.748.711.958 1.182.241.579.357 1.203.341 1.83a3.506 3.506 0 0 1-.506 1.961 3.726 3.726 0 0 1-1.503 1.287 3.588 3.588 0 0 1 2.027 1.437c.464.747.697 1.615.67 2.494a4.593 4.593 0 0 1-.423 2.032 3.945 3.945 0 0 1-1.163 1.413 5.114 5.114 0 0 1-1.683.807 7.135 7.135 0 0 1-1.928.259H0V4.084h6.947Zm-.235 12.9c.308.004.616-.029.916-.099a2.18 2.18 0 0 0 .766-.332c.228-.158.411-.371.534-.619.142-.317.208-.663.191-1.009a2.08 2.08 0 0 0-.642-1.715 2.618 2.618 0 0 0-1.696-.505h-3.54v4.279h3.471Zm13.635-5.967a2.13 2.13 0 0 0-1.654-.619 2.336 2.336 0 0 0-1.163.259 2.474 2.474 0 0 0-.738.62 2.359 2.359 0 0 0-.396.792c-.074.239-.12.485-.137.734h4.769a3.239 3.239 0 0 0-.679-1.785l-.002-.001Zm-13.813-.648a2.254 2.254 0 0 0 1.423-.433c.399-.355.607-.88.56-1.413a1.916 1.916 0 0 0-.178-.891 1.298 1.298 0 0 0-.495-.533 1.851 1.851 0 0 0-.711-.274 3.966 3.966 0 0 0-.835-.073H3.241v3.631h3.293v-.014ZM21.62 5.122h-5.976v1.527h5.976V5.122Z"/></svg>
-            </span>
-            <span class="playground-card__body">
-              <span class="playground-card__title">E-mail Marketing para E-commerce de Decoração</span>
-              <span class="playground-card__desc" data-i18n="playground.decorEmail.desc">E-mails para a Carro de Mola, de Rio do Sul/SC.</span>
-            </span>
-            <span class="playground-card__arrow" aria-hidden="true">↗</span>
-            <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
-          </a>
         </div>
       </section>
 
@@ -2098,7 +2105,7 @@
     <footer class="site-footer">
       <div class="site-footer__inner container">
         <p class="site-footer__credits">
-          Atualizado em 07/2026 por Bia Franzoi.<br />
+          Atualizado em 10/2026 por Bia Franzoi.<br />
           <span data-i18n="footer.credits">Feito com amor e contribuições de</span>
           <a
             href="https://www.linkedin.com/in/julietedias/"
@@ -2142,38 +2149,6 @@
         </svg>
         <span data-i18n="dock.home">Início</span>
       </a>
-      <a href="#projetos" class="dock__item">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <rect x="3" y="3" width="7" height="7" rx="1.5" />
-          <rect x="14" y="3" width="7" height="7" rx="1.5" />
-          <rect x="3" y="14" width="7" height="7" rx="1.5" />
-          <rect x="14" y="14" width="7" height="7" rx="1.5" />
-        </svg>
-        <span data-i18n="dock.projects">Projetos</span>
-      </a>
-      <a href="#sobre" class="dock__item">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <circle cx="12" cy="8" r="4" />
-          <path d="M4 21c0-4 3.5-6 8-6s8 2 8 6" />
-        </svg>
-        <span data-i18n="dock.about">Sobre</span>
-      </a>
       <a href="#lab" class="dock__item">
         <svg
           viewBox="0 0 24 24"
@@ -2190,6 +2165,21 @@
           <path d="M6.8 15h10.4" />
         </svg>
         <span>Lab</span>
+      </a>
+      <a href="#sobre" class="dock__item">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="12" cy="8" r="4" />
+          <path d="M4 21c0-4 3.5-6 8-6s8 2 8 6" />
+        </svg>
+        <span data-i18n="dock.about">Sobre</span>
       </a>
       <a href="#depoimentos" class="dock__item">
         <svg
