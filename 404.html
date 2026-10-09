@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
+    <meta name="robots" content="noindex" />
+
+    <!-- Página de erro do GitHub Pages: servida em QUALQUER caminho que não
+         exista (ex.: /work/projeto/slug-errado/). Por isso ela não usa nada
+         relativo — o CSS é inline e os links são absolutos (ou montados pelo
+         script no fim do <body>): um href relativo seria resolvido a partir
+         da pasta inexistente que o visitante tentou abrir. -->
+
+    <title>Página não encontrada · Bia Franzoi</title>
+
+    <!-- absoluto pelo mesmo motivo do botão: a página roda em qualquer caminho -->
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://biafranzoi.github.io/work/src/img/biafranzoi-logo.png"
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap"
+    />
+
+    <style>
+      /* Tokens: cópia enxuta dos 3 temas do src/style.css — só o que esta
+         página usa. Se os tokens de lá mudarem, estes aqui também precisam. */
+      :root {
+        color-scheme: dark;
+        --bg: #0b0f0d;
+        --border-interactive: #526558;
+        --text: #e8efeb;
+        --text-muted: #9db0a7;
+        --accent: #2bd17e;
+        --accent-strong: color-mix(in srgb, var(--accent) 80%, black);
+        --accent-contrast: #06130c;
+        /* halo verde atrás da ilustração */
+        --art-glow: 16%;
+        --focus-width: 2px;
+        --radius: 12px;
+        --font-sans:
+          "Space Grotesk", "Segoe UI", system-ui, -apple-system, Roboto,
+          "Helvetica Neue", Arial, sans-serif;
+        --fs-sm: 0.875rem;
+        --fs-base: 1rem;
+        --fs-xl: clamp(1.75rem, 1.1rem + 3vw, 2.5rem);
+      }
+
+      :root[data-theme="light"] {
+        color-scheme: light;
+        --bg: #f5f7f5;
+        --border-interactive: #7d8f85;
+        --text: #101a15;
+        --text-muted: #47584e;
+        --accent: #0c6338;
+        --accent-contrast: #ffffff;
+        /* sobre o fundo quase branco, o mesmo halo vira uma mancha cinza — o
+           verde do tema claro é escuro (#0c6338), não luminoso */
+        --art-glow: 6%;
+      }
+
+      :root[data-theme="high-contrast"] {
+        color-scheme: dark;
+        --bg: #000000;
+        --border-interactive: #ffffff;
+        --text: #ffffff;
+        --text-muted: #d6d6d6;
+        --accent: #35e28f;
+        --accent-contrast: #000000;
+        --focus-width: 3px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        min-height: 100dvh;
+        display: grid;
+        place-items: center;
+        padding: 2rem 1.5rem 3rem;
+        background: var(--bg);
+        color: var(--text);
+        font-family: var(--font-sans);
+        font-size: var(--fs-base);
+        line-height: 1.6;
+        text-align: center;
+        overflow-x: hidden;
+      }
+
+      main {
+        display: grid;
+        justify-items: center;
+        gap: 1.25rem;
+        max-width: 34rem;
+      }
+
+      .kicker {
+        color: var(--accent);
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        font-size: var(--fs-sm);
+      }
+
+      h1 {
+        font-size: var(--fs-xl);
+        line-height: 1.15;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+      }
+
+      .lead {
+        color: var(--text-muted);
+        text-wrap: pretty;
+      }
+
+      /* ---------- Ilustração: o "0" do 404 é um radar varrendo o vazio -----
+         Tudo em CSS, sem imagem: o feixe é um conic-gradient girando, e cada
+         "blip" acende no instante exato em que o feixe passa por ele (o
+         atraso de cada um = o ângulo dele convertido para o tempo de uma
+         volta, --turn). Nenhum deles é a página procurada. */
+      .art {
+        --size: clamp(4.5rem, 19vw, 9.5rem);
+        --turn: 3.6s;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: clamp(0.35rem, 1.5vw, 1rem);
+        margin-bottom: 0.5rem;
+      }
+
+      /* brilho difuso atrás da composição, na mesma linguagem do glow do
+         botão primário do site */
+      .glow {
+        position: absolute;
+        inset: -40% -10%;
+        z-index: -1;
+        border-radius: 50%;
+        background: radial-gradient(
+          closest-side,
+          color-mix(in srgb, var(--accent) var(--art-glow), transparent),
+          transparent
+        );
+        animation: breathe 6s ease-in-out infinite;
+      }
+
+      /* ondas de sonar saindo do "0" e atravessando por trás dos dígitos —
+         é o que dá escala ao movimento: o visor do radar é pequeno demais
+         (ele tem que caber dentro do traço do zero) pra carregar a animação
+         sozinho. Uma onda a cada --turn/2. */
+      .ping {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: -1;
+        width: calc(var(--size) * 0.72);
+        aspect-ratio: 1;
+        translate: -50% -50%;
+        border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent);
+        border-radius: 50%;
+        opacity: 0;
+        animation: ping calc(var(--turn) * 1.5) ease-out infinite;
+        animation-delay: var(--d);
+      }
+
+      @keyframes ping {
+        0% {
+          transform: scale(0.62);
+          opacity: 0.5;
+        }
+        75% {
+          opacity: 0;
+        }
+        100% {
+          transform: scale(3.6);
+          opacity: 0;
+        }
+      }
+
+      .digit {
+        font-size: var(--size);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.04em;
+      }
+
+      .radar {
+        position: relative;
+        width: calc(var(--size) * 0.72);
+        aspect-ratio: 1;
+        flex-shrink: 0;
+        /* a borda grossa é o traço do "0"; o radar mora dentro dela */
+        border: calc(var(--size) * 0.12) solid var(--text);
+        border-radius: 50%;
+      }
+
+      .screen {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        overflow: hidden;
+        background: radial-gradient(
+          closest-side,
+          color-mix(in srgb, var(--accent) 10%, transparent),
+          transparent
+        );
+      }
+
+      /* fios da mira */
+      .screen::before,
+      .screen::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        margin: auto;
+        background: color-mix(in srgb, var(--accent) 22%, transparent);
+      }
+      .screen::before {
+        height: 1px;
+      }
+      .screen::after {
+        width: 1px;
+      }
+
+      .ring {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(100% * var(--s));
+        aspect-ratio: 1;
+        translate: -50% -50%;
+        border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+        border-radius: 50%;
+      }
+
+      .sweep {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        background: conic-gradient(
+          from 0deg,
+          color-mix(in srgb, var(--accent) 65%, transparent) 0deg,
+          color-mix(in srgb, var(--accent) 12%, transparent) 40deg,
+          transparent 80deg
+        );
+        /* o feixe nasce no centro e se dissolve antes da borda */
+        mask: radial-gradient(closest-side, transparent 6%, #000 90%);
+        animation: sweep var(--turn) linear infinite;
+      }
+
+      .blip {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: calc(var(--size) * 0.055);
+        aspect-ratio: 1;
+        margin: calc(var(--size) * -0.0275);
+        border-radius: 50%;
+        background: var(--accent);
+        opacity: 0.15;
+        /* rotate + translate = coordenada polar: o blip fica no ângulo --a,
+           à distância --r do centro (fração de --size) */
+        transform: rotate(var(--a))
+          translateY(calc(var(--size) * var(--r) * -1));
+        animation: blip var(--turn) linear infinite;
+        animation-delay: var(--d);
+      }
+
+      @keyframes sweep {
+        to {
+          rotate: 360deg;
+        }
+      }
+
+      @keyframes blip {
+        0% {
+          opacity: 1;
+          box-shadow: 0 0 10px var(--accent);
+        }
+        15% {
+          opacity: 0.15;
+          box-shadow: 0 0 0 transparent;
+        }
+        100% {
+          opacity: 0.15;
+          box-shadow: 0 0 0 transparent;
+        }
+      }
+
+      @keyframes breathe {
+        50% {
+          opacity: 0.4;
+        }
+      }
+
+      /* ---------- Botão (mesma linguagem do .button--primary do site) ----- */
+      .button {
+        display: inline-block;
+        margin-top: 0.75rem;
+        padding: 1rem 1.5rem;
+        border: 0;
+        border-radius: var(--radius);
+        background: var(--accent);
+        color: var(--accent-contrast);
+        font-family: inherit;
+        font-weight: 600;
+        font-size: var(--fs-sm);
+        text-decoration: none;
+        box-shadow:
+          0 0 16px color-mix(in srgb, var(--accent) 55%, transparent),
+          0 0 32px color-mix(in srgb, var(--accent) 25%, transparent);
+        transition:
+          transform 0.2s ease,
+          background-color 0.2s ease,
+          box-shadow 0.2s ease;
+      }
+
+      .button:hover,
+      .button:focus-visible {
+        transform: translateY(-2px);
+        background: var(--accent-strong);
+        box-shadow:
+          0 0 20px color-mix(in srgb, var(--accent) 70%, transparent),
+          0 0 40px color-mix(in srgb, var(--accent) 35%, transparent);
+      }
+
+      a:focus-visible {
+        outline: var(--focus-width) solid var(--accent);
+        outline-offset: 2px;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .sweep,
+        .ping,
+        .glow {
+          animation: none;
+        }
+        /* sem a varredura, os blips ficam todos acesos de uma vez */
+        .blip {
+          animation: none;
+          opacity: 1;
+        }
+        .button {
+          transition: none;
+        }
+        .button:hover,
+        .button:focus-visible {
+          transform: none;
+        }
+      }
+    </style>
+
+    <script>
+      // aplica o tema salvo antes da primeira pintura, pra não piscar o tema
+      // errado por uma fração de segundo (mesmo script do index.html)
+      (function () {
+        try {
+          var saved = localStorage.getItem("biafranzoi-theme");
+          if (saved === "light" || saved === "high-contrast") {
+            document.documentElement.setAttribute("data-theme", saved);
+          }
+        } catch (e) {}
+      })();
+    </script>
+
+    <!-- Hotjar Tracking Code for Bia Franzoi Work — mesma conta do index.html -->
+    <script>
+      (function (h, o, t, j, a, r) {
+        h.hj =
+          h.hj ||
+          function () {
+            (h.hj.q = h.hj.q || []).push(arguments);
+          };
+        h._hjSettings = { hjid: 6774141, hjsv: 6 };
+        a = o.getElementsByTagName("head")[0];
+        r = o.createElement("script");
+        r.async = 1;
+        r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+        a.appendChild(r);
+      })(window, document, "https://static.hotjar.com/c/hotjar-", ".js?sv=");
+    </script>
+
+    <!-- Google tag (gtag.js) — GA4. Mesma propriedade do index.html: como
+         esta página é servida no caminho que o visitante tentou abrir, o
+         page_view registra o endereço quebrado (e o referrer, de onde veio o
+         link). Para ver só os 404 no GA, filtre pelo título da página
+         ("Página não encontrada"), que não se repete no resto do site. -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-CJPW5TN7QQ"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-CJPW5TN7QQ");
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <p class="kicker" data-en="Error 404">Erro 404</p>
+
+      <div class="art" aria-hidden="true">
+        <span class="glow"></span>
+        <span class="ping" style="--d: 0s"></span>
+        <span class="ping" style="--d: 1.8s"></span>
+        <span class="ping" style="--d: 3.6s"></span>
+        <span class="digit">4</span>
+        <span class="radar">
+          <span class="screen">
+            <span class="ring" style="--s: 0.4"></span>
+            <span class="ring" style="--s: 0.74"></span>
+            <span class="sweep"></span>
+            <!-- --d = (--a / 360) x --turn: o instante em que o feixe passa -->
+            <span class="blip" style="--a: 55deg; --r: 0.09; --d: 0.55s"></span>
+            <span class="blip" style="--a: 160deg; --r: 0.19; --d: 1.6s"></span>
+            <span class="blip" style="--a: 265deg; --r: 0.14; --d: 2.65s"></span>
+          </span>
+        </span>
+        <span class="digit">4</span>
+      </div>
+
+      <h1 data-en="This page drifted out of orbit">
+        Esta página saiu de órbita
+      </h1>
+
+      <p
+        class="lead"
+        data-en="The address does not exist, or it was renamed. The radar swept the whole area and found nothing here."
+      >
+        O endereço não existe, ou mudou de nome. O radar varreu a área inteira
+        e não encontrou nada por aqui.
+      </p>
+
+      <!-- endereço fixo e absoluto, de propósito: esta página é servida em
+           qualquer caminho inexistente, então um href relativo cairia dentro
+           da pasta que o visitante errou. No servidor local ele aponta para o
+           site publicado, não para a cópia local. -->
+      <a
+        class="button"
+        href="https://biafranzoi.github.io/work/"
+        data-en="Back to the portfolio"
+        >Voltar para o portfólio</a
+      >
+    </main>
+
+    <script>
+      (function () {
+        // Respeita o idioma escolhido no portfólio (mesma chave do i18n.js).
+        // O português é o que está escrito no HTML; só o inglês precisa de
+        // tradução, guardada em data-en — mesma ideia do resto do site.
+        try {
+          if (localStorage.getItem("biafranzoi-lang") === "en") {
+            document.documentElement.lang = "en";
+            document.title = "Page not found · Bia Franzoi";
+            document.querySelectorAll("[data-en]").forEach(function (el) {
+              el.textContent = el.dataset.en;
+            });
+          }
+        } catch (e) {}
+      })();
+    </script>
+  </body>
+</html>
