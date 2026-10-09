@@ -47,6 +47,7 @@
     "settings.theme.light": "Light",
     "settings.theme.highContrast": "High contrast",
     "settings.lang.label": "Language",
+    "topbar.backToTop": "Back to top",
 
     "hero.title":
       'Hi, I\'m <span class="accent">Bia Franzoi</span>.<br />\n            Bringing <span class="accent">ideas</span> to life with <span class="accent">design and AI</span>.',
@@ -655,6 +656,8 @@
     "carousel.next": "Next testimonial",
     "carousel.dotsGroupLabel": "Navigate between testimonials",
     "modal.close": "Close",
+    "modal.backToTop": "Back to top",
+    "topbar.backToTop": "Back to top",
     "dock.navAriaLabel": "Main navigation",
     "case.flashback.embedLabel":
       "Flashback Machine, the interactive timeline, embedded on this page",

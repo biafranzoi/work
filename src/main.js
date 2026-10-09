@@ -173,6 +173,28 @@ modal
   .querySelector(".project-modal__close")
   .addEventListener("click", () => modal.close());
 
+// "Voltar ao topo", nos dois contextos: o botão da topbar rola a página e o
+// botão do case rola o próprio <dialog>, que é seu próprio contêiner de
+// scroll (é por isso que a abertura reseta modal.scrollTop, ver openProject).
+// O behavior vai explícito aqui, e não como scroll-behavior no CSS: a
+// atribuição de scrollTop também obedece ao scroll-behavior do elemento,
+// então o reset da abertura passaria a ser animado e o case abriria
+// "descendo" a partir da rolagem da visita anterior.
+const scrollToTop = (target) => {
+  const behavior = matchMedia("(prefers-reduced-motion: reduce)").matches
+    ? "auto"
+    : "smooth";
+  target.scrollTo({ top: 0, behavior });
+};
+
+document
+  .querySelector("#back-to-top")
+  ?.addEventListener("click", () => scrollToTop(window));
+
+modal
+  .querySelector("#modal-back-to-top")
+  .addEventListener("click", () => scrollToTop(modal));
+
 // Estudo de caso completo: cards com data-case="slug" têm um
 // <template id="case-slug"> em algum lugar do documento (ver index.html,
 // logo depois do <dialog>) com o conteúdo completo do case. Os demais caem

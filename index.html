@@ -920,19 +920,44 @@
       id="project-modal"
       aria-labelledby="project-modal-title"
     >
-      <button type="button" class="project-modal__close" aria-label="Fechar" data-i18n-aria-label="modal.close">
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2.5"
-          stroke-linecap="round"
-          aria-hidden="true"
+      <!-- controles fixos do case: fechar e voltar ao topo. O "voltar ao topo"
+           fica no canto, na mesma posição do botão da topbar, pra não mudar de
+           lugar quando o modal abre. -->
+      <div class="project-modal__tools">
+        <button type="button" class="project-modal__tool project-modal__close" aria-label="Fechar" data-i18n-aria-label="modal.close">
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            aria-hidden="true"
+          >
+            <line x1="5" y1="5" x2="19" y2="19" />
+            <line x1="19" y1="5" x2="5" y2="19" />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="project-modal__tool project-modal__top"
+          id="modal-back-to-top"
+          aria-label="Voltar ao topo"
+          data-i18n-aria-label="modal.backToTop"
         >
-          <line x1="5" y1="5" x2="19" y2="19" />
-          <line x1="19" y1="5" x2="5" y2="19" />
-        </svg>
-      </button>
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2.5"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            aria-hidden="true"
+          >
+            <path d="M12 19V5" />
+            <path d="m5 12 7-7 7 7" />
+          </svg>
+        </button>
+      </div>
       <div class="project-modal__content container">
         <p class="project-modal__kicker accent" data-i18n="modal.kicker">Projeto pessoal</p>
         <h2 id="project-modal-title" class="project-modal__title" data-i18n="modal.titlePlaceholder">Projeto</h2>

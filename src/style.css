@@ -1531,21 +1531,29 @@ button:focus-visible,
   }
 }
 
-.project-modal__close {
+/* Controles fixos do case: fechar e voltar ao topo, agrupados no canto
+   superior direito. O z-index é o que mantém o grupo visível: sem ele,
+   qualquer elemento do case com transform (ex.: as fotos giradas de
+   .case-timeline__figure) cria seu próprio contexto de empilhamento e, por
+   vir depois no HTML, pinta por cima dos botões fixos — mesmo eles sendo
+   "fixed". Um z-index alto aqui garante que fiquem sempre acima de qualquer
+   conteúdo do modal, não importa a ordem no DOM. */
+.project-modal__tools {
   position: fixed;
   top: 1.5rem;
   right: 1.5rem;
-  /* sem isso, qualquer elemento do case com transform (ex.: as fotos
-     giradas de .case-timeline__figure) cria seu próprio contexto de
-     empilhamento e, por vir depois no HTML, pinta por cima do botão fixo
-     — mesmo ele sendo "fixed". Um z-index alto aqui garante que o botão de
-     fechar fique sempre acima de qualquer conteúdo do modal, não importa
-     a ordem no DOM. */
   z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.project-modal__tool {
   display: grid;
   place-items: center;
   width: var(--btn-size-lg);
   height: var(--btn-size-lg);
+  flex-shrink: 0;
   padding: 0;
   cursor: pointer;
   border: var(--border-width) solid var(--border-interactive);
@@ -1558,13 +1566,13 @@ button:focus-visible,
     background-color 0.3s ease;
 }
 
-.project-modal__close:hover,
-.project-modal__close:focus-visible {
+.project-modal__tool:hover,
+.project-modal__tool:focus-visible {
   border-color: var(--accent);
   color: var(--accent);
 }
 
-.project-modal__close svg {
+.project-modal__tool svg {
   width: var(--icon-size-lg);
   height: var(--icon-size-lg);
 }
