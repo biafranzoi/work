@@ -1780,7 +1780,7 @@ button:focus-visible,
   background: var(--bg-elevated);
 }
 
-/* protótipos de desktop/web (DestinoIdeal, Nebula): até 70% da largura da tela,
+/* protótipos de desktop/web (Boralá!, Nebula): até 70% da largura da tela,
    proporção 16/10 (herdam o breakout e a centralização do base acima) */
 .project-modal__embed--wide {
   width: min(70vw, calc(82vh * 16 / 10));

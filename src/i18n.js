@@ -70,8 +70,8 @@
       "End-to-end UX work, from the platform redesign to the evolution of the Design System.",
     "project.crediario.descLong":
       "End-to-end UX work, from the platform redesign to the evolution of the Design System, in ongoing cross-functional collaboration since 2018.",
-    "project.destinoideal.desc":
-      "Travel planner that recommends tailor-made destinations based on the traveler's profile.",
+    "project.borala.desc":
+      "Travel planner that starts from where you are: tell it where you're leaving from and how long a trip you'll accept, and the list of reachable destinations builds itself.",
     "project.nebula.desc":
       "Storage SaaS focused on reducing friction between file upload and collaboration.",
     "project.digidoc.desc":
@@ -235,43 +235,110 @@
     "case.compraki.ctaPrototype": "Open prototype",
     "case.compraki.note": "Project in progress.",
 
-    // Estudo de caso completo: DestinoIdeal
-    // (src/img/biafranzoi-destinoideal-*.png/.gif, <template id="case-destinoideal">)
-    "case.destinoideal.lead":
-      "A recommendation platform that uses a contextual filtering engine to turn subjective preferences into viable destinations.",
-    "case.destinoideal.headingProto": "Try the prototype",
-    "case.destinoideal.bodyProto":
-      "Browse the prototype right here — or open it full screen in Figma.",
-    "case.destinoideal.ctaProto": "View prototype",
-    "case.destinoideal.heading1": "The problem",
-    "case.destinoideal.body1":
-      "The travel industry is built around transactions, not discovery — most booking tools assume travelers already know where they're going. That creates a paradox of choice: plenty of options and information, but little personal relevance to budget, travel-companion preferences, and logistics.",
-    "case.destinoideal.heading2": "The solution",
-    "case.destinoideal.body2":
-      "DestinoIdeal is a curation platform that turns subjective preferences into viable destinations through a contextual filtering engine, addressing choice paralysis right at the top of the funnel. A freemium model connects users to local partner establishments.",
-    "case.destinoideal.heading3": "Business hypothesis (monetization)",
-    "case.destinoideal.body3": "The revenue structure follows a three-part freemium model:",
-    "case.destinoideal.freemium":
-      "<li><strong>Core loop:</strong> free destination discovery, to build user volume and behavioral data.</li>" +
-      "<li><strong>Premium (R$ 49.90):</strong> convenience and less travel risk, with verified establishments and collaborative planning tools.</li>" +
-      "<li><strong>B2B:</strong> a marketplace for local establishments to gain visibility with high-intent travelers.</li>",
-    "case.destinoideal.body4":
-      "Premium subscribers get access to advanced travel preferences, verified destinations, ratings from other subscribers, group trips, and shareable travel albums, among other perks — while cities and establishments pay for featured placement in search results.",
-    "case.destinoideal.heading4": "Interface design and visual strategy",
-    "case.destinoideal.body5":
-      "The interface aimed to reduce cognitive load during a process that tends to be stressful:",
-    "case.destinoideal.design":
-      "<li><strong>Component architecture:</strong> Atomic Design ensures scalability, and Figma variables allow fast iteration with systemic consistency.</li>" +
-      "<li><strong>Affordance and semantics:</strong> rounded corners and vibrant colors build emotional connection and reduce perceived technical complexity; visual hierarchy prioritizes the discovery CTA through a simplified onboarding.</li>",
-    "case.destinoideal.heading5": "Retrospective and next steps",
-    "case.destinoideal.body6":
-      "Given the two-week conception window, the focus was validating the visual and functional value propositions. Critical next steps include:",
-    "case.destinoideal.nextSteps":
-      "<li><strong>Product-market fit validation:</strong> guerrilla testing to validate the recommendation algorithm's relevance.</li>" +
-      "<li><strong>Using AI:</strong> testing AI agents for user search and recommendations, potentially pivoting the solution's scope.</li>" +
-      "<li><strong>Engagement metrics:</strong> defining KPIs like quiz conversion rate and free-account retention.</li>" +
-      "<li><strong>Accessibility:</strong> auditing color contrast for WCAG compliance and baseline accessibility standards.</li>",
-    "case.destinoideal.note": "Prototype in validation phase.",
+    // Estudo de caso completo: Boralá! (antes DestinoIdeal)
+    // (src/img/biafranzoi-borala-*.jpg na versão atual e
+    // src/img/biafranzoi-destinoideal-*.png/.gif na primeira versão;
+    // <template id="case-borala">). As chaves "ficha*" e "peso*" são os dois
+    // blocos .project-modal__meta — rótulo em dt, dado em dd.
+    "case.borala.lead":
+      "A travel planner that flips the industry's question: instead of “where do you want to go?”, it asks where you're leaving from and how long a trip you'll accept.",
+    "case.borala.lead2":
+      "It was born in 2024 as DestinoIdeal, a two-week Figma prototype. It came back with a different name, a different scope, and a different medium: today it's a navigable prototype written in HTML, CSS, and JavaScript.",
+    "case.borala.ctaProto": "Open the prototype",
+
+    "case.borala.fichaTelas": "Prototype",
+    "case.borala.fichaTelasV": "11 navigable screens",
+    "case.borala.fichaCatalogo": "Catalog",
+    "case.borala.fichaCatalogoV": "27 destinations · 94 places",
+    "case.borala.fichaBusca": "Search",
+    "case.borala.fichaBuscaV": "7 origins · 4 time brackets",
+    "case.borala.fichaStack": "Built with",
+    "case.borala.fichaStackV": "HTML, CSS, and JS · no back end",
+
+    "case.borala.heading1": "The problem",
+    "case.borala.body1":
+      "The travel industry is built around transactions, not discovery: most booking tools assume travelers already know where they're going.",
+    "case.borala.body1b":
+      "The result is the paradox of choice — plenty of options, little relevance to the budget, to who's coming along, or to the logistics of actually getting there.",
+
+    "case.borala.heading2": "The first version: DestinoIdeal (2024)",
+    "case.borala.body2":
+      "Two weeks, all in Figma. A curation platform that turned subjective preferences into viable destinations, tackling choice paralysis at the top of the funnel.",
+    "case.borala.v2024":
+      "<li><strong>Interface:</strong> reduce cognitive load in a stressful process — rounded corners and vibrant colors for emotional connection, visual hierarchy prioritizing the discovery CTA.</li>" +
+      "<li><strong>System:</strong> Atomic Design for scalability, Figma variables to iterate fast without losing consistency.</li>" +
+      "<li><strong>Business:</strong> a three-part freemium — free discovery as the core loop, a R$ 49.90 Premium, and a B2B arm where cities and establishments paid for featured placement.</li>",
+
+    "case.borala.heading3": "The change of scope",
+    "case.borala.body4":
+      "The original brief was more concrete than that version delivered: find out where you can get to by bus, somewhere relatively close. Starting from subjective preferences, DestinoIdeal returned desirable destinations without saying whether you could reach them.",
+    "case.borala.body4b":
+      "The revision started there, and took the whole project with it:",
+    "case.borala.mudou":
+      "<li><strong>The question:</strong> origin and travel time moved up to the top of the screen and out of the filters. Company, region, and mood became refinement.</li>" +
+      "<li><strong>The name:</strong> “ideal destination” promised a perfect match; “Boralá!” is the invitation people already use to plan a trip together.</li>" +
+      "<li><strong>The medium:</strong> it left Figma and became code on GitHub Pages, with search, filters, and account state actually working.</li>" +
+      "<li><strong>The recommendation:</strong> it stopped being an unexplained number and became a calculation with declared weights.</li>" +
+      "<li><strong>Monetization:</strong> discovery became entirely free, and the subscription moved to after the destination is chosen.</li>",
+
+    "case.borala.heading4": "The solution today",
+    "case.borala.body5":
+      "Boralá! answers “where can I get to from here”. You give your origin city and how long you'll accept being on the road or in the air.",
+    "case.borala.body5b":
+      "The list rebuilds with each choice, with average price per person, how you get there, and the curation badge. The catalog is static, but large enough for filters to combine and run into real empty states.",
+    "case.borala.busca":
+      "<li><strong>The framing stays at the top:</strong> your own city drops off the list, and anything beyond the accepted time never shows up.</li>" +
+      "<li><strong>Filters count before they're used:</strong> each option shows how many destinations it would still return — ignoring its own group, otherwise ticking one option would zero out its neighbors.</li>" +
+      "<li><strong>Alternatives and requirements are different things:</strong> destination type adds up (beach <em>or</em> mountains), experiences demand (hiking <em>and</em> food). The rule is written next to each group.</li>" +
+      "<li><strong>Everything goes into the URL:</strong> a filtered result is a link that can be shared and reloaded without losing anything.</li>",
+
+    "case.borala.heading5": "The match is a calculation, not a promise",
+    "case.borala.body6":
+      "This is where the previous version fell shortest: the filtering engine produced a list, but nobody knew why. Now the percentage comes from an auditable sum, and distance carries the most weight:",
+    "case.borala.peso3h": "Up to 3h of travel",
+    "case.borala.peso6h": "Up to 6h",
+    "case.borala.peso10h": "Over 10h",
+    "case.borala.pesoClima": "Requested mood",
+    "case.borala.pesoTeto": "Possible result",
+    "case.borala.pesoTetoV": "40% to 99%",
+    "case.borala.body7":
+      "A short road trip gets an extra bonus, because that's the use case the project came from. And the ceiling is 99%: nothing here is a perfect fit, and the interface doesn't pretend otherwise.",
+
+    "case.borala.heading6": "Business hypothesis (monetization)",
+    "case.borala.body8":
+      "The freemium model stayed, but the line between free and paid moved. The subscription used to cover planning <em>and</em> access to verified places; now finding out where to go is entirely free, and what's charged for is what comes after the choice.",
+    "case.borala.freemium":
+      "<li><strong>Free, no account:</strong> full search, every filter, and the verified places.</li>" +
+      "<li><strong>Premium — R$ 14.90/month or R$ 119/year:</strong> the parts that stall a group (voting, cost splitting, checklist, album, price alerts). Invited people take part without subscribing.</li>" +
+      "<li><strong>30-day pass — R$ 29.90:</strong> the same features for the trip you're planning now. It doesn't renew: it simply ends.</li>" +
+      "<li><strong>B2B:</strong> a free listing for any establishment, two paid tiers for management and reach, with the option to pay per contact received instead of a flat fee.</li>",
+    "case.borala.body9":
+      "The most important design decision here was separating what is bought from what is checked — exactly where the earlier B2B model, paying for placement, was fragile:",
+    "case.borala.regras":
+      "<li>The verification badge is free, doesn't depend on a plan, and isn't for sale. It shows the date of the check and expires after twelve months.</li>" +
+      "<li>Ads are always labeled, sit outside the match calculation, never change the order, and appear at most once per page.</li>" +
+      "<li>Where there's an affiliate commission, the disclosure sits on the destination page — not in a footer.</li>",
+
+    "case.borala.heading7": "Interface design and visual strategy",
+    "case.borala.body10":
+      "The identity was rebuilt along with the scope. Saturated orange from edge to edge gave way to a sand base with terracotta only where there's action, and type took over the hierarchy that color used to carry.",
+    "case.borala.design":
+      "<li><strong>From Figma to CSS tokens:</strong> the component library became its own design-system stylesheet and the variables became custom properties — same intent of consistency, now validated in the browser.</li>" +
+      "<li><strong>Each card decides one thing:</strong> travel time, price per person, and the badge in the same block, because those are the three facts that answer “can I get there?”.</li>" +
+      "<li><strong>Honesty as a component:</strong> the estimate disclaimer, the check date, and the ad label aren't fine print — they have their own styling, inside the reading flow.</li>",
+
+    "case.borala.heading8": "Retrospective and next steps",
+    "case.borala.body11":
+      "The 2024 round validated the visual and functional value propositions. The second one exists because that list of next steps called for something Figma couldn't give: a prototype where the search actually filters, so it can be tested with people. Still open:",
+    "case.borala.nextSteps":
+      "<li><strong>User validation:</strong> checking whether “where I'm leaving from and how long I'll accept” really is the first question — and whether the match percentage helps or hinders.</li>" +
+      "<li><strong>Real data:</strong> destinations, prices, and travel times are a hand-written static dataset.</li>" +
+      "<li><strong>Metrics:</strong> search-to-destination-page conversion, free-account retention, pass uptake.</li>" +
+      "<li><strong>Accessibility:</strong> auditing contrast and keyboard navigation, including the filter panel and the mobile drawer.</li>" +
+      "<li><strong>AI in search:</strong> still a hypothesis, as in 2024. For now the choice was the opposite — an explainable calculation rather than a recommendation no one audits.</li>",
+
+    "case.borala.note":
+      "Navigable prototype, no back end: the data is static and the account state lives in the browser.",
 
     // Estudo de caso completo: Meu Crediário — linha do tempo
     // (src/img/biafranzoi-crediario-*, <template id="case-meucrediario">).
@@ -547,11 +614,16 @@
       "The “Lei Áurea” event panel open over the timeline, with the summary, the “what is disputed” field, and the sources: the encyclopedia entry and the text of the 1888 law.",
     "case.compraki.imageAlt":
       "Compraki prototype screens: product search, list building, market comparison by best total price and best distance, and premium subscription screens.",
-    "case.destinoideal.imageAlt":
-      "Animated demo of the destination search and recommendation flow in the DestinoIdeal prototype.",
-    "case.destinoideal.imageAlt4":
+    "case.borala.imageAlt2":
+      "Boralá! results screen: search by origin and travel time at the top, filter panel on the left with a count beside each option, and destination cards showing match percentage, price per person, and the verified badge.",
+    "case.borala.imageAlt3":
+      "A destination page on Boralá!, Fernando de Noronha: verified-destination badge, match percentage, summary, best season, how to get there and, in the sidebar, the estimated price per person with the affiliate-link disclosure.",
+    // alts da primeira versão (DestinoIdeal, 2024)
+    "case.borala.imageAltAntes1":
+      "Animated demo of the destination search and recommendation flow in the DestinoIdeal prototype, the 2024 version made in Figma.",
+    "case.borala.imageAltAntes2":
       "DestinoIdeal homepage on desktop and mobile: destination search, curated places section, premium offer, and traveler testimonials.",
-    "case.destinoideal.imageAlt3":
+    "case.borala.imageAltAntes3":
       "DestinoIdeal style guide: logo variations, color palette, typography, UI components (buttons, nav bar, cards), and testimonial card variations.",
     "case.crediario.m1.alt1":
       "Crediário Digital settings screen in the WebApp, with Pix payment activation.",
@@ -667,7 +739,8 @@
       "Flashback Machine, the interactive timeline, embedded on this page",
     "case.digidoc.protoLabel": "Interactive DigiDoc prototype on Figma",
     "case.nebula.protoLabel": "Interactive Nebula prototype on Figma",
-    "case.destinoideal.protoLabel": "Interactive DestinoIdeal prototype on Figma",
+    "case.borala.embedLabel":
+      "Boralá!, the navigable prototype, embedded on this page",
   };
 
   // Frases geradas só via JS (não existem como texto estático no HTML, ou

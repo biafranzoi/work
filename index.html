@@ -242,21 +242,28 @@
                 </span>
               </span>
             </button>
+            <!-- Carta da frente do leque: é a POSIÇÃO no DOM que define isso
+                 (o segundo card cai no MAIN_SLOT de SLOTS[], em main.js —
+                 reta, por cima e clicável para abrir o projeto). Trocar a
+                 carta da frente é mover o <button> daqui, não mexer no CSS.
+                 É também a única carta que não é tela do projeto: traz o
+                 monograma da marca sobre foto, na lógica do favicon do
+                 Boralá! (3/4, como a carta). -->
+            <button type="button" class="fan__card" aria-label="Trazer Boralá! para frente" data-case="borala">
+              <img src="src/img/biafranzoi-borala-leque.jpg" alt="" />
+              <span class="project-card__overlay">
+                <span class="project-card__name">Boralá!</span>
+                <span class="project-card__tags">
+                  <span class="tag">Website</span>
+                </span>
+              </span>
+            </button>
             <button type="button" class="fan__card" aria-label="Trazer DigiDoc para frente" data-case="digidoc">
               <img src="src/img/biafranzoi-digidoc-1.png" alt="" />
               <span class="project-card__overlay">
                 <span class="project-card__name">DigiDoc</span>
                 <span class="project-card__tags">
                   <span class="tag">App</span>
-                </span>
-              </span>
-            </button>
-            <button type="button" class="fan__card" aria-label="Trazer DestinoIdeal para frente" data-case="destinoideal">
-              <img src="src/img/biafranzoi-destinoideal-1.png" alt="" />
-              <span class="project-card__overlay">
-                <span class="project-card__name">DestinoIdeal</span>
-                <span class="project-card__tags">
-                  <span class="tag">Website</span>
                 </span>
               </span>
             </button>
@@ -368,19 +375,20 @@
               </span>
             </span>
           </button>
-          <button type="button" class="project-card project-card--lg reveal" data-case="destinoideal">
+          <button type="button" class="project-card project-card--lg reveal" data-case="borala">
             <span class="project-card__inner">
               <span class="project-card__media" aria-hidden="true"
-                ><img src="src/img/biafranzoi-destinoideal-1.png" alt=""
+                ><img src="src/img/biafranzoi-borala-1.jpg" alt=""
               /></span>
               <span class="project-card__overlay">
-                <span class="project-card__name">DestinoIdeal</span>
+                <span class="project-card__name">Boralá!</span>
                 <span class="project-card__tags">
                   <span class="tag">Website</span>
                 </span>
-                <span class="project-card__desc" data-i18n="project.destinoideal.desc"
-                  >Planejador de viagens que recomenda destinos sob medida a
-                  partir do perfil do viajante.</span
+                <span class="project-card__desc" data-i18n="project.borala.desc"
+                  >Planejador de viagens que parte de onde a pessoa está: ela diz
+                  de onde sai e quanto tempo aceita viajar, e a lista de destinos
+                  possíveis se monta na hora.</span
                 >
                 <span class="project-card__cta" data-i18n="cta.viewProject">Ver projeto →</span>
               </span>
@@ -1268,18 +1276,29 @@
       <p class="project-modal__note" data-i18n="case.compraki.note">Projeto em andamento.</p>
     </template>
 
-    <template id="case-destinoideal">
-      <p class="project-modal__text" data-i18n="case.destinoideal.lead"
-        >Uma plataforma de recomendação que utiliza um motor de filtros
-        contextuais para converter preferências subjetivas em destinos
-        viáveis.</p
+    <!-- Boralá! era DestinoIdeal (2024). O case guarda as duas versões de
+         propósito: a mudança de escopo é o assunto dele. As imagens
+         src/img/biafranzoi-destinoideal-* são da versão antiga e ficam na
+         seção "A primeira versão"; as biafranzoi-borala-* são da atual.
+         Os dois blocos .project-modal__meta são os números do protótipo e os
+         pesos do match — dado que em parágrafo vira parede de texto. -->
+    <template id="case-borala">
+      <p class="project-modal__text" data-i18n="case.borala.lead"
+        >Um planejador de viagens que inverte a pergunta do mercado: em vez de
+        “para onde você quer ir?”, pergunta de onde você sai e quanto tempo de
+        viagem aceita.</p
+      >
+      <p class="project-modal__text" data-i18n="case.borala.lead2"
+        >Nasceu em 2024 como DestinoIdeal, um protótipo de Figma de duas
+        semanas. Voltou com outro nome, outro recorte e outro meio: hoje é um
+        protótipo navegável, escrito em HTML, CSS e JavaScript.</p
       >
 
       <div class="project-modal__embed project-modal__embed--wide">
         <iframe
-          src="https://embed.figma.com/proto/lLPIEEky88wErZZ9PHNVKG/DestinoIdeal--2024-?page-id=1%3A2&amp;node-id=1-148&amp;scaling=scale-down&amp;content-scaling=responsive&amp;starting-point-node-id=1%3A148&amp;hide-ui=1&amp;embed-host=share"
-          aria-label="Protótipo interativo do DestinoIdeal no Figma"
-          data-i18n-aria-label="case.destinoideal.protoLabel"
+          src="https://biafranzoi.github.io/borala/"
+          aria-label="Protótipo navegável do Boralá! embutido nesta página"
+          data-i18n-aria-label="case.borala.embedLabel"
           loading="lazy"
           allowfullscreen
         ></iframe>
@@ -1288,99 +1307,224 @@
       <div class="project-modal__actions">
         <a
           class="button button--ghost button--icon"
-          href="https://www.figma.com/proto/lLPIEEky88wErZZ9PHNVKG/DestinoIdeal--2024-?node-id=1-148&amp;viewport=217%2C-36%2C0.18&amp;scaling=scale-down&amp;content-scaling=responsive&amp;starting-point-node-id=1%3A148&amp;show-proto-sidebar=1&amp;page-id=1%3A2&amp;hide-ui=1"
+          href="https://biafranzoi.github.io/borala/"
           target="_blank"
           rel="noopener noreferrer"
         >
-          <span data-i18n="case.destinoideal.ctaProto">Ver protótipo</span>
+          <span data-i18n="case.borala.ctaProto">Abrir o protótipo</span>
           <span aria-hidden="true">↗</span>
           <span class="sr-only" data-i18n="common.opensNewTabSpace"> (abre em nova guia)</span>
         </a>
       </div>
 
-      <h3 class="project-modal__heading" data-i18n="case.destinoideal.heading1">O problema</h3>
-      <p class="project-modal__text" data-i18n="case.destinoideal.body1"
-        >O mercado de turismo é focado em transação, não em descoberta — a
-        maioria das ferramentas de reserva assume que o viajante já sabe
-        onde quer ir. Isso cria um paradoxo da escolha: excesso de opções e
-        informação, mas pouca relevância pessoal quanto a orçamento,
-        preferências de quem viaja junto e logística.</p
+      <dl class="project-modal__meta">
+        <div class="project-modal__meta-item">
+          <dt data-i18n="case.borala.fichaTelas">Protótipo</dt>
+          <dd data-i18n="case.borala.fichaTelasV">11 telas navegáveis</dd>
+        </div>
+        <div class="project-modal__meta-item">
+          <dt data-i18n="case.borala.fichaCatalogo">Catálogo</dt>
+          <dd data-i18n="case.borala.fichaCatalogoV">27 destinos · 94 locais</dd>
+        </div>
+        <div class="project-modal__meta-item">
+          <dt data-i18n="case.borala.fichaBusca">Busca</dt>
+          <dd data-i18n="case.borala.fichaBuscaV">7 origens · 4 faixas de tempo</dd>
+        </div>
+        <div class="project-modal__meta-item">
+          <dt data-i18n="case.borala.fichaStack">Feito com</dt>
+          <dd data-i18n="case.borala.fichaStackV">HTML, CSS e JS · sem back-end</dd>
+        </div>
+      </dl>
+
+      <h3 class="project-modal__heading" data-i18n="case.borala.heading1">O problema</h3>
+      <p class="project-modal__text" data-i18n="case.borala.body1"
+        >O mercado de turismo é focado em transação, não em descoberta: a
+        maioria das ferramentas de reserva assume que o viajante já sabe onde
+        quer ir.</p
+      >
+      <p class="project-modal__text" data-i18n="case.borala.body1b"
+        >O resultado é o paradoxo da escolha — excesso de opções, pouca
+        relevância para o orçamento, para quem viaja junto e para a logística
+        de chegar lá.</p
       >
 
-      <h3 class="project-modal__heading" data-i18n="case.destinoideal.heading2">A solução</h3>
-      <p class="project-modal__text" data-i18n="case.destinoideal.body2"
-        >O DestinoIdeal é uma plataforma de curadoria que transforma
-        preferências subjetivas em destinos viáveis através de um motor de
-        filtros contextuais, endereçando a paralisia de escolha logo no
-        topo do funil. Um modelo freemium conecta os usuários a
-        estabelecimentos locais parceiros.</p
+      <h3 class="project-modal__heading" data-i18n="case.borala.heading2">A primeira versão: DestinoIdeal (2024)</h3>
+      <p class="project-modal__text" data-i18n="case.borala.body2"
+        >Duas semanas, tudo no Figma. Uma plataforma de curadoria que
+        transformava preferências subjetivas em destinos viáveis, atacando a
+        paralisia de escolha no topo do funil.</p
       >
-
-      <h3 class="project-modal__heading" data-i18n="case.destinoideal.heading3">Hipótese de negócio (monetização)</h3>
-      <p class="project-modal__text" data-i18n="case.destinoideal.body3"
-        >A estrutura de receita segue um modelo freemium em três frentes:</p
-      >
-      <ul class="project-modal__list" data-i18n="case.destinoideal.freemium">
-        <li><strong>Core loop:</strong> descoberta gratuita de destinos, para gerar volume de usuários e dados de comportamento.</li>
-        <li><strong>Premium (R$ 49,90):</strong> conveniência e menos risco na viagem, com estabelecimentos verificados e ferramentas de planejamento colaborativo.</li>
-        <li><strong>B2B:</strong> marketplace para estabelecimentos locais aumentarem a visibilidade entre viajantes de alta intenção de compra.</li>
-      </ul>
-      <p class="project-modal__text" data-i18n="case.destinoideal.body4"
-        >Assinantes premium ganham acesso a preferências de viagem
-        avançadas, destinos verificados, avaliações de outros assinantes,
-        viagens em grupo e álbuns de viagem compartilháveis, entre outros
-        benefícios — enquanto cidades e estabelecimentos pagam para ter
-        destaque nos resultados de busca.</p
-      >
-
-      <h3 class="project-modal__heading" data-i18n="case.destinoideal.heading4">Design de interface e estratégia visual</h3>
-      <p class="project-modal__text" data-i18n="case.destinoideal.body5"
-        >O objetivo da interface era reduzir a carga cognitiva durante um
-        processo que costuma ser estressante:</p
-      >
-      <ul class="project-modal__list" data-i18n="case.destinoideal.design">
-        <li><strong>Arquitetura de componentes:</strong> Atomic Design garante escalabilidade, e variáveis do Figma permitem iteração rápida com consistência sistêmica.</li>
-        <li><strong>Affordance e semântica:</strong> cantos arredondados e cores vibrantes criam conexão emocional e reduzem a complexidade técnica percebida; a hierarquia visual prioriza o CTA de descoberta através de um onboarding simplificado.</li>
+      <ul class="project-modal__list" data-i18n="case.borala.v2024">
+        <li><strong>Interface:</strong> reduzir carga cognitiva num processo estressante — cantos arredondados e cores vibrantes para conexão emocional, hierarquia visual priorizando o CTA de descoberta.</li>
+        <li><strong>Sistema:</strong> Atomic Design para escalabilidade, variáveis do Figma para iterar rápido sem perder consistência.</li>
+        <li><strong>Negócio:</strong> freemium em três frentes — descoberta grátis como core loop, Premium de R$ 49,90 e um B2B em que cidades e estabelecimentos pagavam por destaque nos resultados.</li>
       </ul>
 
       <figure class="project-modal__image">
         <img
           src="src/img/biafranzoi-destinoideal-2.gif"
-          alt="Demonstração animada do fluxo de busca e recomendação de destinos no protótipo do DestinoIdeal."
-          data-i18n-alt="case.destinoideal.imageAlt"
+          alt="Demonstração animada do fluxo de busca e recomendação de destinos no protótipo do DestinoIdeal, a versão de 2024 feita no Figma."
+          data-i18n-alt="case.borala.imageAltAntes1"
         />
       </figure>
 
-      <figure class="project-modal__image">
-        <img
-          src="src/img/biafranzoi-destinoideal-4.png"
-          alt="Página inicial do DestinoIdeal em desktop e mobile: buscador de destinos, seção de curadoria de lugares, oferta premium e depoimentos de viajantes."
-          data-i18n-alt="case.destinoideal.imageAlt4"
-        />
-      </figure>
+      <div class="project-modal__gallery">
+        <figure class="project-modal__image">
+          <img
+            src="src/img/biafranzoi-destinoideal-4.png"
+            alt="Página inicial do DestinoIdeal em desktop e mobile: buscador de destinos, seção de curadoria de lugares, oferta premium e depoimentos de viajantes."
+            data-i18n-alt="case.borala.imageAltAntes2"
+          />
+        </figure>
+        <figure class="project-modal__image">
+          <img
+            src="src/img/biafranzoi-destinoideal-3.png"
+            alt="Style guide do DestinoIdeal: variações do logo, paleta de cores, tipografia, componentes de UI (botões, barra de navegação, cards) e variações de depoimento."
+            data-i18n-alt="case.borala.imageAltAntes3"
+          />
+        </figure>
+      </div>
 
-      <figure class="project-modal__image">
-        <img
-          src="src/img/biafranzoi-destinoideal-3.png"
-          alt="Style guide do DestinoIdeal: variações do logo, paleta de cores, tipografia, componentes de UI (botões, barra de navegação, cards) e variações de depoimento."
-          data-i18n-alt="case.destinoideal.imageAlt3"
-        />
-      </figure>
-
-      <h3 class="project-modal__heading" data-i18n="case.destinoideal.heading5">Retrospectiva e evolução</h3>
-      <p class="project-modal__text" data-i18n="case.destinoideal.body6"
-        >Dado o período de concepção de duas semanas, o foco foi validar as
-        propostas de valor visual e funcional. Os próximos passos críticos
-        incluem:</p
+      <h3 class="project-modal__heading" data-i18n="case.borala.heading3">A mudança de escopo</h3>
+      <p class="project-modal__text" data-i18n="case.borala.body4"
+        >O brief original era mais concreto do que aquela versão entregou:
+        descobrir para onde dá para ir de ônibus, num lugar relativamente
+        perto. Partindo de preferências subjetivas, o DestinoIdeal devolvia
+        destinos desejáveis sem dizer se dava para chegar neles.</p
       >
-      <ul class="project-modal__list" data-i18n="case.destinoideal.nextSteps">
-        <li><strong>Validação de Product-Market Fit:</strong> testes de guerrilha para validar a relevância do algoritmo de recomendação.</li>
-        <li><strong>Uso de IA:</strong> testar agentes de IA na busca e nas recomendações, com potencial de pivotar o escopo da solução.</li>
-        <li><strong>Métricas de engajamento:</strong> definir KPIs como taxa de conversão do quiz e retenção de contas gratuitas.</li>
-        <li><strong>Acessibilidade:</strong> auditar contraste de cores para conformidade com WCAG e padrões básicos de acessibilidade.</li>
+      <p class="project-modal__text" data-i18n="case.borala.body4b"
+        >A revisão começou por aí e levou o projeto inteiro junto:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.borala.mudou">
+        <li><strong>A pergunta:</strong> origem e tempo de viagem subiram para o topo da tela e saíram dos filtros. Companhia, região e clima viraram refinamento.</li>
+        <li><strong>O nome:</strong> “destino ideal” prometia acerto; “Boralá!” é o convite que as pessoas já usam para combinar viagem.</li>
+        <li><strong>O meio:</strong> saiu do Figma e virou código no GitHub Pages, com busca, filtros e estado de conta funcionando.</li>
+        <li><strong>A recomendação:</strong> deixou de ser um número sem explicação e virou conta com pesos declarados.</li>
+        <li><strong>A monetização:</strong> a descoberta ficou inteiramente gratuita, e a assinatura foi para depois da escolha do destino.</li>
       </ul>
 
-      <p class="project-modal__note" data-i18n="case.destinoideal.note">Protótipo em fase de validação.</p>
+      <h3 class="project-modal__heading" data-i18n="case.borala.heading4">A solução hoje</h3>
+      <p class="project-modal__text" data-i18n="case.borala.body5"
+        >O Boralá! responde “para onde dá para ir saindo daqui”. A pessoa diz a
+        cidade de origem e quanto tempo aceita passar na estrada ou no ar.</p
+      >
+      <p class="project-modal__text" data-i18n="case.borala.body5b"
+        >A lista se refaz a cada escolha, com preço médio por pessoa, como se
+        chega e o selo da curadoria. O catálogo é estático, mas grande o
+        bastante para os filtros se combinarem e esbarrarem em estados vazios
+        de verdade.</p
+      >
+      <ul class="project-modal__list" data-i18n="case.borala.busca">
+        <li><strong>O recorte fica no topo:</strong> o destino da própria cidade sai da lista, e o que passa do tempo aceito não aparece.</li>
+        <li><strong>Os filtros contam antes de serem usados:</strong> cada opção mostra quantos destinos ainda devolveria — ignorando o próprio grupo, senão marcar uma opção zeraria as vizinhas.</li>
+        <li><strong>Alternativas e exigências são coisas diferentes:</strong> tipo de destino soma (praia <em>ou</em> serra), experiências exigem (trilha <em>e</em> gastronomia). A regra fica escrita ao lado de cada grupo.</li>
+        <li><strong>Tudo vai para a URL:</strong> um resultado filtrado é um link que pode ser compartilhado e recarregado sem perder nada.</li>
+      </ul>
+
+      <figure class="project-modal__image">
+        <img
+          src="src/img/biafranzoi-borala-2.jpg"
+          alt="Tela de resultados do Boralá!: busca por origem e tempo de viagem no topo, painel de filtros à esquerda com contagem por opção e cards de destino com percentual de match, preço por pessoa e selo de verificado."
+          data-i18n-alt="case.borala.imageAlt2"
+        />
+      </figure>
+
+      <h3 class="project-modal__heading" data-i18n="case.borala.heading5">O match é uma conta, não uma promessa</h3>
+      <p class="project-modal__text" data-i18n="case.borala.body6"
+        >Era aqui que a versão anterior ficava mais devendo: o motor de filtros
+        produzia uma lista, mas ninguém sabia por quê. Agora o percentual sai
+        de uma soma auditável, e o maior peso é o da distância:</p
+      >
+
+      <dl class="project-modal__meta">
+        <div class="project-modal__meta-item">
+          <dt data-i18n="case.borala.peso3h">Até 3h de viagem</dt>
+          <dd>+6</dd>
+        </div>
+        <div class="project-modal__meta-item">
+          <dt data-i18n="case.borala.peso6h">Até 6h</dt>
+          <dd>+4</dd>
+        </div>
+        <div class="project-modal__meta-item">
+          <dt data-i18n="case.borala.peso10h">Mais de 10h</dt>
+          <dd>−3</dd>
+        </div>
+        <div class="project-modal__meta-item">
+          <dt data-i18n="case.borala.pesoClima">Clima pedido</dt>
+          <dd>+8</dd>
+        </div>
+        <div class="project-modal__meta-item">
+          <dt data-i18n="case.borala.pesoTeto">Resultado possível</dt>
+          <dd data-i18n="case.borala.pesoTetoV">40% a 99%</dd>
+        </div>
+      </dl>
+
+      <p class="project-modal__text" data-i18n="case.borala.body7"
+        >Viagem de estrada curta ganha bônus extra, porque é o caso de uso que
+        originou o projeto. E o teto é 99%: nada aqui é encaixe perfeito, e a
+        interface não finge que é.</p
+      >
+
+      <figure class="project-modal__image">
+        <img
+          src="src/img/biafranzoi-borala-3.jpg"
+          alt="Página de um destino no Boralá!, Fernando de Noronha: selo de destino verificado, percentual de match, resumo, melhor época, como chegar e, na lateral, estimativa de preço por pessoa com aviso de link de parceiro."
+          data-i18n-alt="case.borala.imageAlt3"
+        />
+      </figure>
+
+      <h3 class="project-modal__heading" data-i18n="case.borala.heading6">Hipótese de negócio (monetização)</h3>
+      <p class="project-modal__text" data-i18n="case.borala.body8"
+        >O freemium continua, mas a linha entre grátis e pago mudou de lugar.
+        Antes a assinatura cobria planejamento <em>e</em> acesso aos lugares
+        verificados; agora descobrir para onde ir é inteiramente gratuito, e o
+        que se cobra é o depois da escolha.</p
+      >
+      <ul class="project-modal__list" data-i18n="case.borala.freemium">
+        <li><strong>Grátis, sem conta:</strong> busca completa, todos os filtros e os locais verificados.</li>
+        <li><strong>Premium — R$ 14,90/mês ou R$ 119/ano:</strong> o que trava um grupo (votação, rateio, checklist, álbum, alerta de preço). Convidado participa sem assinar.</li>
+        <li><strong>Passe de 30 dias — R$ 29,90:</strong> os mesmos recursos para a viagem de agora. Não renova: termina sozinho.</li>
+        <li><strong>B2B:</strong> ficha gratuita para qualquer estabelecimento, dois planos pagos de gestão e alcance, com opção de pagar por contato recebido em vez de mensalidade.</li>
+      </ul>
+      <p class="project-modal__text" data-i18n="case.borala.body9"
+        >A decisão de design mais importante aqui foi separar o que se compra
+        do que se confere — justamente onde o B2B anterior, de pagar por
+        destaque, era frágil:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.borala.regras">
+        <li>O selo de verificação é gratuito, não depende de plano e não está à venda. Mostra a data da checagem e vence em doze meses.</li>
+        <li>Anúncio é sempre rotulado, fica fora do cálculo de match, não altera a ordem e aparece no máximo uma vez por página.</li>
+        <li>Havendo comissão de afiliado, o aviso está na ficha do destino — não num rodapé.</li>
+      </ul>
+
+      <h3 class="project-modal__heading" data-i18n="case.borala.heading7">Design de interface e estratégia visual</h3>
+      <p class="project-modal__text" data-i18n="case.borala.body10"
+        >A identidade foi refeita junto com o escopo. O laranja saturado de
+        ponta a ponta deu lugar a uma base de areia com terracota só onde há
+        ação, e a tipografia assumiu a hierarquia que antes era das cores.</p
+      >
+      <ul class="project-modal__list" data-i18n="case.borala.design">
+        <li><strong>Do Figma para tokens em CSS:</strong> a biblioteca virou folha de design system própria e as variáveis viraram custom properties — mesma intenção de consistência, agora validada no navegador.</li>
+        <li><strong>Cada card decide uma coisa:</strong> tempo de viagem, preço por pessoa e selo no mesmo bloco, porque são os três dados que respondem “dá para ir?”.</li>
+        <li><strong>Honestidade como componente:</strong> aviso de estimativa, data da checagem e rótulo de anúncio não são letra miúda — têm estilo próprio, no fluxo da leitura.</li>
+      </ul>
+
+      <h3 class="project-modal__heading" data-i18n="case.borala.heading8">Retrospectiva e evolução</h3>
+      <p class="project-modal__text" data-i18n="case.borala.body11"
+        >A rodada de 2024 validou proposta de valor visual e funcional. A
+        segunda existe porque aquela lista de próximos passos cobrava algo que
+        o Figma não dava: um protótipo em que a busca realmente filtra, para
+        poder ser testado com gente. O que continua aberto:</p
+      >
+      <ul class="project-modal__list" data-i18n="case.borala.nextSteps">
+        <li><strong>Validação com usuários:</strong> checar se “de onde saio e quanto tempo aceito” é mesmo a primeira pergunta — e se o percentual de match ajuda ou atrapalha.</li>
+        <li><strong>Dados reais:</strong> destinos, preços e tempos são um conjunto estático escrito à mão.</li>
+        <li><strong>Métricas:</strong> conversão da busca em ficha de destino, retenção da conta gratuita, adesão ao passe.</li>
+        <li><strong>Acessibilidade:</strong> auditar contraste e navegação por teclado, incluindo o painel de filtros e a gaveta do mobile.</li>
+        <li><strong>IA na busca:</strong> segue como hipótese, como em 2024. Por ora a escolha foi o oposto — um cálculo explicável em vez de uma recomendação que ninguém audita.</li>
+      </ul>
+
+      <p class="project-modal__note" data-i18n="case.borala.note">Protótipo navegável, sem back-end: os dados são estáticos e o estado da conta fica no navegador.</p>
     </template>
 
     <template id="case-meucrediario">
